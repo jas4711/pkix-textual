@@ -1,0 +1,635 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en"><head><title>Text Encodings of Some Security Related Structures</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="description" content="Text Encodings of Some Security Related Structures">
+<meta name="generator" content="xml2rfc v1.35 (http://xml.resource.org/)">
+<style type='text/css'><!--
+        body {
+                font-family: verdana, charcoal, helvetica, arial, sans-serif;
+                font-size: small; color: #000; background-color: #FFF;
+                margin: 2em;
+        }
+        h1, h2, h3, h4, h5, h6 {
+                font-family: helvetica, monaco, "MS Sans Serif", arial, sans-serif;
+                font-weight: bold; font-style: normal;
+        }
+        h1 { color: #900; background-color: transparent; text-align: right; }
+        h3 { color: #333; background-color: transparent; }
+
+        td.RFCbug {
+                font-size: x-small; text-decoration: none;
+                width: 30px; height: 30px; padding-top: 2px;
+                text-align: justify; vertical-align: middle;
+                background-color: #000;
+        }
+        td.RFCbug span.RFC {
+                font-family: monaco, charcoal, geneva, "MS Sans Serif", helvetica, verdana, sans-serif;
+                font-weight: bold; color: #666;
+        }
+        td.RFCbug span.hotText {
+                font-family: charcoal, monaco, geneva, "MS Sans Serif", helvetica, verdana, sans-serif;
+                font-weight: normal; text-align: center; color: #FFF;
+        }
+
+        table.TOCbug { width: 30px; height: 15px; }
+        td.TOCbug {
+                text-align: center; width: 30px; height: 15px;
+                color: #FFF; background-color: #900;
+        }
+        td.TOCbug a {
+                font-family: monaco, charcoal, geneva, "MS Sans Serif", helvetica, sans-serif;
+                font-weight: bold; font-size: x-small; text-decoration: none;
+                color: #FFF; background-color: transparent;
+        }
+
+        td.header {
+                font-family: arial, helvetica, sans-serif; font-size: x-small;
+                vertical-align: top; width: 33%;
+                color: #FFF; background-color: #666;
+        }
+        td.author { font-weight: bold; font-size: x-small; margin-left: 4em; }
+        td.author-text { font-size: x-small; }
+
+        /* info code from SantaKlauss at http://www.madaboutstyle.com/tooltip2.html */
+        a.info {
+                /* This is the key. */
+                position: relative;
+                z-index: 24;
+                text-decoration: none;
+        }
+        a.info:hover {
+                z-index: 25;
+                color: #FFF; background-color: #900;
+        }
+        a.info span { display: none; }
+        a.info:hover span.info {
+                /* The span will display just on :hover state. */
+                display: block;
+                position: absolute;
+                font-size: smaller;
+                top: 2em; left: -5em; width: 15em;
+                padding: 2px; border: 1px solid #333;
+                color: #900; background-color: #EEE;
+                text-align: left;
+        }
+
+        a { font-weight: bold; }
+        a:link    { color: #900; background-color: transparent; }
+        a:visited { color: #633; background-color: transparent; }
+        a:active  { color: #633; background-color: transparent; }
+
+        p { margin-left: 2em; margin-right: 2em; }
+        p.copyright { font-size: x-small; }
+        p.toc { font-size: small; font-weight: bold; margin-left: 3em; }
+        table.toc { margin: 0 0 0 3em; padding: 0; border: 0; vertical-align: text-top; }
+        td.toc { font-size: small; font-weight: bold; vertical-align: text-top; }
+
+        ol.text { margin-left: 2em; margin-right: 2em; }
+        ul.text { margin-left: 2em; margin-right: 2em; }
+        li      { margin-left: 3em; }
+
+        /* RFC-2629 <spanx>s and <artwork>s. */
+        em     { font-style: italic; }
+        strong { font-weight: bold; }
+        dfn    { font-weight: bold; font-style: normal; }
+        cite   { font-weight: normal; font-style: normal; }
+        tt     { color: #036; }
+        tt, pre, pre dfn, pre em, pre cite, pre span {
+                font-family: "Courier New", Courier, monospace; font-size: small;
+        }
+        pre {
+                text-align: left; padding: 4px;
+                color: #000; background-color: #CCC;
+        }
+        pre dfn  { color: #900; }
+        pre em   { color: #66F; background-color: #FFC; font-weight: normal; }
+        pre .key { color: #33C; font-weight: bold; }
+        pre .id  { color: #900; }
+        pre .str { color: #000; background-color: #CFF; }
+        pre .val { color: #066; }
+        pre .rep { color: #909; }
+        pre .oth { color: #000; background-color: #FCF; }
+        pre .err { background-color: #FCC; }
+
+        /* RFC-2629 <texttable>s. */
+        table.all, table.full, table.headers, table.none {
+                font-size: small; text-align: center; border-width: 2px;
+                vertical-align: top; border-collapse: collapse;
+        }
+        table.all, table.full { border-style: solid; border-color: black; }
+        table.headers, table.none { border-style: none; }
+        th {
+                font-weight: bold; border-color: black;
+                border-width: 2px 2px 3px 2px;
+        }
+        table.all th, table.full th { border-style: solid; }
+        table.headers th { border-style: none none solid none; }
+        table.none th { border-style: none; }
+        table.all td {
+                border-style: solid; border-color: #333;
+                border-width: 1px 2px;
+        }
+        table.full td, table.headers td, table.none td { border-style: none; }
+
+        hr { height: 1px; }
+        hr.insert {
+                width: 80%; border-style: none; border-width: 0;
+                color: #CCC; background-color: #CCC;
+        }
+--></style>
+</head>
+<body>
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<table summary="layout" width="66%" border="0" cellpadding="0" cellspacing="0"><tr><td><table summary="layout" width="100%" border="0" cellpadding="2" cellspacing="1">
+<tr><td class="header">Network Working Group</td><td class="header">S. Josefsson</td></tr>
+<tr><td class="header">Internet-Draft</td><td class="header">SJD AB</td></tr>
+<tr><td class="header">Intended status: Informational</td><td class="header">January 2012</td></tr>
+<tr><td class="header">Expires: July 4, 2012</td><td class="header">&nbsp;</td></tr>
+</table></td></tr></table>
+<h1><br />Text Encodings of Some Security Related Structures<br />draft-josefsson-pkix-textual-01rc</h1>
+
+<h3>Abstract</h3>
+
+<p>This document describe and discuss the text encodings of
+      Public-Key Infrastructure using X.509 (PKIX) Certificates, PKIX
+      Certificate Revocation Lists (CRLs), PKCS #10 Certificate
+      Request Syntax, PKCS #7 structures, and Attribute Certificates.
+      The text encodings are well-known, implemented by several
+      applications and libraries, and is widely deployed.  This
+      document is intended to articulate the de-facto rules that
+      existing implementations operate by, and to give recommendations
+      that will promote interoperability going forward.
+</p>
+<h3>Status of this Memo</h3>
+<p>
+This Internet-Draft is submitted  in full
+conformance with the provisions of BCP&nbsp;78 and BCP&nbsp;79.</p>
+<p>
+Internet-Drafts are working documents of the Internet Engineering
+Task Force (IETF).  Note that other groups may also distribute
+working documents as Internet-Drafts.  The list of current
+Internet-Drafts is at http://datatracker.ietf.org/drafts/current/.</p>
+<p>
+Internet-Drafts are draft documents valid for a maximum of six months
+and may be updated, replaced, or obsoleted by other documents at any time.
+It is inappropriate to use Internet-Drafts as reference material or to cite
+them other than as &ldquo;work in progress.&rdquo;</p>
+<p>
+This Internet-Draft will expire on July 4, 2012.</p>
+
+<h3>Copyright Notice</h3>
+<p>
+Copyright (c) 2012 IETF Trust and the persons identified as the
+document authors.  All rights reserved.</p>
+<p>
+This document is subject to BCP 78 and the IETF Trust's Legal
+Provisions Relating to IETF Documents
+(http://trustee.ietf.org/license-info) in effect on the date of
+publication of this document.  Please review these documents
+carefully, as they describe your rights and restrictions with respect
+to this document. Code Components extracted from this document must
+include Simplified BSD License text as described in Section 4.e of
+the Trust Legal Provisions and are provided without warranty as
+described in the Simplified BSD License.</p>
+<a name="toc"></a><br /><hr />
+<h3>Table of Contents</h3>
+<p class="toc">
+<a href="#intro">1.</a>&nbsp;
+Introduction<br />
+<a href="#general">2.</a>&nbsp;
+General Considerations<br />
+<a href="#certificate">3.</a>&nbsp;
+Text Encoding of PKIX Certificate<br />
+<a href="#crl">4.</a>&nbsp;
+Text Encoding of PKIX CRLs<br />
+<a href="#crs">5.</a>&nbsp;
+Text Encoding of PKCS #10 Certification Request Syntax<br />
+<a href="#cms">6.</a>&nbsp;
+Text Encoding of PKCS #7 Cryptographic Message Syntax<br />
+<a href="#attrcert">7.</a>&nbsp;
+Text Encoding of Attribute Certificates<br />
+<a href="#anchor1">8.</a>&nbsp;
+Non-comforming Examples<br />
+<a href="#security">9.</a>&nbsp;
+Security Considerations<br />
+<a href="#iana">10.</a>&nbsp;
+IANA Considerations<br />
+<a href="#ack">11.</a>&nbsp;
+Acknowledgements<br />
+<a href="#rfc.references1">12.</a>&nbsp;
+References<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#rfc.references1">12.1.</a>&nbsp;
+Normative References<br />
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#rfc.references2">12.2.</a>&nbsp;
+Informative References<br />
+<a href="#rfc.authors">&#167;</a>&nbsp;
+Author's Address<br />
+</p>
+<br clear="all" />
+
+<a name="intro"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.1"></a><h3>1.&nbsp;
+Introduction</h3>
+
+<p>Several security-related standards used on the Internet
+      define data formats that are normally encoded using <a class='info' href='#CCITT.X690.2002'>Distinguished Encoding Rules
+      (DER)<span> (</span><span class='info'>International International Telephone and Telegraph Consultative Committee, &ldquo;ASN.1 encoding rules: Specification of basic encoding Rules (BER), Canonical encoding rules (CER) and Distinguished encoding rules (DER),&rdquo; July&nbsp;2002.</span><span>)</span></a> [CCITT.X690.2002], which is a binary data format.  This document is
+      about text encodings of some of these formats.  In particular,
+      we describe text encodings for the following formats.
+</p>
+<p></p>
+<ol class="text">
+<li><a class='info' href='#RFC5280'>Internet X.509 Public Key
+	Infrastructure Certificate and Certificate Revocation List
+	(CRL) Profile<span> (</span><span class='info'>Cooper, D., Santesson, S., Farrell, S., Boeyen, S., Housley, R., and W. Polk, &ldquo;Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile,&rdquo; May&nbsp;2008.</span><span>)</span></a> [RFC5280], for both Certificates and Certificate
+	Revocation Lists (CRLs).
+</li>
+<li><a class='info' href='#RFC2986'>PKCS #10: Certification Request
+	Syntax<span> (</span><span class='info'>Nystrom, M. and B. Kaliski, &ldquo;PKCS #10: Certification Request Syntax Specification Version 1.7,&rdquo; November&nbsp;2000.</span><span>)</span></a> [RFC2986].
+</li>
+<li><a class='info' href='#RFC2315'>PKCS #7: Cryptographic Message
+	Syntax<span> (</span><span class='info'>Kaliski, B., &ldquo;PKCS #7: Cryptographic Message Syntax Version 1.5,&rdquo; March&nbsp;1998.</span><span>)</span></a> [RFC2315].
+</li>
+<li><a class='info' href='#RFC5755'>An Internet Attribute Certificate
+	Profile for Authorization<span> (</span><span class='info'>Farrell, S., Housley, R., and S. Turner, &ldquo;An Internet Attribute Certificate Profile for Authorization,&rdquo; January&nbsp;2010.</span><span>)</span></a> [RFC5755].
+</li>
+</ol>
+
+<p>One motivation for a text encoding is that a binary data
+      format has the disadvantage that it cannot be interchanged in
+      textual transports, such as e-mail or text documents.  One
+      advantage with text encodings is that they are easy to modify
+      without special-purpose tools; for example, using a text editor
+      you may concatenate several certificates to form a certificate
+      chain.
+</p>
+<p>The exact history of the text encodings are unknown to the
+      author of this document, however the tradition within the RFC
+      series can be traced back to <a class='info' href='#RFC1421'>PEM<span> (</span><span class='info'>Linn, J., &ldquo;Privacy Enhancement for Internet Electronic Mail: Part I: Message Encryption and Authentication Procedures,&rdquo; February&nbsp;1993.</span><span>)</span></a> [RFC1421]
+      and <a class='info' href='#RFC2015'>OpenPGP<span> (</span><span class='info'>Elkins, M., &ldquo;MIME Security with Pretty Good Privacy (PGP),&rdquo; October&nbsp;1996.</span><span>)</span></a> [RFC2015].  These text encodings
+      are sometimes referred to as "PEM encodings".  Peter Gutmann's
+      <a class='info' href='#X509SG'>X.509 Style Guide<span> (</span><span class='info'>Gutmann, P., &ldquo;X.509 Style Guide,&rdquo; .</span><span>)</span></a> [X509SG] contains a
+      section "base64 Encoding" that describe the formats and contains
+      suggestions similar to what is in this document.
+</p>
+<p>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL
+      NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED",
+      "MAY", and "OPTIONAL" in this document are to be interpreted as
+      described in <a class='info' href='#RFC2119'>RFC 2119<span> (</span><span class='info'>Bradner, S., &ldquo;Key words for use in RFCs to Indicate Requirement Levels,&rdquo; March&nbsp;1997.</span><span>)</span></a> [RFC2119].
+</p>
+<a name="general"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.2"></a><h3>2.&nbsp;
+General Considerations</h3>
+
+<p>The structure of a text encoding is such that they begin
+       with a line starting with "-----BEGIN" and end with a line
+       starting with "-----END".  Between these markers are <a class='info' href='#RFC4648'>Base64<span> (</span><span class='info'>Josefsson, S., &ldquo;The Base16, Base32, and Base64 Data Encodings,&rdquo; October&nbsp;2006.</span><span>)</span></a> [RFC4648] encoded data.  Data before the
+       "-----BEGIN" and after the "-----END" marker are permitted and
+       MUST NOT cause parsers to malfunction.  Further, parsers MUST
+       ignore whitespace and other non-alphabetic characters and MUST
+       handle different newline conventions.
+</p>
+<p>The type of data encoded is labeled depending on the type
+       label in the "-----BEGIN" line.  For example, the line may be
+       "-----BEGIN CERTIFICATE-----" to indicate that the content is a
+       PKIX Certificate (see further below).  Generators MUST put the
+       same label on the "-----END" line as the corresponding
+       "-----BEGIN" line.  Parses MAY disregard the label on the
+       "-----END" lines instead of signalling an error if there is a
+       label mismatch.
+</p>
+<p>The label type is not a guarantee that the encoded data
+       follows the implied syntax.  Parsers MUST handle non-conforming
+       data gracefully.
+</p>
+<p>Files MAY contain multiple instances of the text encoded
+       representation.  This is used, for example, when a file
+       contains several certificates.  Whether the instances are
+       ordered or unordered depends on the context.
+</p>
+<p>Generators MUST wrap the base64 encoded lines so that each
+       line consists of exactly 64 characters except for the final
+       line which will encode as much data is left (within the 64
+       character line boundary).  Parser MAY handle other line
+       sizes.
+</p>
+<a name="certificate"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.3"></a><h3>3.&nbsp;
+Text Encoding of PKIX Certificate</h3>
+
+<p>PKIX Certificates are encoded using the "CERTIFICATE" label.
+       The encoded data MUST be a DER encoded ASN.1 "Certificate"
+       structure as described in section 4 of <a class='info' href='#RFC5280'>[RFC5280]<span> (</span><span class='info'>Cooper, D., Santesson, S., Farrell, S., Boeyen, S., Housley, R., and W. Polk, &ldquo;Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile,&rdquo; May&nbsp;2008.</span><span>)</span></a>.
+</p><br /><hr class="insert" />
+<a name="certexample"></a>
+<div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+-----BEGIN CERTIFICATE-----
+MIICLDCCAdKgAwIBAgIBADAKBggqhkjOPQQDAjB9MQswCQYDVQQGEwJCRTEPMA0G
+A1UEChMGR251VExTMSUwIwYDVQQLExxHbnVUTFMgY2VydGlmaWNhdGUgYXV0aG9y
+aXR5MQ8wDQYDVQQIEwZMZXV2ZW4xJTAjBgNVBAMTHEdudVRMUyBjZXJ0aWZpY2F0
+ZSBhdXRob3JpdHkwHhcNMTEwNTIzMjAzODIxWhcNMTIxMjIyMDc0MTUxWjB9MQsw
+CQYDVQQGEwJCRTEPMA0GA1UEChMGR251VExTMSUwIwYDVQQLExxHbnVUTFMgY2Vy
+dGlmaWNhdGUgYXV0aG9yaXR5MQ8wDQYDVQQIEwZMZXV2ZW4xJTAjBgNVBAMTHEdu
+dVRMUyBjZXJ0aWZpY2F0ZSBhdXRob3JpdHkwWTATBgcqhkjOPQIBBggqhkjOPQMB
+BwNCAARS2I0jiuNn14Y2sSALCX3IybqiIJUvxUpj+oNfzngvj/Niyv2394BWnW4X
+uQ4RTEiywK87WRcWMGgJB5kX/t2no0MwQTAPBgNVHRMBAf8EBTADAQH/MA8GA1Ud
+DwEB/wQFAwMHBgAwHQYDVR0OBBYEFPC0gf6YEr+1KLlkQAPLzB9mTigDMAoGCCqG
+SM49BAMCA0gAMEUCIDGuwD1KPyG+hRf88MeyMQcqOFZD0TbVleF+UsAGQ4enAiEA
+l4wOuDwKQa+upc8GftXE2C//4mKANBC6It01gUaTIpo=
+-----END CERTIFICATE-----
+</pre></div><table border="0" cellpadding="0" cellspacing="2" align="center"><tr><td align="center"><font face="monaco, MS Sans Serif" size="1"><b>&nbsp;Figure&nbsp;1: Certificate Example&nbsp;</b></font><br /></td></tr></table><hr class="insert" />
+
+<p>Historically the label "X509 CERTIFICATE" and also, less
+       common, "X.509 CERTIFICATE" have been used.  Generators
+       conforming to this document MUST generate "CERTIFICATE" labels
+       and MUST NOT generate "X509 CERTIFICATE" or "X.509 CERTIFICATE"
+       labels.  Parsers are NOT RECOMMENDED to treat "X509
+       CERTIFICATE" or "X.509 CERTIFICATE" as equivalent to
+       "CERTIFICATE", but a valid exception may be for backwards
+       compatibility (potentially together with a warning).
+</p>
+<a name="crl"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.4"></a><h3>4.&nbsp;
+Text Encoding of PKIX CRLs</h3>
+
+<p>PKIX CRLs are encoded using the "X509 CRL" label.  The
+       encoded data MUST be a DER encoded ASN.1 "CertificateList"
+       structure as described in section 5 of <a class='info' href='#RFC5280'>[RFC5280]<span> (</span><span class='info'>Cooper, D., Santesson, S., Farrell, S., Boeyen, S., Housley, R., and W. Polk, &ldquo;Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile,&rdquo; May&nbsp;2008.</span><span>)</span></a>.
+</p><br /><hr class="insert" />
+<a name="crlexample"></a>
+<div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+-----BEGIN X509 CRL-----
+MIIB9DCCAV8CAQEwCwYJKoZIhvcNAQEFMIIBCDEXMBUGA1UEChMOVmVyaVNpZ24s
+IEluYy4xHzAdBgNVBAsTFlZlcmlTaWduIFRydXN0IE5ldHdvcmsxRjBEBgNVBAsT
+PXd3dy52ZXJpc2lnbi5jb20vcmVwb3NpdG9yeS9SUEEgSW5jb3JwLiBieSBSZWYu
+LExJQUIuTFREKGMpOTgxHjAcBgNVBAsTFVBlcnNvbmEgTm90IFZhbGlkYXRlZDEm
+MCQGA1UECxMdRGlnaXRhbCBJRCBDbGFzcyAxIC0gTmV0c2NhcGUxGDAWBgNVBAMU
+D1NpbW9uIEpvc2Vmc3NvbjEiMCAGCSqGSIb3DQEJARYTc2ltb25Aam9zZWZzc29u
+Lm9yZxcNMDYxMjI3MDgwMjM0WhcNMDcwMjA3MDgwMjM1WjAjMCECEC4QNwPfRoWd
+elUNpllhhTgXDTA2MTIyNzA4MDIzNFowCwYJKoZIhvcNAQEFA4GBAD0zX+J2hkcc
+Nbrq1Dn5IKL8nXLgPGcHv1I/le1MNo9t1ohGQxB5HnFUkRPAY82fR6Epor4aHgVy
+b+5y+neKN9Kn2mPF4iiun+a4o26CjJ0pArojCL1p8T0yyi9Xxvyc/ezaZ98HiIyP
+c3DGMNR+oUmSjKZ0jIhAYmeLxaPHfQwR
+-----END X509 CRL-----
+</pre></div><table border="0" cellpadding="0" cellspacing="2" align="center"><tr><td align="center"><font face="monaco, MS Sans Serif" size="1"><b>&nbsp;Figure&nbsp;2: CRL Example&nbsp;</b></font><br /></td></tr></table><hr class="insert" />
+
+<p>Historically the label "CRL" have been used, but today it is
+       not common and several popular tools do not understand the
+       label.  Generators conforming to this document MUST generate
+       "X509 CRL" labels and MUST NOT generate "CRL" labels.  Parsers
+       are NOT RECOMMENDED to treat "CRL" as equivalent to "X509
+       CRL".
+</p>
+<a name="crs"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.5"></a><h3>5.&nbsp;
+Text Encoding of PKCS #10 Certification Request Syntax</h3>
+
+<p>PKCS #10 Certification Requests are encoded using the
+       "CERTIFICATE REQUEST" label.  The encoded data MUST be a DER
+       encoded ASN.1 "CertificationRequest" structure as described in
+       <a class='info' href='#RFC2986'>[RFC2986]<span> (</span><span class='info'>Nystrom, M. and B. Kaliski, &ldquo;PKCS #10: Certification Request Syntax Specification Version 1.7,&rdquo; November&nbsp;2000.</span><span>)</span></a>.
+</p><br /><hr class="insert" />
+<a name="pkcs10example"></a>
+<div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+-----BEGIN CERTIFICATE REQUEST-----
+MIIBWDCCAQcCAQAwTjELMAkGA1UEBhMCU0UxJzAlBgNVBAoTHlNpbW9uIEpvc2Vm
+c3NvbiBEYXRha29uc3VsdCBBQjEWMBQGA1UEAxMNam9zZWZzc29uLm9yZzBOMBAG
+ByqGSM49AgEGBSuBBAAhAzoABLLPSkuXY0l66MbxVJ3Mot5FCFuqQfn6dTs+9/CM
+EOlSwVej77tj56kj9R/j9Q+LfysX8FO9I5p3oGIwYAYJKoZIhvcNAQkOMVMwUTAY
+BgNVHREEETAPgg1qb3NlZnNzb24ub3JnMAwGA1UdEwEB/wQCMAAwDwYDVR0PAQH/
+BAUDAwegADAWBgNVHSUBAf8EDDAKBggrBgEFBQcDATAKBggqhkjOPQQDAgM/ADA8
+AhxBvfhxPFfbBbsE1NoFmCUczOFApEuQVUw3ZP69AhwWXk3dgSUsKnuwL5g/ftAY
+dEQc8B8jAcnuOrfU
+-----END CERTIFICATE REQUEST-----
+</pre></div><table border="0" cellpadding="0" cellspacing="2" align="center"><tr><td align="center"><font face="monaco, MS Sans Serif" size="1"><b>&nbsp;Figure&nbsp;3: PKCS #10 Example&nbsp;</b></font><br /></td></tr></table><hr class="insert" />
+
+<p>The label "NEW CERTIFICATE REQUEST" is also in wide use.
+      Generators conforming to this document MUST generate
+      "CERTIFICATE REQUEST" labels.  Parsers MAY treat "NEW
+      CERTIFICATE REQUEST" as equivalent to "CERTIFICATE REQUEST".
+</p>
+<a name="cms"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.6"></a><h3>6.&nbsp;
+Text Encoding of PKCS #7 Cryptographic Message Syntax</h3>
+
+<p>PKCS #7 Cryptographic Message Syntax structures are encoded
+       using the "PKCS7" label.  The encoded data MUST be a DER
+       encoded ASN.1 "ContentInfo" structure as described in <a class='info' href='#RFC2315'>[RFC2315]<span> (</span><span class='info'>Kaliski, B., &ldquo;PKCS #7: Cryptographic Message Syntax Version 1.5,&rdquo; March&nbsp;1998.</span><span>)</span></a>.
+</p><br /><hr class="insert" />
+<a name="pkcs7example"></a>
+<div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+-----BEGIN PKCS7-----
+MIHjBgsqhkiG9w0BCRABF6CB0zCB0AIBADFho18CAQCgGwYJKoZIhvcNAQUMMA4E
+CLfrI6dr0gUWAgITiDAjBgsqhkiG9w0BCRADCTAUBggqhkiG9w0DBwQIZpECRWtz
+u5kEGDCjerXY8odQ7EEEromZJvAurk/j81IrozBSBgkqhkiG9w0BBwEwMwYLKoZI
+hvcNAQkQAw8wJDAUBggqhkiG9w0DBwQI0tCBcU09nxEwDAYIKwYBBQUIAQIFAIAQ
+OsYGYUFdAH0RNc1p4VbKEAQUM2Xo8PMHBoYdqEcsbTodlCFAZH4=
+-----END PKCS7-----
+</pre></div><table border="0" cellpadding="0" cellspacing="2" align="center"><tr><td align="center"><font face="monaco, MS Sans Serif" size="1"><b>&nbsp;Figure&nbsp;4: PKCS #7 Example&nbsp;</b></font><br /></td></tr></table><hr class="insert" />
+
+<p>The label "CERTIFICATE CHAIN" has been in use to denote a
+      degenerative PKCS #7 structure that contains only a list of
+      certificates.  Several modern tools do not support this label.
+      Generators MUST NOT generate the "CERTIFICATE CHAIN" label.
+      Parsers are NOT RECOMMENDED to treat "CERTIFICATE CHAIN" as
+      equivalent to "PKCS7".
+</p>
+<a name="attrcert"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.7"></a><h3>7.&nbsp;
+Text Encoding of Attribute Certificates</h3>
+
+<p>Attribute certificates are encoded using the "ATTRIBUTE
+       CERTIFICATES" label.  The encoded data MUST be a DER encoded
+       ASN.1 "AttributeCertificate" structure as described in <a class='info' href='#RFC5755'>[RFC5755]<span> (</span><span class='info'>Farrell, S., Housley, R., and S. Turner, &ldquo;An Internet Attribute Certificate Profile for Authorization,&rdquo; January&nbsp;2010.</span><span>)</span></a>.
+</p><br /><hr class="insert" />
+<a name="attrcertexample"></a>
+<div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+-----BEGIN ATTRIBUTE CERTIFICATE-----
+MIICKzCCAZQCAQEwgZeggZQwgYmkgYYwgYMxCzAJBgNVBAYTAlVTMREwDwYDVQQI
+DAhOZXcgWW9yazEUMBIGA1UEBwwLU3RvbnkgQnJvb2sxDzANBgNVBAoMBkNTRTU5
+MjE6MDgGA1UEAwwxU2NvdHQgU3RhbGxlci9lbWFpbEFkZHJlc3M9c3N0YWxsZXJA
+aWMuc3VueXNiLmVkdQIGARWrgUUSoIGMMIGJpIGGMIGDMQswCQYDVQQGEwJVUzER
+MA8GA1UECAwITmV3IFlvcmsxFDASBgNVBAcMC1N0b255IEJyb29rMQ8wDQYDVQQK
+DAZDU0U1OTIxOjA4BgNVBAMMMVNjb3R0IFN0YWxsZXIvZW1haWxBZGRyZXNzPXNz
+dGFsbGVyQGljLnN1bnlzYi5lZHUwDQYJKoZIhvcNAQEFBQACBgEVq4FFSjAiGA8z
+OTA3MDIwMTA1MDAwMFoYDzM5MTEwMTMxMDUwMDAwWjArMCkGA1UYSDEiMCCGHmh0
+dHA6Ly9pZGVyYXNobi5vcmcvaW5kZXguaHRtbDANBgkqhkiG9w0BAQUFAAOBgQAV
+M9axFPXXozEFcer06bj9MCBBCQLtAM7ZXcZjcxyva7xCBDmtZXPYUluHf5OcWPJz
+5XPus/xS9wBgtlM3fldIKNyNO8RsMp6Ocx+PGlICc7zpZiGmCYLl64lAEGPO/bsw
+Smluak1aZIttePeTAHeJJs8izNJ5aR3Wcd3A5gLztQ==
+-----END ATTRIBUTE CERTIFICATE-----
+</pre></div><table border="0" cellpadding="0" cellspacing="2" align="center"><tr><td align="center"><font face="monaco, MS Sans Serif" size="1"><b>&nbsp;Figure&nbsp;5: Attribute Certificate Example&nbsp;</b></font><br /></td></tr></table><hr class="insert" />
+
+<a name="anchor1"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.8"></a><h3>8.&nbsp;
+Non-comforming Examples</h3>
+
+<p>This section contains examples for the non-recommended label
+      variants described earlier in this document.  As discussed
+      earlier, supporting these are not required and sometimes
+      discouraged.  Still, they can be useful for interoperability
+      testing and for easy reference.
+</p><br /><hr class="insert" />
+<a name="certexample2"></a>
+<div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+-----BEGIN X509 CERTIFICATE-----
+MIICLDCCAdKgAwIBAgIBADAKBggqhkjOPQQDAjB9MQswCQYDVQQGEwJCRTEPMA0G
+A1UEChMGR251VExTMSUwIwYDVQQLExxHbnVUTFMgY2VydGlmaWNhdGUgYXV0aG9y
+aXR5MQ8wDQYDVQQIEwZMZXV2ZW4xJTAjBgNVBAMTHEdudVRMUyBjZXJ0aWZpY2F0
+ZSBhdXRob3JpdHkwHhcNMTEwNTIzMjAzODIxWhcNMTIxMjIyMDc0MTUxWjB9MQsw
+CQYDVQQGEwJCRTEPMA0GA1UEChMGR251VExTMSUwIwYDVQQLExxHbnVUTFMgY2Vy
+dGlmaWNhdGUgYXV0aG9yaXR5MQ8wDQYDVQQIEwZMZXV2ZW4xJTAjBgNVBAMTHEdu
+dVRMUyBjZXJ0aWZpY2F0ZSBhdXRob3JpdHkwWTATBgcqhkjOPQIBBggqhkjOPQMB
+BwNCAARS2I0jiuNn14Y2sSALCX3IybqiIJUvxUpj+oNfzngvj/Niyv2394BWnW4X
+uQ4RTEiywK87WRcWMGgJB5kX/t2no0MwQTAPBgNVHRMBAf8EBTADAQH/MA8GA1Ud
+DwEB/wQFAwMHBgAwHQYDVR0OBBYEFPC0gf6YEr+1KLlkQAPLzB9mTigDMAoGCCqG
+SM49BAMCA0gAMEUCIDGuwD1KPyG+hRf88MeyMQcqOFZD0TbVleF+UsAGQ4enAiEA
+l4wOuDwKQa+upc8GftXE2C//4mKANBC6It01gUaTIpo=
+-----END X509 CERTIFICATE-----
+</pre></div><table border="0" cellpadding="0" cellspacing="2" align="center"><tr><td align="center"><font face="monaco, MS Sans Serif" size="1"><b>&nbsp;Figure&nbsp;6: Non-standard 'X509' Certificate Example&nbsp;</b></font><br /></td></tr></table><hr class="insert" />
+<br /><hr class="insert" />
+<a name="certexample3"></a>
+<div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+-----BEGIN X.509 CERTIFICATE-----
+MIICLDCCAdKgAwIBAgIBADAKBggqhkjOPQQDAjB9MQswCQYDVQQGEwJCRTEPMA0G
+A1UEChMGR251VExTMSUwIwYDVQQLExxHbnVUTFMgY2VydGlmaWNhdGUgYXV0aG9y
+aXR5MQ8wDQYDVQQIEwZMZXV2ZW4xJTAjBgNVBAMTHEdudVRMUyBjZXJ0aWZpY2F0
+ZSBhdXRob3JpdHkwHhcNMTEwNTIzMjAzODIxWhcNMTIxMjIyMDc0MTUxWjB9MQsw
+CQYDVQQGEwJCRTEPMA0GA1UEChMGR251VExTMSUwIwYDVQQLExxHbnVUTFMgY2Vy
+dGlmaWNhdGUgYXV0aG9yaXR5MQ8wDQYDVQQIEwZMZXV2ZW4xJTAjBgNVBAMTHEdu
+dVRMUyBjZXJ0aWZpY2F0ZSBhdXRob3JpdHkwWTATBgcqhkjOPQIBBggqhkjOPQMB
+BwNCAARS2I0jiuNn14Y2sSALCX3IybqiIJUvxUpj+oNfzngvj/Niyv2394BWnW4X
+uQ4RTEiywK87WRcWMGgJB5kX/t2no0MwQTAPBgNVHRMBAf8EBTADAQH/MA8GA1Ud
+DwEB/wQFAwMHBgAwHQYDVR0OBBYEFPC0gf6YEr+1KLlkQAPLzB9mTigDMAoGCCqG
+SM49BAMCA0gAMEUCIDGuwD1KPyG+hRf88MeyMQcqOFZD0TbVleF+UsAGQ4enAiEA
+l4wOuDwKQa+upc8GftXE2C//4mKANBC6It01gUaTIpo=
+-----END X.509 CERTIFICATE-----
+</pre></div><table border="0" cellpadding="0" cellspacing="2" align="center"><tr><td align="center"><font face="monaco, MS Sans Serif" size="1"><b>&nbsp;Figure&nbsp;7: Non-standard 'X.509' Certificate Example&nbsp;</b></font><br /></td></tr></table><hr class="insert" />
+<br /><hr class="insert" />
+<a name="pkcs10example2"></a>
+<div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+-----BEGIN NEW CERTIFICATE REQUEST-----
+MIIBWDCCAQcCAQAwTjELMAkGA1UEBhMCU0UxJzAlBgNVBAoTHlNpbW9uIEpvc2Vm
+c3NvbiBEYXRha29uc3VsdCBBQjEWMBQGA1UEAxMNam9zZWZzc29uLm9yZzBOMBAG
+ByqGSM49AgEGBSuBBAAhAzoABLLPSkuXY0l66MbxVJ3Mot5FCFuqQfn6dTs+9/CM
+EOlSwVej77tj56kj9R/j9Q+LfysX8FO9I5p3oGIwYAYJKoZIhvcNAQkOMVMwUTAY
+BgNVHREEETAPgg1qb3NlZnNzb24ub3JnMAwGA1UdEwEB/wQCMAAwDwYDVR0PAQH/
+BAUDAwegADAWBgNVHSUBAf8EDDAKBggrBgEFBQcDATAKBggqhkjOPQQDAgM/ADA8
+AhxBvfhxPFfbBbsE1NoFmCUczOFApEuQVUw3ZP69AhwWXk3dgSUsKnuwL5g/ftAY
+dEQc8B8jAcnuOrfU
+-----END NEW CERTIFICATE REQUEST-----
+</pre></div><table border="0" cellpadding="0" cellspacing="2" align="center"><tr><td align="center"><font face="monaco, MS Sans Serif" size="1"><b>&nbsp;Figure&nbsp;8: Non-standard 'NEW' PKCS #10 Example&nbsp;</b></font><br /></td></tr></table><hr class="insert" />
+<br /><hr class="insert" />
+<a name="pkcs7example2"></a>
+<div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
+-----BEGIN CERTIFICATE CHAIN-----
+MIHjBgsqhkiG9w0BCRABF6CB0zCB0AIBADFho18CAQCgGwYJKoZIhvcNAQUMMA4E
+CLfrI6dr0gUWAgITiDAjBgsqhkiG9w0BCRADCTAUBggqhkiG9w0DBwQIZpECRWtz
+u5kEGDCjerXY8odQ7EEEromZJvAurk/j81IrozBSBgkqhkiG9w0BBwEwMwYLKoZI
+hvcNAQkQAw8wJDAUBggqhkiG9w0DBwQI0tCBcU09nxEwDAYIKwYBBQUIAQIFAIAQ
+OsYGYUFdAH0RNc1p4VbKEAQUM2Xo8PMHBoYdqEcsbTodlCFAZH4=
+-----END CERTIFICATE CHAIN-----
+</pre></div><table border="0" cellpadding="0" cellspacing="2" align="center"><tr><td align="center"><font face="monaco, MS Sans Serif" size="1"><b>&nbsp;Figure&nbsp;9: Non-standard 'CERTIFICATE CHAIN' Example&nbsp;</b></font><br /></td></tr></table><hr class="insert" />
+
+<a name="security"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.9"></a><h3>9.&nbsp;
+Security Considerations</h3>
+
+<p>Data in this format is often originating from untrusted
+      sources, thus parsers must be prepared to handle unexpected data
+      without causing security vulnerabilities.
+</p>
+<p>By having more than one canonical encoding of the same data,
+      an ambiguity is introduced.  The first one is introduced by
+      permitting the text encoded representation instead of the binary
+      DER encoding, but further ambiguities arise when multiple labels
+      are treated as similar.  Even further, variations of whitespace
+      and non-base64 alphabetic characters can further create
+      ambiguities.  Implementations that rely on canonical
+      representation or the ability to fingerprint a particular data
+      format will need to take this into account.  Data encoding
+      ambiguities also create opportunities for side channels.
+</p>
+<a name="iana"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.10"></a><h3>10.&nbsp;
+IANA Considerations</h3>
+
+<p>This document implies no IANA Considerations.
+</p>
+<a name="ack"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.11"></a><h3>11.&nbsp;
+Acknowledgements</h3>
+
+<p>Peter Gutmann suggested to document labels for Attribute
+      Certificates and PKCS #7 messages, and to add examples for the
+      non-standard variants.
+</p>
+<a name="rfc.references"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.12"></a><h3>12.&nbsp;
+References</h3>
+
+<a name="rfc.references1"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<h3>12.1.&nbsp;Normative References</h3>
+<table width="99%" border="0">
+<tr><td class="author-text" valign="top"><a name="RFC2119">[RFC2119]</a></td>
+<td class="author-text"><a href="mailto:sob@harvard.edu">Bradner, S.</a>, &ldquo;<a href="http://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>,&rdquo; BCP&nbsp;14, RFC&nbsp;2119, March&nbsp;1997 (<a href="http://www.rfc-editor.org/rfc/rfc2119.txt">TXT</a>, <a href="http://xml.resource.org/public/rfc/html/rfc2119.html">HTML</a>, <a href="http://xml.resource.org/public/rfc/xml/rfc2119.xml">XML</a>).</td></tr>
+<tr><td class="author-text" valign="top"><a name="RFC2315">[RFC2315]</a></td>
+<td class="author-text"><a href="mailto:burt@rsa.com">Kaliski, B.</a>, &ldquo;<a href="http://tools.ietf.org/html/rfc2315">PKCS #7: Cryptographic Message Syntax Version 1.5</a>,&rdquo; RFC&nbsp;2315, March&nbsp;1998 (<a href="http://www.rfc-editor.org/rfc/rfc2315.txt">TXT</a>, <a href="http://xml.resource.org/public/rfc/html/rfc2315.html">HTML</a>, <a href="http://xml.resource.org/public/rfc/xml/rfc2315.xml">XML</a>).</td></tr>
+<tr><td class="author-text" valign="top"><a name="RFC2986">[RFC2986]</a></td>
+<td class="author-text">Nystrom, M. and B. Kaliski, &ldquo;<a href="http://tools.ietf.org/html/rfc2986">PKCS #10: Certification Request Syntax Specification Version 1.7</a>,&rdquo; RFC&nbsp;2986, November&nbsp;2000 (<a href="http://www.rfc-editor.org/rfc/rfc2986.txt">TXT</a>).</td></tr>
+<tr><td class="author-text" valign="top"><a name="RFC4648">[RFC4648]</a></td>
+<td class="author-text">Josefsson, S., &ldquo;<a href="http://tools.ietf.org/html/rfc4648">The Base16, Base32, and Base64 Data Encodings</a>,&rdquo; RFC&nbsp;4648, October&nbsp;2006 (<a href="http://www.rfc-editor.org/rfc/rfc4648.txt">TXT</a>).</td></tr>
+<tr><td class="author-text" valign="top"><a name="RFC5280">[RFC5280]</a></td>
+<td class="author-text">Cooper, D., Santesson, S., Farrell, S., Boeyen, S., Housley, R., and W. Polk, &ldquo;<a href="http://tools.ietf.org/html/rfc5280">Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile</a>,&rdquo; RFC&nbsp;5280, May&nbsp;2008 (<a href="http://www.rfc-editor.org/rfc/rfc5280.txt">TXT</a>).</td></tr>
+<tr><td class="author-text" valign="top"><a name="RFC5755">[RFC5755]</a></td>
+<td class="author-text">Farrell, S., Housley, R., and S. Turner, &ldquo;<a href="http://tools.ietf.org/html/rfc5755">An Internet Attribute Certificate Profile for Authorization</a>,&rdquo; RFC&nbsp;5755, January&nbsp;2010 (<a href="http://www.rfc-editor.org/rfc/rfc5755.txt">TXT</a>).</td></tr>
+<tr><td class="author-text" valign="top"><a name="CCITT.X690.2002">[CCITT.X690.2002]</a></td>
+<td class="author-text">International International Telephone and Telegraph
+Consultative Committee, &ldquo;ASN.1 encoding rules: Specification of basic encoding Rules (BER), Canonical encoding rules (CER) and Distinguished encoding rules (DER),&rdquo; CCITT&nbsp;Recommendation X.690, July&nbsp;2002.</td></tr>
+</table>
+
+<a name="rfc.references2"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<h3>12.2.&nbsp;Informative References</h3>
+<table width="99%" border="0">
+<tr><td class="author-text" valign="top"><a name="RFC1421">[RFC1421]</a></td>
+<td class="author-text"><a href="mailto:104-8456@mcimail.com">Linn, J.</a>, &ldquo;<a href="http://tools.ietf.org/html/rfc1421">Privacy Enhancement for Internet Electronic Mail: Part I: Message Encryption and Authentication Procedures</a>,&rdquo; RFC&nbsp;1421, February&nbsp;1993 (<a href="http://www.rfc-editor.org/rfc/rfc1421.txt">TXT</a>).</td></tr>
+<tr><td class="author-text" valign="top"><a name="RFC2015">[RFC2015]</a></td>
+<td class="author-text">Elkins, M., &ldquo;<a href="http://tools.ietf.org/html/rfc2015">MIME Security with Pretty Good Privacy (PGP)</a>,&rdquo; RFC&nbsp;2015, October&nbsp;1996 (<a href="http://www.rfc-editor.org/rfc/rfc2015.txt">TXT</a>, <a href="http://xml.resource.org/public/rfc/html/rfc2015.html">HTML</a>, <a href="http://xml.resource.org/public/rfc/xml/rfc2015.xml">XML</a>).</td></tr>
+<tr><td class="author-text" valign="top"><a name="X509SG">[X509SG]</a></td>
+<td class="author-text">Gutmann, P., &ldquo;X.509 Style Guide,&rdquo; WWW&nbsp;http://www.cs.auckland.ac.nz/~pgut001/pubs/x509guide.txt.</td></tr>
+</table>
+
+<a name="rfc.authors"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<h3>Author's Address</h3>
+<table width="99%" border="0" cellpadding="0" cellspacing="0">
+<tr><td class="author-text">&nbsp;</td>
+<td class="author-text">Simon Josefsson</td></tr>
+<tr><td class="author-text">&nbsp;</td>
+<td class="author-text">SJD AB</td></tr>
+<tr><td class="author-text">&nbsp;</td>
+<td class="author-text">Johan Olof Wallins Väg 13</td></tr>
+<tr><td class="author-text">&nbsp;</td>
+<td class="author-text">Solna  171 64</td></tr>
+<tr><td class="author-text">&nbsp;</td>
+<td class="author-text">SE</td></tr>
+<tr><td class="author" align="right">Email:&nbsp;</td>
+<td class="author-text"><a href="mailto:simon@josefsson.org">simon@josefsson.org</a></td></tr>
+<tr><td class="author" align="right">URI:&nbsp;</td>
+<td class="author-text"><a href="http://josefsson.org/">http://josefsson.org/</a></td></tr>
+</table>
+</body></html>
