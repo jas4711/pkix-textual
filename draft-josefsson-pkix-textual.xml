@@ -4,23 +4,23 @@
 <!--
 
 http://git.savannah.gnu.org/cgit/gnutls.git/tree/lib/gnutls_x509.h
-
 http://bouncycastle.org/viewcvs/viewcvs.cgi/java/crypto/src/org/bouncycastle/openssl/PEMReader.java?view=markup
-
 http://cvs.openssl.org/fileview?f=openssl/crypto/pem/pem.h
+CryptBinaryToString: http://msdn.microsoft.com/aa379887
+CryptStringToBinary: http://msdn.microsoft.com/aa380285
 
 -->
 
 <!DOCTYPE rfc SYSTEM "rfc2629.dtd" [
-<!ENTITY rfc1421 PUBLIC '' 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.1421.xml'>
-<!ENTITY rfc2015 PUBLIC '' 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.2015.xml'>
-<!ENTITY rfc2119 PUBLIC '' 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml'>
-<!ENTITY rfc2986 PUBLIC '' 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.2986.xml'>
-<!ENTITY rfc2315 PUBLIC '' 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.2315.xml'>
-<!ENTITY rfc4648 PUBLIC '' 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.4648.xml'>
-<!ENTITY rfc5280 PUBLIC '' 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.5280.xml'>
-<!ENTITY rfc5755 PUBLIC '' 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.5755.xml'>
-<!ENTITY x690 PUBLIC '' 'http://xml.resource.org/public/rfc/bibxml2/reference.CCITT.X690.2002.xml'>
+<!ENTITY rfc1421 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.1421.xml'>
+<!ENTITY rfc2015 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.2015.xml'>
+<!ENTITY rfc2119 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml'>
+<!ENTITY rfc2986 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.2986.xml'>
+<!ENTITY rfc2315 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.2315.xml'>
+<!ENTITY rfc4648 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.4648.xml'>
+<!ENTITY rfc5280 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.5280.xml'>
+<!ENTITY rfc5755 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.5755.xml'>
+<!ENTITY x690 SYSTEM 'http://xml.resource.org/public/rfc/bibxml2/reference.CCITT.X690.2002.xml'>
 ]>
 
 <?rfc compact="yes"?>
