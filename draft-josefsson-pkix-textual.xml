@@ -1,6 +1,4 @@
 <?xml version="1.0"?>
-<!DOCTYPE rfc SYSTEM "rfc2629.dtd">
-
 <!--
 
 http://git.savannah.gnu.org/cgit/gnutls.git/tree/lib/gnutls_x509.h
@@ -18,23 +16,27 @@ CryptStringToBinary: http://msdn.microsoft.com/aa380285
 <!ENTITY rfc2986 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.2986.xml'>
 <!ENTITY rfc2315 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.2315.xml'>
 <!ENTITY rfc4648 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.4648.xml'>
+<!ENTITY RFC5208 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.5208.xml'>
 <!ENTITY rfc5280 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.5280.xml'>
+<!ENTITY RFC5652 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.5652.xml'>
 <!ENTITY rfc5755 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.5755.xml'>
+<!ENTITY RFC5958 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.5958.xml'>
 <!ENTITY x690 SYSTEM 'http://xml.resource.org/public/rfc/bibxml2/reference.CCITT.X690.2002.xml'>
 ]>
 
+<?xml-stylesheet type='text/xsl' href='rfc2629.xslt' ?>
 <?rfc compact="yes"?>
 <?rfc toc="yes"?>
 <?rfc symrefs="yes"?>
 
-<rfc category="info"
+<rfc category="std"
      docName="draft-josefsson-pkix-textual-01rc"
      ipr="trust200902">
 
   <front>
 
-    <title abbrev="Security-Related Text Encodings">
-      Text Encodings of Some Security Related Structures
+    <title abbrev="pkix-textual">
+      Text Encodings of PKIX and CMS Structures
     </title>
 
     <author initials="S." surname="Josefsson" fullname="Simon Josefsson">
@@ -51,19 +53,40 @@ CryptStringToBinary: http://msdn.microsoft.com/aa380285
       </address>
     </author>
 
-    <date month="January" year="2012"/>
+		<author fullname="Sean Leonard" initials="S.L." surname="Leonard">
+			<organization>Penango, Inc.</organization>
+			<address>
+				<postal>
+					<street>1215 K Street</street>
+					<street>17th Floor</street>
+					<city>Sacramento</city>
+					<region>CA</region>
+					<code>95814</code>
+					<country>USA</country>
+				</postal>
+
+				<email>dev+ietf@seantek.com</email>
+				<uri>http://www.penango.com/</uri>
+				<!-- uri and facsimile elements may also be added -->
+			</address>
+		</author>
+
+		<date month="July" year="2012"/>
 
     <abstract>
 
-      <t>This document describe and discuss the text encodings of
-      Public-Key Infrastructure using X.509 (PKIX) Certificates, PKIX
-      Certificate Revocation Lists (CRLs), PKCS #10 Certificate
-      Request Syntax, PKCS #7 structures, and Attribute Certificates.
-      The text encodings are well-known, implemented by several
-      applications and libraries, and is widely deployed.  This
-      document is intended to articulate the de-facto rules that
-      existing implementations operate by, and to give recommendations
-      that will promote interoperability going forward.</t>
+      <t>
+				This document describes and discuss the text encodings of
+				Public-Key Infrastructure using X.509 (PKIX) Certificates, PKIX
+				Certificate Revocation Lists (CRLs), PKCS #10 Certification
+				Request Syntax, PKCS #7 structures, Cryptographic Message Syntax (CMS),
+				PKCS #8 Private-Key Information Syntax,
+				and Attribute Certificates.
+				The text encodings are well-known, are implemented by several
+				applications and libraries, and are widely deployed.  This
+				document is intended to articulate the de-facto rules that
+				existing implementations operate by, and to give recommendations
+				that will promote interoperability going forward.</t>
 
     </abstract>
 
@@ -77,36 +100,39 @@ CryptStringToBinary: http://msdn.microsoft.com/aa380285
       <t>Several security-related standards used on the Internet
       define data formats that are normally encoded using <xref
       target="CCITT.X690.2002">Distinguished Encoding Rules
-      (DER)</xref>, which is a binary data format.  This document is
-      about text encodings of some of these formats.  In particular,
-      we describe text encodings for the following formats.</t>
+      (DER)</xref>, which is a binary data format. This document is
+      about text encodings of some of these formats:</t>
 
       <t><list style="numbers">
+				<t><xref target="RFC5280">Internet X.509 Public Key
+				Infrastructure Certificate and Certificate Revocation List
+				(CRL) Profile</xref>, for both Certificates and Certificate
+				Revocation Lists (CRLs).</t>
 
-	<t><xref target="RFC5280">Internet X.509 Public Key
-	Infrastructure Certificate and Certificate Revocation List
-	(CRL) Profile</xref>, for both Certificates and Certificate
-	Revocation Lists (CRLs).</t>
-
-	<t><xref target="RFC2986">PKCS #10: Certification Request
-	Syntax</xref>.</t>
+				<t><xref target="RFC2986">PKCS #10: Certification Request
+				Syntax</xref>.</t>
 	
-	<t><xref target="RFC2315">PKCS #7: Cryptographic Message
-	Syntax</xref>.</t>
+				<t><xref target="RFC2315">PKCS #7: Cryptographic Message
+				Syntax</xref>.</t>
 
-	<t><xref target="RFC5755">An Internet Attribute Certificate
-	Profile for Authorization</xref>.</t>
-
+				<t><xref target="RFC5652">Cryptographic Message	Syntax</xref>.
+				</t>
+				<t><xref target="RFC5208">PKCS #8:
+				Private-Key Information Syntax</xref> and
+				One Asymmetric Key (in
+				<xref target="RFC5958">Asymmetric Key Package</xref>).</t>
+				<t><xref target="RFC5755">An Internet Attribute Certificate
+				Profile for Authorization</xref>.</t>
       </list></t>
 
-      <t>One motivation for a text encoding is that a binary data
-      format has the disadvantage that it cannot be interchanged in
+      <t>A disadvantage of a binary data
+      format is that it cannot be interchanged in
       textual transports, such as e-mail or text documents.  One
       advantage with text encodings is that they are easy to modify
-      without special-purpose tools; for example, using a text editor
-      you may concatenate several certificates to form a certificate
-      chain.</t>
-
+      using common text editors; for example,
+      a user may concatenate several certificates to form a certificate
+      chain with copy-and-paste operations.</t>
+<!-- SL: edit mark -->
       <t>The exact history of the text encodings are unknown to the
       author of this document, however the tradition within the RFC
       series can be traced back to <xref target="RFC1421">PEM</xref>
@@ -160,6 +186,10 @@ CryptStringToBinary: http://msdn.microsoft.com/aa380285
        sizes.</t>
 
      </section>
+		
+		<section anchor="abnf" title="ABNF">
+			<t>The ABNF of the text encoding is...</t>
+		</section>
 
      <section anchor="certificate"
 	      title="Text Encoding of PKIX Certificate">
@@ -447,8 +477,11 @@ OsYGYUFdAH0RNc1p4VbKEAQUM2Xo8PMHBoYdqEcsbTodlCFAZH4=
       &rfc2315;
       &rfc2986;
       &rfc4648;
+			&RFC5208;
       &rfc5280;
+			&RFC5652;
       &rfc5755;
+			&RFC5958;
       &x690;
 
     </references>
