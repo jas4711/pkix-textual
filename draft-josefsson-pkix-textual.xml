@@ -132,14 +132,28 @@ CryptStringToBinary: http://msdn.microsoft.com/aa380285
       using common text editors; for example,
       a user may concatenate several certificates to form a certificate
       chain with copy-and-paste operations.</t>
-<!-- SL: edit mark -->
-      <t>The exact history of the text encodings are unknown to the
-      author of this document, however the tradition within the RFC
-      series can be traced back to <xref target="RFC1421">PEM</xref>
-      and <xref target="RFC2015">OpenPGP</xref>.  These text encodings
-      are sometimes referred to as "PEM encodings".  Peter Gutmann's
+
+			<t>
+				The tradition within the RFC
+				series can be traced back to <xref target="RFC1421">PEM</xref>,
+				based on a proposal by M. Rose in
+				<xref target="RFC934">Message Encapsulation</xref>.
+				Originally called "PEM encapsulation mechanism" or
+				"PEM printable encoding", today the format is sometimes referred to as
+				"PEM encoding". Variations include OpenPGP ASCII Armor and
+				OpenSSH Key File Format.
+			</t>
+			<t>For reasons that basically boil down to non-coordination
+			(or gross inattention), many PKIX and
+			CMS libraries implement a text encoding
+			that is similar to--but not identical with--PEM encoding.
+			This Internet-Draft calls this format "XXXXXXXXXXX",
+			articulates the de-facto rules that most implementations operate by,
+			and provides recommendations that will promote interoperability
+			going forward.
+			Peter Gutmann's
       <xref target="X509SG">X.509 Style Guide</xref> contains a
-      section "base64 Encoding" that describe the formats and contains
+      section "base64 Encoding" that describes the formats and contains
       suggestions similar to what is in this document.</t>
 
       <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL
@@ -152,13 +166,18 @@ CryptStringToBinary: http://msdn.microsoft.com/aa380285
      <section anchor="general"
 	      title="General Considerations">
 
-       <t>The structure of a text encoding is such that they begin
-       with a line starting with "-----BEGIN" and end with a line
+       <t>The structure of XXXXXXXXXXXX
+			 [a text encoding] begins
+       with a line starting with "-----BEGIN" and ends with a line
        starting with "-----END".  Between these markers are <xref
-       target="RFC4648">Base64</xref> encoded data.  Data before the
-       "-----BEGIN" and after the "-----END" marker are permitted and
-       MUST NOT cause parsers to malfunction.  Further, parsers MUST
-       ignore whitespace and other non-alphabetic characters and MUST
+       target="RFC4648">base64</xref>-encoded data.  Data before the
+				 "-----BEGIN" and after the "-----END" marker are permitted and
+				 MUST NOT cause parsers to malfunction.  Further, parsers MUST
+				 ignore whitespace [and other non-alphabetic characters]
+				 <cref anchor="DP1" source="S.L.">Disagree--non-alphabetic
+				 characters is too broad, and in any event,
+				 any non-whitespace characters will cause implementations to bork.</cref>
+				 and MUST
        handle different newline conventions.</t>
 
        <t>The type of data encoded is labeled depending on the type
@@ -166,15 +185,27 @@ CryptStringToBinary: http://msdn.microsoft.com/aa380285
        "-----BEGIN CERTIFICATE-----" to indicate that the content is a
        PKIX Certificate (see further below).  Generators MUST put the
        same label on the "-----END" line as the corresponding
-       "-----BEGIN" line.  Parses MAY disregard the label on the
+       "-----BEGIN" line.  Parsers MAY disregard the label on the
        "-----END" lines instead of signalling an error if there is a
        label mismatch.</t>
 
-       <t>The label type is not a guarantee that the encoded data
-       follows the implied syntax.  Parsers MUST handle non-conforming
-       data gracefully.</t>
-
-       <t>Files MAY contain multiple instances of the text encoded
+       <t>
+				 The label type implies that the encoded data
+				 follows the specified syntax.  Parsers MUST handle non-conforming
+				 data gracefully. However, not all parsers or generators prior
+				 to this Internet-Draft behave consistently.
+				 A conforming parser MAY interpret the contents as another label
+				 type, but ought to be aware of the security implications discussed in
+				 the <xref target="security" format="title" /> section.
+			 </t>
+			 
+			 <t>Unlike PEM encoding, OpenPGP ASCII armor, and OpenSSH key file format,
+			 XXXXXXXXXXXXXXX does NOT define or permit attributes
+			 to be encoded alongside the PKIX or CMS data.
+			 Whitespace MAY appear between the [pre-encapsulation boundary]
+			 and the base64, but generators SHOULD NOT emit such whitespace.</t>
+			 
+			 <t>Files MAY contain multiple instances of the text encoded
        representation.  This is used, for example, when a file
        contains several certificates.  Whether the instances are
        ordered or unordered depends on the context.</t>
@@ -182,11 +213,13 @@ CryptStringToBinary: http://msdn.microsoft.com/aa380285
        <t>Generators MUST wrap the base64 encoded lines so that each
        line consists of exactly 64 characters except for the final
        line which will encode as much data is left (within the 64
-       character line boundary).  Parser MAY handle other line
-       sizes.</t>
+       character line boundary).  Parsers MAY handle other line
+       sizes. These requirements are consistent with
+			 <xref target="RFC1421">PEM</xref>.</t>
 
      </section>
-		
+
+		<!-- SL: edit mark -->
 		<section anchor="abnf" title="ABNF">
 			<t>The ABNF of the text encoding is...</t>
 		</section>
