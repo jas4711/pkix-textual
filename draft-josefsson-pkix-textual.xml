@@ -219,14 +219,50 @@ CryptStringToBinary: http://msdn.microsoft.com/aa380285
 
      </section>
 
-		<!-- SL: edit mark -->
 		<section anchor="abnf" title="ABNF">
 			<t>The ABNF of the text encoding is...</t>
+			<figure anchor="abnf-fig" title="ABNF">
+				<artwork><![CDATA[
+pkixmsg    ::= preeb
+               *eolWSP
+               base64text
+               posteb
+
+preeb      ::= "-----BEGIN " label "-----" eol
+
+posteb     ::= "-----END " label "-----" eol
+
+base64char ::= ALPHA / DIGIT / "+" / "/"
+
+base64pad  ::= "="
+
+base64line ::= 1*base64char eol
+
+base64finl ::= *base64char *2base64pad eol  ; implies that:
+                                            ; ...AB= <CRLF> = <CRLF>
+                                            ; is invalid. not sure
+                                            ; if this is a good idea
+
+base64text ::= *base64line base64finl
+; we could also use <encbinbody> from RFC 1421,
+; which requires 16 groups of 4 chars, which means 64 chars
+; exactly per line, except the final line
+
+labelchar  ::= %x21-2C / %x2E-%7E   ; any printable character,
+                                    ; except hyphen
+
+label      ::= labelchar *(labelchar / labelchar "-" / SP) labelchar
+
+eol        ::= CRLF / CR / LF
+
+eolWSP     ::= WSP / CR / LF    ; compare with LWSP
+
+]]></artwork></figure>
 		</section>
 
      <section anchor="certificate"
 	      title="Text Encoding of PKIX Certificate">
-
+<section title="Encoding">
        <t>PKIX Certificates are encoded using the "CERTIFICATE" label.
        The encoded data MUST be a DER encoded ASN.1 "Certificate"
        structure as described in section 4 of <xref
@@ -255,19 +291,39 @@ l4wOuDwKQa+upc8GftXE2C//4mKANBC6It01gUaTIpo=
        common, "X.509 CERTIFICATE" have been used.  Generators
        conforming to this document MUST generate "CERTIFICATE" labels
        and MUST NOT generate "X509 CERTIFICATE" or "X.509 CERTIFICATE"
-       labels.  Parsers are NOT RECOMMENDED to treat "X509
+       labels. Parsers are NOT RECOMMENDED to treat "X509
        CERTIFICATE" or "X.509 CERTIFICATE" as equivalent to
        "CERTIFICATE", but a valid exception may be for backwards
        compatibility (potentially together with a warning).</t>
-
-     </section>
+	</section>		
+				<section title="Explanatory Text">
+					<t>Many tools are known to emit explanatory text before the BEGIN
+					and after the END labels for PKIX certificates, more than
+					any other type. If emitted, such text SHOULD be
+					related to the certificate, such as providing a textual representation
+					of key data elements in the certificate. [TODO: show examples.]
+					</t>
+				</section>
+				<section title="File Extension">
+					<t>Although text encodings of PKIX structures can occur
+					anywhere, many tools are known to offer an option to encode
+					PKIX structures in this text encoding.
+					To promote interoperability and to separate DER encodings
+					from text encodings,
+					This Internet-Draft RECOMMENDS that the extension ".crt"
+					be used for this text encoding.
+				  Implementations should be aware that in spite of this recommendation,
+				  many tools still default to encode certificates in this text encoding
+				  with the extension ".cer".</t>
+				</section>
+			</section>
 
      <section anchor="crl"
 	      title="Text Encoding of PKIX CRLs">
 
        <t>PKIX CRLs are encoded using the "X509 CRL" label.  The
        encoded data MUST be a DER encoded ASN.1 "CertificateList"
-       structure as described in section 5 of <xref
+       structure as described in Section 5 of <xref
        target="RFC5280"/>.</t>
 
        <figure anchor="crlexample" title="CRL Example">
@@ -288,13 +344,14 @@ c3DGMNR+oUmSjKZ0jIhAYmeLxaPHfQwR
 	 </artwork>
        </figure>
 
-       <t>Historically the label "CRL" have been used, but today it is
-       not common and several popular tools do not understand the
-       label.  Generators conforming to this document MUST generate
+       <t>Historically the label "CRL" has rarely been used. Today it is
+       not common and many popular tools do not understand the
+       label. Therefore, this document standardizes "X509 CRL"
+			 in order to promote interoperability and backwards-compatibility.
+			 Generators conforming to this document MUST generate
        "X509 CRL" labels and MUST NOT generate "CRL" labels.  Parsers
        are NOT RECOMMENDED to treat "CRL" as equivalent to "X509
        CRL".</t>
-
      </section>
 
      <section anchor="crs"
@@ -324,14 +381,15 @@ dEQc8B8jAcnuOrfU
       Generators conforming to this document MUST generate
       "CERTIFICATE REQUEST" labels.  Parsers MAY treat "NEW
       CERTIFICATE REQUEST" as equivalent to "CERTIFICATE REQUEST".</t>
+		</section>
 
-    </section>
-
-     <section anchor="cms"
+     <section anchor="pkcs7"
 	      title="Text Encoding of PKCS #7 Cryptographic Message Syntax">
 
        <t>PKCS #7 Cryptographic Message Syntax structures are encoded
-       using the "PKCS7" label.  The encoded data MUST be a DER
+       using the "PKCS7" label.  The encoded data
+			 MUST<cref anchor="mustshould1" source="S.L.">SHOULD?</cref>
+			 be a DER
        encoded ASN.1 "ContentInfo" structure as described in <xref
        target="RFC2315"/>.</t>
 
@@ -354,13 +412,86 @@ OsYGYUFdAH0RNc1p4VbKEAQUM2Xo8PMHBoYdqEcsbTodlCFAZH4=
       Parsers are NOT RECOMMENDED to treat "CERTIFICATE CHAIN" as
       equivalent to "PKCS7".</t>
 
+			<t>PKCS #7 is an old standard that has long been superseded
+			by <xref target="RFC5652" format="none">CMS</xref>.
+			Implementations SHOULD NOT generate PKCS #7 when CMS
+			is an alternative.</t>
     </section>
 
-     <section anchor="attrcert"
+     <section anchor="cms"
+	      title="Text Encoding of Cryptographic Message Syntax">
+
+       <t>Cryptographic Message Syntax structures are encoded
+       using the "CMS" label.  The encoded data
+			 MUST<cref anchor="mustshould2" source="S.L.">SHOULD?</cref>
+			 be a DER
+       encoded ASN.1 "ContentInfo" structure as described in <xref
+       target="RFC5652"/>.</t>
+
+       <figure anchor="cmsexample" title="CMS Example">
+	 <artwork>
+-----BEGIN CMS-----
+[TODO: put encoding here]
+-----END CMS-----
+	</artwork>
+      </figure>
+      <t>CMS is the IETF successor to PKCS #7. Section 1.1.1
+			of RFC 5652 describes the changes since PKCS #7 v1.5. Implementations
+			SHOULD generate CMS when it is an alternative, promoting ineroperability
+			and forwards-compatibility.</t>
+    </section>
+
+		<section anchor="pkcs8"
+			 title="Text Encoding of PKCS #8 Private Key Info, and One Asymmetric Key">
+
+			<t>
+				The PrivateKeyInfo structure of PKCS #8 Private Key Information Syntax,
+				renamed to OneAsymmetricKey in <xref target="RFC5958" />,
+				is encoded using the "PRIVATE KEY" label.
+				The encoded data SHOULD be a DER
+				encoded ASN.1 "PrivateKeyInfo" structure as described in
+				<xref target="RFC5208" format="none">PKCS #8</xref>,
+				or the "OneAsymmetricKey" structure as described in <xref
+       target="RFC5958"/>. The two are semantically identical, and can be distinguished
+				by version number.
+			</t>
+
+			<figure anchor="pkcs8example" title="PKCS #8 PrivateKeyInfo Example">
+				<artwork>
+					<![CDATA[
+-----BEGIN PRIVATE KEY-----
+TODO: put stuff here.
+-----END PRIVATE KEY-----
+]]></artwork>
+			</figure>
+		</section>
+		<section anchor="pkcs8enc"
+			 title="Text Encoding of PKCS #8 Encrypted Private Key Info">
+			<t>
+				The EncryptedPrivateKeyInfo structure of PKCS #8 Private Key Information Syntax,
+				called the same in <xref target="RFC5958" />,
+				is encoded using the "ENCRYPTED PRIVATE KEY" label.
+				The encoded data SHOULD be a DER
+				encoded ASN.1 "EncryptedPrivateKeyInfo" structure as described in
+				<xref target="RFC5208" format="none">PKCS #8</xref>
+				and <xref
+       target="RFC5958"/>.
+			</t>
+
+			<figure anchor="pkcs8encexample" title="PKCS #8 EncryptedPrivateKeyInfo Example">
+				<artwork><![CDATA[
+-----BEGIN ENCRYPTED PRIVATE KEY-----
+TODO: put stuff here.
+-----END ENCRYPTED PRIVATE KEY-----
+]]></artwork>
+			</figure>
+		</section>
+
+		<section anchor="attrcert"
 	      title="Text Encoding of Attribute Certificates">
 
        <t>Attribute certificates are encoded using the "ATTRIBUTE
-       CERTIFICATES" label.  The encoded data MUST be a DER encoded
+       CERTIFICATE" label.  The encoded data MUST be a DER encoded
        ASN.1 "AttributeCertificate" structure as described in <xref
        target="RFC5755"/>.</t>
 
@@ -387,7 +518,10 @@ Smluak1aZIttePeTAHeJJs8izNJ5aR3Wcd3A5gLztQ==
 
     <section title="Non-comforming Examples">
 
-      <t>This section contains examples for the non-recommended label
+      <t>
+				<cref anchor="DPncfex" source="S.L.">I don't actually believe that this
+				section is useful. We can shorten up the RFC by removing this section.</cref>
+				This section contains examples for the non-recommended label
       variants described earlier in this document.  As discussed
       earlier, supporting these are not required and sometimes
       discouraged.  Still, they can be useful for interoperability
@@ -467,7 +601,7 @@ OsYGYUFdAH0RNc1p4VbKEAQUM2Xo8PMHBoYdqEcsbTodlCFAZH4=
     <section anchor="security"
 	     title="Security Considerations">
 
-      <t>Data in this format is often originating from untrusted
+      <t>Data in this format often originates from untrusted
       sources, thus parsers must be prepared to handle unexpected data
       without causing security vulnerabilities.</t>
 
@@ -479,7 +613,10 @@ OsYGYUFdAH0RNc1p4VbKEAQUM2Xo8PMHBoYdqEcsbTodlCFAZH4=
       and non-base64 alphabetic characters can further create
       ambiguities.  Implementations that rely on canonical
       representation or the ability to fingerprint a particular data
-      format will need to take this into account.  Data encoding
+      format need to understand that this
+			Internet-Draft does not define a canonical encodings; if canonical encodings
+			are desired, the encoded structure must be decoded and processed
+			into a canonical form. Data encoding
       ambiguities also create opportunities for side channels.</t>
 
     </section>
