@@ -29,9 +29,10 @@ CryptStringToBinary: http://msdn.microsoft.com/aa380285
 <?rfc compact="yes"?>
 <?rfc toc="yes"?>
 <?rfc symrefs="yes"?>
+<?rfc comments="yes"?>
 
 <rfc category="std"
-     docName="draft-josefsson-pkix-textual-01rc"
+     docName="draft-josefsson-pkix-textual-01"
      ipr="trust200902">
 
   <front>
@@ -139,7 +140,8 @@ CryptStringToBinary: http://msdn.microsoft.com/aa380285
 				series can be traced back to <xref target="RFC1421">PEM</xref>,
 				based on a proposal by M. Rose in
 				<xref target="RFC0934">Message Encapsulation</xref>.
-				Originally called "PEM encapsulation mechanism" or
+				Originally called "PEM encapsulation mechanism",
+				"encapsulated PEM message", or (arguably)
 				"PEM printable encoding", today the format is sometimes referred to as
 				"PEM encoding". Variations include OpenPGP ASCII Armor and
 				OpenSSH Key File Format.
@@ -148,7 +150,7 @@ CryptStringToBinary: http://msdn.microsoft.com/aa380285
 			(or gross inattention), many PKIX and
 			CMS libraries implement a text encoding
 			that is similar to--but not identical with--PEM encoding.
-			This Internet-Draft calls this format "XXXXXXXXXXX",
+			This Internet-Draft calls this format "PKIX text encoding",
 			articulates the de-facto rules that most implementations operate by,
 			and provides recommendations that will promote interoperability
 			going forward.
@@ -167,29 +169,36 @@ CryptStringToBinary: http://msdn.microsoft.com/aa380285
      <section anchor="general"
 	      title="General Considerations">
 
-       <t>The structure of XXXXXXXXXXXX
-			 [a text encoding] begins
+       <t>PKIX text encoding begins
        with a line starting with "-----BEGIN" and ends with a line
-       starting with "-----END".  Between these markers are <xref
+       starting with "-----END".  Between these lines,
+			 or "encapsulation boundaries",
+			 are <xref
        target="RFC4648">base64</xref>-encoded data.  Data before the
-				 "-----BEGIN" and after the "-----END" marker are permitted and
+				 "-----BEGIN" and after the "-----END"
+				 encapsulation boundaries
+				 are permitted and
 				 MUST NOT cause parsers to malfunction.  Furthermore, parsers MUST
-				 ignore whitespace [and other non-alphabetic characters]
-				 <cref anchor="DP1" source="S.L.">Disagree--non-alphabetic
-				 characters is too broad, and in any event,
-				 any non-whitespace characters will cause implementations to bork.</cref>
+				 ignore whitespace and other non-alphabetic characters
+				 <cref anchor="DP1" source="S.L.">Non-alphabetic
+				 characters is too broad. Characters such as "+", "/", and "=" are valid
+				 base64; characters such as "-" and "_" are alternate base64 characters
+				 but are not used in this specification. In any event,
+				 any non-whitespace characters will cause
+				 existing implementations to fail.</cref>
 				 and MUST
        handle different newline conventions.</t>
 
        <t>The type of data encoded is labeled depending on the type
-       label in the "-----BEGIN" line.  For example, the line may be
+       label in the "-----BEGIN" line (pre-encapsulation boundary).
+			 For example, the line may be
        "-----BEGIN CERTIFICATE-----" to indicate that the content is a
-       PKIX Certificate (see further below).  Generators MUST put the
-       same label on the "-----END" line as the corresponding
+       PKIX certificate (see further below).  Generators MUST put the
+       same label on the "-----END" line (post-encapsulation boundary)
+			 as the corresponding
        "-----BEGIN" line.  Parsers MAY disregard the label on the
-       "-----END" lines instead of signalling an error if there is a
+       "-----END" line instead of signaling an error if there is a
        label mismatch.</t>
-
        <t>
 				 The label type implies that the encoded data
 				 follows the specified syntax.  Parsers MUST handle non-conforming
@@ -201,9 +210,9 @@ CryptStringToBinary: http://msdn.microsoft.com/aa380285
 			 </t>
 			 
 			 <t>Unlike PEM encoding, OpenPGP ASCII armor, and OpenSSH key file format,
-			 XXXXXXXXXXXXXXX does NOT define or permit attributes
+			 PKIX text encoding does NOT define or permit attributes
 			 to be encoded alongside the PKIX or CMS data.
-			 Whitespace MAY appear between the [pre-encapsulation boundary]
+			 Whitespace MAY appear between the pre-encapsulation boundary
 			 and the base64, but generators SHOULD NOT emit such whitespace.</t>
 			 
 			 <t>Files MAY contain multiple instances of the text encoded
@@ -221,7 +230,7 @@ CryptStringToBinary: http://msdn.microsoft.com/aa380285
      </section>
 
 		<section anchor="abnf" title="ABNF">
-			<t>The ABNF of the text encoding is...</t>
+			<t>The ABNF of the PKIX text encoding is:</t>
 			<figure anchor="abnf-fig" title="ABNF">
 				<artwork><![CDATA[
 pkixmsg    ::= preeb
@@ -262,9 +271,9 @@ eolWSP     ::= WSP / CR / LF    ; compare with LWSP
 		</section>
 
      <section anchor="certificate"
-	      title="Text Encoding of PKIX Certificate">
+	      title="Text Encoding of PKIX Certificates">
 <section title="Encoding">
-       <t>PKIX Certificates are encoded using the "CERTIFICATE" label.
+       <t>PKIX certificates are encoded using the "CERTIFICATE" label.
        The encoded data MUST be a DER encoded ASN.1 "Certificate"
        structure as described in section 4 of <xref
        target="RFC5280"/>.</t>
@@ -544,8 +553,8 @@ Smluak1aZIttePeTAHeJJs8izNJ5aR3Wcd3A5gLztQ==
     <section title="Non-Conforming Examples">
 
       <t>
-				<cref anchor="DPncfex" source="S.L.">I don't actually believe that this
-				section is useful. We can shorten up the RFC by removing this section.</cref>
+				<cref anchor="DPncfex" source="S.L.">The utility of this section is questionable.
+				We can shorten up the RFC by removing this section.</cref>
 				This section contains examples for the non-recommended label
       variants described earlier in this document.  As discussed
       earlier, supporting these are not required and sometimes
@@ -630,18 +639,22 @@ OsYGYUFdAH0RNc1p4VbKEAQUM2Xo8PMHBoYdqEcsbTodlCFAZH4=
       sources, thus parsers must be prepared to handle unexpected data
       without causing security vulnerabilities.</t>
 
-      <t>By having more than one canonical encoding of the same data,
-      an ambiguity is introduced.  The first one is introduced by
+      <t>Ambiguities are introduced by having more than one canonical
+			encoding of the same data.
+			The first ambiguity is introduced by
       permitting the text encoded representation instead of the binary
       DER encoding, but further ambiguities arise when multiple labels
-      are treated as similar.  Even further, variations of whitespace
-      and non-base64 alphabetic characters can further create
+      are treated as similar.
+			Variations of whitespace
+      and non-base64 alphabetic characters can create further
       ambiguities.  Implementations that rely on canonical
       representation or the ability to fingerprint a particular data
       format need to understand that this
-			Internet-Draft does not define a canonical encodings; if canonical encodings
+			Internet-Draft does not define canonical encodings.
+			If canonical encodings
 			are desired, the encoded structure must be decoded and processed
-			into a canonical form. Data encoding
+			into a canonical form (namely, DER encoding).
+			Data encoding
       ambiguities also create opportunities for side channels.</t>
 
     </section>
