@@ -173,7 +173,7 @@ CryptStringToBinary: http://msdn.microsoft.com/aa380285
        starting with "-----END".  Between these markers are <xref
        target="RFC4648">base64</xref>-encoded data.  Data before the
 				 "-----BEGIN" and after the "-----END" marker are permitted and
-				 MUST NOT cause parsers to malfunction.  Further, parsers MUST
+				 MUST NOT cause parsers to malfunction.  Furthermore, parsers MUST
 				 ignore whitespace [and other non-alphabetic characters]
 				 <cref anchor="DP1" source="S.L.">Disagree--non-alphabetic
 				 characters is too broad, and in any event,
@@ -302,8 +302,24 @@ l4wOuDwKQa+upc8GftXE2C//4mKANBC6It01gUaTIpo=
 					and after the END labels for PKIX certificates, more than
 					any other type. If emitted, such text SHOULD be
 					related to the certificate, such as providing a textual representation
-					of key data elements in the certificate. [TODO: show examples.]
-					</t>
+					of key data elements in the certificate.</t>
+					<figure anchor="certexplexample" title="Certificate Example with Explanatory Text">
+						<artwork><![CDATA[
+Subject: CN=Atlantis
+Issuer: CN=Atlantis
+Validity: from 7/9/2012 3:10:38 AM UTC to 7/9/2013 3:10:37 AM UTC
+-----BEGIN CERTIFICATE-----
+MIIBmTCCAUegAwIBAgIBKjAJBgUrDgMCHQUAMBMxETAPBgNVBAMTCEF0bGFudGlz
+MB4XDTEyMDcwOTAzMTAzOFoXDTEzMDcwOTAzMTAzN1owEzERMA8GA1UEAxMIQXRs
+YW50aXMwXDANBgkqhkiG9w0BAQEFAANLADBIAkEAu+BXo+miabDIHHx+yquqzqNh
+Ryn/XtkJIIHVcYtHvIX+S1x5ErgMoHehycpoxbErZmVR4GCq1S2diNmRFZCRtQID
+AQABo4GJMIGGMAwGA1UdEwEB/wQCMAAwIAYDVR0EAQH/BBYwFDAOMAwGCisGAQQB
+gjcCARUDAgeAMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEFBQcDAzA1BgNVHQEE
+LjAsgBA0jOnSSuIHYmnVryHAdywMoRUwEzERMA8GA1UEAxMIQXRsYW50aXOCASow
+CQYFKw4DAh0FAANBAKi6HRBaNEL5R0n56nvfclQNaXiDT174uf+lojzA4lhVInc0
+ILwpnZ1izL4MlI9eCSHhVQBHEp2uQdXJB+d5Byg=
+-----END CERTIFICATE-----
+]]></artwork></figure>
 				</section>
 				<section title="File Extension">
 					<t>Although text encodings of PKIX structures can occur
@@ -463,7 +479,9 @@ dvb05OXi5XLPLEtViMwvLVLwSE0sKlFIVHAqSk3MBkkBAJv0Fx0=
 				<artwork>
 					<![CDATA[
 -----BEGIN PRIVATE KEY-----
-TODO: put stuff here.
+MIGEAgEAMBAGByqGSM49AgEGBSuBBAAKBG0wawIBAQQgVcB/UNPxalR9zDYAjQIf
+jojUDiQuGnSJrFEEzZPT/92hRANCAASc7UJtgnF/abqWM60T3XNJEzBv5ez9TdwK
+H0M6xpM2q+53wmsN/eYLdgtjgBd3DBmHtPilCkiFICXyaA8z9LkJ
 -----END PRIVATE KEY-----
 ]]></artwork>
 			</figure>
@@ -484,7 +502,11 @@ TODO: put stuff here.
 			<figure anchor="pkcs8encexample" title="PKCS #8 EncryptedPrivateKeyInfo Example">
 				<artwork><![CDATA[
 -----BEGIN ENCRYPTED PRIVATE KEY-----
-TODO: put stuff here.
+MIHNMEAGCSqGSIb3DQEFDTAzMBsGCSqGSIb3DQEFDDAOBAghhICA6T/51QICCAAw
+FAYIKoZIhvcNAwcECBCxDgvI59i9BIGIY3CAqlMNBgaSI5QiiWVNJ3IpfLnEiEsW
+Z0JIoHyRmKK/+cr9QPLnzxImm0TR9s4JrG3CilzTWvb0jIvbG3hu0zyFPraoMkap
+8eRzWsIvC5SVel+CSjoS2mVS87cyjlD+txrmrXOVYDE+eTgMLbrLmsWh3QkCTRtF
+QC7k0NNzUHTV9yGDwfqMbw==
 -----END ENCRYPTED PRIVATE KEY-----
 ]]></artwork>
 			</figure>
