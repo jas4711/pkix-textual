@@ -10,7 +10,7 @@ CryptStringToBinary: http://msdn.microsoft.com/aa380285
 -->
 
 <!DOCTYPE rfc SYSTEM "rfc2629.dtd" [
-<!ENTITY RFC934 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.0934.xml'>
+<!ENTITY RFC0934 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.0934.xml'>
 <!ENTITY rfc1421 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.1421.xml'>
 <!ENTITY rfc2015 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.2015.xml'>
 <!ENTITY rfc2119 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml'>
@@ -138,7 +138,7 @@ CryptStringToBinary: http://msdn.microsoft.com/aa380285
 				The tradition within the RFC
 				series can be traced back to <xref target="RFC1421">PEM</xref>,
 				based on a proposal by M. Rose in
-				<xref target="RFC934">Message Encapsulation</xref>.
+				<xref target="RFC0934">Message Encapsulation</xref>.
 				Originally called "PEM encapsulation mechanism" or
 				"PEM printable encoding", today the format is sometimes referred to as
 				"PEM encoding". Variations include OpenPGP ASCII Armor and
@@ -682,7 +682,7 @@ OsYGYUFdAH0RNc1p4VbKEAQUM2Xo8PMHBoYdqEcsbTodlCFAZH4=
     </references>
 
     <references title="Informative References">
-			&RFC934;
+			&RFC0934;
       &rfc1421;
       &rfc2015;
 
@@ -690,6 +690,7 @@ OsYGYUFdAH0RNc1p4VbKEAQUM2Xo8PMHBoYdqEcsbTodlCFAZH4=
 	<front>
 	  <title>X.509 Style Guide</title>
 	  <author initials="P." surname="Gutmann" fullname="P.  Gutmann"/>
+		<date month="October" year="2000" />
 	</front>
 	<seriesInfo name="WWW"
 		    value="http://www.cs.auckland.ac.nz/~pgut001/pubs/x509guide.txt" />
