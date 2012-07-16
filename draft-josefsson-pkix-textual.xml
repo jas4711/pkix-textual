@@ -10,6 +10,7 @@ CryptStringToBinary: http://msdn.microsoft.com/aa380285
 -->
 
 <!DOCTYPE rfc SYSTEM "rfc2629.dtd" [
+<!ENTITY RFC934 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.0934.xml'>
 <!ENTITY rfc1421 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.1421.xml'>
 <!ENTITY rfc2015 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.2015.xml'>
 <!ENTITY rfc2119 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml'>
@@ -363,7 +364,7 @@ c3DGMNR+oUmSjKZ0jIhAYmeLxaPHfQwR
        <xref target="RFC2986"/>.</t>
 
        <figure anchor="pkcs10example" title="PKCS #10 Example">
-	 <artwork>
+	 <artwork><![CDATA[
 -----BEGIN CERTIFICATE REQUEST-----
 MIIBWDCCAQcCAQAwTjELMAkGA1UEBhMCU0UxJzAlBgNVBAoTHlNpbW9uIEpvc2Vm
 c3NvbiBEYXRha29uc3VsdCBBQjEWMBQGA1UEAxMNam9zZWZzc29uLm9yZzBOMBAG
@@ -374,7 +375,7 @@ BAUDAwegADAWBgNVHSUBAf8EDDAKBggrBgEFBQcDATAKBggqhkjOPQQDAgM/ADA8
 AhxBvfhxPFfbBbsE1NoFmCUczOFApEuQVUw3ZP69AhwWXk3dgSUsKnuwL5g/ftAY
 dEQc8B8jAcnuOrfU
 -----END CERTIFICATE REQUEST-----
-	</artwork>
+]]></artwork>
       </figure>
 
       <t>The label "NEW CERTIFICATE REQUEST" is also in wide use.
@@ -394,7 +395,7 @@ dEQc8B8jAcnuOrfU
        target="RFC2315"/>.</t>
 
        <figure anchor="pkcs7example" title="PKCS #7 Example">
-	 <artwork>
+	 <artwork><![CDATA[
 -----BEGIN PKCS7-----
 MIHjBgsqhkiG9w0BCRABF6CB0zCB0AIBADFho18CAQCgGwYJKoZIhvcNAQUMMA4E
 CLfrI6dr0gUWAgITiDAjBgsqhkiG9w0BCRADCTAUBggqhkiG9w0DBwQIZpECRWtz
@@ -402,7 +403,7 @@ u5kEGDCjerXY8odQ7EEEromZJvAurk/j81IrozBSBgkqhkiG9w0BBwEwMwYLKoZI
 hvcNAQkQAw8wJDAUBggqhkiG9w0DBwQI0tCBcU09nxEwDAYIKwYBBQUIAQIFAIAQ
 OsYGYUFdAH0RNc1p4VbKEAQUM2Xo8PMHBoYdqEcsbTodlCFAZH4=
 -----END PKCS7-----
-	</artwork>
+]]></artwork>
       </figure>
 
       <t>The label "CERTIFICATE CHAIN" has been in use to denote a
@@ -429,11 +430,13 @@ OsYGYUFdAH0RNc1p4VbKEAQUM2Xo8PMHBoYdqEcsbTodlCFAZH4=
        target="RFC5652"/>.</t>
 
        <figure anchor="cmsexample" title="CMS Example">
-	 <artwork>
+	 <artwork><![CDATA[
 -----BEGIN CMS-----
-[TODO: put encoding here]
+MIGDBgsqhkiG9w0BCRABCaB0MHICAQAwDQYLKoZIhvcNAQkQAwgwXgYJKoZIhvcN
+AQcBoFEET3icc87PK0nNK9ENqSxItVIoSa0o0S/ISczMs1ZIzkgsKk4tsQ0N1nUM
+dvb05OXi5XLPLEtViMwvLVLwSE0sKlFIVHAqSk3MBkkBAJv0Fx0=
 -----END CMS-----
-	</artwork>
+]]></artwork>
       </figure>
       <t>CMS is the IETF successor to PKCS #7. Section 1.1.1
 			of RFC 5652 describes the changes since PKCS #7 v1.5. Implementations
@@ -496,7 +499,7 @@ TODO: put stuff here.
        target="RFC5755"/>.</t>
 
        <figure anchor="attrcertexample" title="Attribute Certificate Example">
-	 <artwork>
+	 <artwork><![CDATA[
 -----BEGIN ATTRIBUTE CERTIFICATE-----
 MIICKzCCAZQCAQEwgZeggZQwgYmkgYYwgYMxCzAJBgNVBAYTAlVTMREwDwYDVQQI
 DAhOZXcgWW9yazEUMBIGA1UEBwwLU3RvbnkgQnJvb2sxDzANBgNVBAoMBkNTRTU5
@@ -511,12 +514,12 @@ M9axFPXXozEFcer06bj9MCBBCQLtAM7ZXcZjcxyva7xCBDmtZXPYUluHf5OcWPJz
 5XPus/xS9wBgtlM3fldIKNyNO8RsMp6Ocx+PGlICc7zpZiGmCYLl64lAEGPO/bsw
 Smluak1aZIttePeTAHeJJs8izNJ5aR3Wcd3A5gLztQ==
 -----END ATTRIBUTE CERTIFICATE-----
-	 </artwork>
+]]></artwork>
        </figure>
 
     </section>
 
-    <section title="Non-comforming Examples">
+    <section title="Non-Conforming Examples">
 
       <t>
 				<cref anchor="DPncfex" source="S.L.">I don't actually believe that this
@@ -657,7 +660,7 @@ OsYGYUFdAH0RNc1p4VbKEAQUM2Xo8PMHBoYdqEcsbTodlCFAZH4=
     </references>
 
     <references title="Informative References">
-
+			&RFC934;
       &rfc1421;
       &rfc2015;
 
