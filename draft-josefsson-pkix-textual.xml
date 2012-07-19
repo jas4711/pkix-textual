@@ -414,9 +414,7 @@ dEQc8B8jAcnuOrfU
 	      title="Text Encoding of PKCS #7 Cryptographic Message Syntax">
 
        <t>PKCS #7 Cryptographic Message Syntax structures are encoded
-       using the "PKCS7" label.  The encoded data
-			 MUST<cref anchor="mustshould1" source="S.L.">SHOULD?</cref>
-			 be a DER
+       using the "PKCS7" label.  The encoded data MUST be a DER
        encoded ASN.1 "ContentInfo" structure as described in <xref
        target="RFC2315"/>.</t>
 
@@ -448,11 +446,9 @@ OsYGYUFdAH0RNc1p4VbKEAQUM2Xo8PMHBoYdqEcsbTodlCFAZH4=
      <section anchor="cms"
 	      title="Text Encoding of Cryptographic Message Syntax">
 
-       <t>Cryptographic Message Syntax structures are encoded
-       using the "CMS" label.  The encoded data
-			 MUST<cref anchor="mustshould2" source="S.L.">SHOULD?</cref>
-			 be a DER
-       encoded ASN.1 "ContentInfo" structure as described in <xref
+       <t>Cryptographic Message Syntax structures are encoded using
+       the "CMS" label.  The encoded data MUST be a DER encoded ASN.1
+       "ContentInfo" structure as described in <xref
        target="RFC5652"/>.</t>
 
        <figure anchor="cmsexample" title="CMS Example">
@@ -477,7 +473,7 @@ dvb05OXi5XLPLEtViMwvLVLwSE0sKlFIVHAqSk3MBkkBAJv0Fx0=
 				The PrivateKeyInfo structure of PKCS #8 Private Key Information Syntax,
 				renamed to OneAsymmetricKey in <xref target="RFC5958" />,
 				is encoded using the "PRIVATE KEY" label.
-				The encoded data SHOULD be a DER
+				The encoded data MUST be a DER
 				encoded ASN.1 "PrivateKeyInfo" structure as described in
 				<xref target="RFC5208" format="none">PKCS #8</xref>,
 				or the "OneAsymmetricKey" structure as described in <xref
@@ -502,7 +498,7 @@ H0M6xpM2q+53wmsN/eYLdgtjgBd3DBmHtPilCkiFICXyaA8z9LkJ
 				The EncryptedPrivateKeyInfo structure of PKCS #8 Private Key Information Syntax,
 				called the same in <xref target="RFC5958" />,
 				is encoded using the "ENCRYPTED PRIVATE KEY" label.
-				The encoded data SHOULD be a DER
+				The encoded data MUST be a DER
 				encoded ASN.1 "EncryptedPrivateKeyInfo" structure as described in
 				<xref target="RFC5208" format="none">PKCS #8</xref>
 				and <xref
