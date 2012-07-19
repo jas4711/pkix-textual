@@ -170,25 +170,15 @@ CryptStringToBinary: http://msdn.microsoft.com/aa380285
      <section anchor="general"
 	      title="General Considerations">
 
-       <t>PKIX text encoding begins
-       with a line starting with "-----BEGIN" and ends with a line
-       starting with "-----END".  Between these lines,
-			 or "encapsulation boundaries",
-			 are <xref
+       <t>PKIX text encoding begins with a line starting with
+       "-----BEGIN" and ends with a line starting with "-----END".
+       Between these lines, or "encapsulation boundaries", are <xref
        target="RFC4648">base64</xref>-encoded data.  Data before the
-				 "-----BEGIN" and after the "-----END"
-				 encapsulation boundaries
-				 are permitted and
-				 MUST NOT cause parsers to malfunction.  Furthermore, parsers MUST
-				 ignore whitespace and other non-alphabetic characters
-				 <cref anchor="DP1" source="S.L.">Non-alphabetic
-				 characters is too broad. Characters such as "+", "/", and "=" are valid
-				 base64; characters such as "-" and "_" are alternate base64 characters
-				 but are not used in this specification. In any event,
-				 any non-whitespace characters will cause
-				 existing implementations to fail.</cref>
-				 and MUST
-       handle different newline conventions.</t>
+       "-----BEGIN" and after the "-----END" encapsulation boundaries
+       are permitted and MUST NOT cause parsers to malfunction.
+       Furthermore, parsers MUST ignore whitespace and other
+       non-alphabetic characters and MUST handle different newline
+       conventions.</t>
 
        <t>The type of data encoded is labeled depending on the type
        label in the "-----BEGIN" line (pre-encapsulation boundary).
