@@ -88,9 +88,9 @@ Table of Contents
    15. References . . . . . . . . . . . . . . . . . . . . . . . . . . 11
      15.1. Normative References . . . . . . . . . . . . . . . . . . . 11
      15.2. Informative References . . . . . . . . . . . . . . . . . . 12
-   Editorial Comments . . . . . . . . . . . . . . . . . . . . . . . .
    Appendix A.  Non-Conforming Examples . . . . . . . . . . . . . . . 12
    Authors' Addresses . . . . . . . . . . . . . . . . . . . . . . . . 14
+
 
 
 
@@ -177,7 +177,7 @@ Internet-Draft                pkix-textual                     July 2012
    before the "-----BEGIN" and after the "-----END" encapsulation
    boundaries are permitted and MUST NOT cause parsers to malfunction.
    Furthermore, parsers MUST ignore whitespace and other non-alphabetic
-   characters [DP1] and MUST handle different newline conventions.
+   characters and MUST handle different newline conventions.
 
    The type of data encoded is labeled depending on the type label in
    the "-----BEGIN" line (pre-encapsulation boundary).  For example, the
@@ -650,14 +650,6 @@ Internet-Draft                pkix-textual                     July 2012
               www.cs.auckland.ac.nz/~pgut001/pubs/x509guide.txt,
               October 2000.
 
-Editorial Comments
-
-   [DP1]  S.L.: Non-alphabetic characters is too broad. Characters such
-          as "+", "/", and "=" are valid base64; characters such as "-"
-          and "_" are alternate base64 characters but are not used in
-          this specification. In any event, any non-whitespace
-          characters will cause existing implementations to fail.
-
 
 Appendix A.  Non-Conforming Examples
 
@@ -665,6 +657,14 @@ Appendix A.  Non-Conforming Examples
    described earlier in this document.  As discussed earlier, supporting
    these are not required and sometimes discouraged.  Still, they can be
    useful for interoperability testing and for easy reference.
+
+
+
+
+
+
+
+
 
 
 

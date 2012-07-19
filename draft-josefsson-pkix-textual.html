@@ -324,19 +324,14 @@ Introduction</h3>
 <a name="rfc.section.2"></a><h3>2.&nbsp;
 General Considerations</h3>
 
-<p>PKIX text encoding begins
-       with a line starting with "-----BEGIN" and ends with a line
-       starting with "-----END".  Between these lines,
-			 or "encapsulation boundaries",
-			 are <a class='info' href='#RFC4648'>base64<span> (</span><span class='info'>Josefsson, S., &ldquo;The Base16, Base32, and Base64 Data Encodings,&rdquo; October&nbsp;2006.</span><span>)</span></a> [RFC4648]-encoded data.  Data before the
-				 "-----BEGIN" and after the "-----END"
-				 encapsulation boundaries
-				 are permitted and
-				 MUST NOT cause parsers to malfunction.  Furthermore, parsers MUST
-				 ignore whitespace and other non-alphabetic characters
-				 <a class='info' href='#comment.DP1'>[DP1]<span> (</span><span class='info'>S.L.: Non-alphabetic characters is too broad. Characters such as &quot;+&quot;, &quot;/&quot;, and &quot;=&quot; are valid base64; characters such as &quot;-&quot; and &quot;_&quot; are alternate base64 characters but are not used in this specification. In any event, any non-whitespace characters will cause existing implementations to fail.</span><span>)</span></a><a name='DP1'></a>
-				 and MUST
-       handle different newline conventions.
+<p>PKIX text encoding begins with a line starting with
+       "-----BEGIN" and ends with a line starting with "-----END".
+       Between these lines, or "encapsulation boundaries", are <a class='info' href='#RFC4648'>base64<span> (</span><span class='info'>Josefsson, S., &ldquo;The Base16, Base32, and Base64 Data Encodings,&rdquo; October&nbsp;2006.</span><span>)</span></a> [RFC4648]-encoded data.  Data before the
+       "-----BEGIN" and after the "-----END" encapsulation boundaries
+       are permitted and MUST NOT cause parsers to malfunction.
+       Furthermore, parsers MUST ignore whitespace and other
+       non-alphabetic characters and MUST handle different newline
+       conventions.
 </p>
 <p>The type of data encoded is labeled depending on the type
        label in the "-----BEGIN" line (pre-encapsulation boundary).
@@ -795,17 +790,6 @@ Consultative Committee, &ldquo;ASN.1 encoding rules: Specification of basic enco
 <td class="author-text">Galbraith, J. and R. Thayer, &ldquo;<a href="http://tools.ietf.org/html/rfc4716">The Secure Shell (SSH) Public Key File Format</a>,&rdquo; RFC&nbsp;4716, November&nbsp;2006 (<a href="http://www.rfc-editor.org/rfc/rfc4716.txt">TXT</a>).</td></tr>
 <tr><td class="author-text" valign="top"><a name="X509SG">[X509SG]</a></td>
 <td class="author-text">Gutmann, P., &ldquo;X.509 Style Guide,&rdquo; WWW&nbsp;http://www.cs.auckland.ac.nz/~pgut001/pubs/x509guide.txt, October&nbsp;2000.</td></tr>
-</table>
-
-<a name="rfc.comments"></a><br /><hr />
-<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
-<h3>Editorial Comments</h3>
-<table border="0">
-<tr><td class="author-text" valign="top">
-<a class="info" href="#DP1">
-DP1</a><a name="comment.DP1"></a>:
-</td><td class="author-text">
-S.L.: Non-alphabetic characters is too broad. Characters such as "+", "/", and "=" are valid base64; characters such as "-" and "_" are alternate base64 characters but are not used in this specification. In any event, any non-whitespace characters will cause existing implementations to fail.</td></tr>
 </table>
 
 <a name="anchor6"></a><br /><hr />
