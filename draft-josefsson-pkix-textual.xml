@@ -17,6 +17,7 @@ CryptStringToBinary: http://msdn.microsoft.com/aa380285
 <!ENTITY rfc2986 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.2986.xml'>
 <!ENTITY rfc2315 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.2315.xml'>
 <!ENTITY rfc4648 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.4648.xml'>
+<!ENTITY rfc4716 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.4716.xml'>
 <!ENTITY RFC5208 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.5208.xml'>
 <!ENTITY rfc5280 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.5280.xml'>
 <!ENTITY RFC5652 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.5652.xml'>
@@ -143,8 +144,8 @@ CryptStringToBinary: http://msdn.microsoft.com/aa380285
 				Originally called "PEM encapsulation mechanism",
 				"encapsulated PEM message", or (arguably)
 				"PEM printable encoding", today the format is sometimes referred to as
-				"PEM encoding". Variations include OpenPGP ASCII Armor and
-				OpenSSH Key File Format.
+				"PEM encoding". Variations include <xref target="RFC2015">OpenPGP ASCII Armor</xref> and
+				<xref target="RFC4716">OpenSSH Key File Format</xref>.
 			</t>
 			<t>For reasons that basically boil down to non-coordination
 			or inattention, many PKIX and
@@ -616,6 +617,7 @@ Smluak1aZIttePeTAHeJJs8izNJ5aR3Wcd3A5gLztQ==
 			&RFC0934;
       &rfc1421;
       &rfc2015;
+      &rfc4716;
 
       <reference anchor="X509SG">
 	<front>
