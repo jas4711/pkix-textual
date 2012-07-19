@@ -33,7 +33,7 @@ CryptStringToBinary: http://msdn.microsoft.com/aa380285
 <?rfc comments="yes"?>
 
 <rfc category="std"
-     docName="draft-josefsson-pkix-textual-01"
+     docName="draft-josefsson-pkix-textual-02rc"
      ipr="trust200902">
 
   <front>
