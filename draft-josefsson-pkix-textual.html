@@ -147,7 +147,7 @@
 <tr><td class="header">Expires: January 20, 2013</td><td class="header">Penango, Inc.</td></tr>
 <tr><td class="header">&nbsp;</td><td class="header">July 19, 2012</td></tr>
 </table></td></tr></table>
-<h1><br />Text Encodings of PKIX and CMS Structures<br />draft-josefsson-pkix-textual-01</h1>
+<h1><br />Text Encodings of PKIX and CMS Structures<br />draft-josefsson-pkix-textual-02rc</h1>
 
 <h3>Abstract</h3>
 
@@ -578,9 +578,7 @@ dEQc8B8jAcnuOrfU
 Text Encoding of PKCS #7 Cryptographic Message Syntax</h3>
 
 <p>PKCS #7 Cryptographic Message Syntax structures are encoded
-       using the "PKCS7" label.  The encoded data
-			 MUST<a class='info' href='#comment.mustshould1'>[mustshould1]<span> (</span><span class='info'>S.L.: SHOULD?</span><span>)</span></a><a name='mustshould1'></a>
-			 be a DER
+       using the "PKCS7" label.  The encoded data MUST be a DER
        encoded ASN.1 "ContentInfo" structure as described in <a class='info' href='#RFC2315'>[RFC2315]<span> (</span><span class='info'>Kaliski, B., &ldquo;PKCS #7: Cryptographic Message Syntax Version 1.5,&rdquo; March&nbsp;1998.</span><span>)</span></a>.
 </p><br /><hr class="insert" />
 <a name="pkcs7example"></a>
@@ -611,11 +609,9 @@ OsYGYUFdAH0RNc1p4VbKEAQUM2Xo8PMHBoYdqEcsbTodlCFAZH4=
 <a name="rfc.section.8"></a><h3>8.&nbsp;
 Text Encoding of Cryptographic Message Syntax</h3>
 
-<p>Cryptographic Message Syntax structures are encoded
-       using the "CMS" label.  The encoded data
-			 MUST<a class='info' href='#comment.mustshould2'>[mustshould2]<span> (</span><span class='info'>S.L.: SHOULD?</span><span>)</span></a><a name='mustshould2'></a>
-			 be a DER
-       encoded ASN.1 "ContentInfo" structure as described in <a class='info' href='#RFC5652'>[RFC5652]<span> (</span><span class='info'>Housley, R., &ldquo;Cryptographic Message Syntax (CMS),&rdquo; September&nbsp;2009.</span><span>)</span></a>.
+<p>Cryptographic Message Syntax structures are encoded using
+       the "CMS" label.  The encoded data MUST be a DER encoded ASN.1
+       "ContentInfo" structure as described in <a class='info' href='#RFC5652'>[RFC5652]<span> (</span><span class='info'>Housley, R., &ldquo;Cryptographic Message Syntax (CMS),&rdquo; September&nbsp;2009.</span><span>)</span></a>.
 </p><br /><hr class="insert" />
 <a name="cmsexample"></a>
 <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
@@ -640,7 +636,7 @@ Text Encoding of PKCS #8 Private Key Info, and One Asymmetric Key</h3>
 				The PrivateKeyInfo structure of PKCS #8 Private Key Information Syntax,
 				renamed to OneAsymmetricKey in <a class='info' href='#RFC5958'>[RFC5958]<span> (</span><span class='info'>Turner, S., &ldquo;Asymmetric Key Packages,&rdquo; August&nbsp;2010.</span><span>)</span></a>,
 				is encoded using the "PRIVATE KEY" label.
-				The encoded data SHOULD be a DER
+				The encoded data MUST be a DER
 				encoded ASN.1 "PrivateKeyInfo" structure as described in
 				<a class='info' href='#RFC5208'>PKCS #8<span> (</span><span class='info'>Kaliski, B., &ldquo;Public-Key Cryptography Standards (PKCS) #8: Private-Key Information Syntax Specification Version 1.2,&rdquo; May&nbsp;2008.</span><span>)</span></a>,
 				or the "OneAsymmetricKey" structure as described in <a class='info' href='#RFC5958'>[RFC5958]<span> (</span><span class='info'>Turner, S., &ldquo;Asymmetric Key Packages,&rdquo; August&nbsp;2010.</span><span>)</span></a>. The two are semantically identical, and can be distinguished
@@ -666,7 +662,7 @@ Text Encoding of PKCS #8 Encrypted Private Key Info</h3>
 				The EncryptedPrivateKeyInfo structure of PKCS #8 Private Key Information Syntax,
 				called the same in <a class='info' href='#RFC5958'>[RFC5958]<span> (</span><span class='info'>Turner, S., &ldquo;Asymmetric Key Packages,&rdquo; August&nbsp;2010.</span><span>)</span></a>,
 				is encoded using the "ENCRYPTED PRIVATE KEY" label.
-				The encoded data SHOULD be a DER
+				The encoded data MUST be a DER
 				encoded ASN.1 "EncryptedPrivateKeyInfo" structure as described in
 				<a class='info' href='#RFC5208'>PKCS #8<span> (</span><span class='info'>Kaliski, B., &ldquo;Public-Key Cryptography Standards (PKCS) #8: Private-Key Information Syntax Specification Version 1.2,&rdquo; May&nbsp;2008.</span><span>)</span></a>
 				and <a class='info' href='#RFC5958'>[RFC5958]<span> (</span><span class='info'>Turner, S., &ldquo;Asymmetric Key Packages,&rdquo; August&nbsp;2010.</span><span>)</span></a>.
@@ -810,16 +806,6 @@ Consultative Committee, &ldquo;ASN.1 encoding rules: Specification of basic enco
 DP1</a><a name="comment.DP1"></a>:
 </td><td class="author-text">
 S.L.: Non-alphabetic characters is too broad. Characters such as "+", "/", and "=" are valid base64; characters such as "-" and "_" are alternate base64 characters but are not used in this specification. In any event, any non-whitespace characters will cause existing implementations to fail.</td></tr>
-<tr><td class="author-text" valign="top">
-<a class="info" href="#mustshould1">
-mustshould1</a><a name="comment.mustshould1"></a>:
-</td><td class="author-text">
-S.L.: SHOULD?</td></tr>
-<tr><td class="author-text" valign="top">
-<a class="info" href="#mustshould2">
-mustshould2</a><a name="comment.mustshould2"></a>:
-</td><td class="author-text">
-S.L.: SHOULD?</td></tr>
 </table>
 
 <a name="anchor6"></a><br /><hr />

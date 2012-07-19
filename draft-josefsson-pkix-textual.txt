@@ -9,7 +9,7 @@ Expires: January 20, 2013                                  Penango, Inc.
 
 
                Text Encodings of PKIX and CMS Structures
-                    draft-josefsson-pkix-textual-01
+                   draft-josefsson-pkix-textual-02rc
 
 Abstract
 
@@ -89,7 +89,7 @@ Table of Contents
      15.1. Normative References . . . . . . . . . . . . . . . . . . . 11
      15.2. Informative References . . . . . . . . . . . . . . . . . . 12
    Editorial Comments . . . . . . . . . . . . . . . . . . . . . . . .
-   Appendix A.  Non-Conforming Examples . . . . . . . . . . . . . . . 13
+   Appendix A.  Non-Conforming Examples . . . . . . . . . . . . . . . 12
    Authors' Addresses . . . . . . . . . . . . . . . . . . . . . . . . 14
 
 
@@ -418,8 +418,8 @@ Internet-Draft                pkix-textual                     July 2012
 7.  Text Encoding of PKCS #7 Cryptographic Message Syntax
 
    PKCS #7 Cryptographic Message Syntax structures are encoded using the
-   "PKCS7" label.  The encoded data MUST[mustshould1] be a DER encoded
-   ASN.1 "ContentInfo" structure as described in [RFC2315].
+   "PKCS7" label.  The encoded data MUST be a DER encoded ASN.1
+   "ContentInfo" structure as described in [RFC2315].
 
    -----BEGIN PKCS7-----
    MIHjBgsqhkiG9w0BCRABF6CB0zCB0AIBADFho18CAQCgGwYJKoZIhvcNAQUMMA4E
@@ -452,8 +452,8 @@ Internet-Draft                pkix-textual                     July 2012
 8.  Text Encoding of Cryptographic Message Syntax
 
    Cryptographic Message Syntax structures are encoded using the "CMS"
-   label.  The encoded data MUST[mustshould2] be a DER encoded ASN.1
-   "ContentInfo" structure as described in [RFC5652].
+   label.  The encoded data MUST be a DER encoded ASN.1 "ContentInfo"
+   structure as described in [RFC5652].
 
    -----BEGIN CMS-----
    MIGDBgsqhkiG9w0BCRABCaB0MHICAQAwDQYLKoZIhvcNAQkQAwgwXgYJKoZIhvcN
@@ -473,7 +473,7 @@ Internet-Draft                pkix-textual                     July 2012
 
    The PrivateKeyInfo structure of PKCS #8 Private Key Information
    Syntax, renamed to OneAsymmetricKey in [RFC5958], is encoded using
-   the "PRIVATE KEY" label.  The encoded data SHOULD be a DER encoded
+   the "PRIVATE KEY" label.  The encoded data MUST be a DER encoded
    ASN.1 "PrivateKeyInfo" structure as described in PKCS #8, or the
    "OneAsymmetricKey" structure as described in [RFC5958].  The two are
    semantically identical, and can be distinguished by version number.
@@ -492,7 +492,7 @@ Internet-Draft                pkix-textual                     July 2012
 
    The EncryptedPrivateKeyInfo structure of PKCS #8 Private Key
    Information Syntax, called the same in [RFC5958], is encoded using
-   the "ENCRYPTED PRIVATE KEY" label.  The encoded data SHOULD be a DER
+   the "ENCRYPTED PRIVATE KEY" label.  The encoded data MUST be a DER
    encoded ASN.1 "EncryptedPrivateKeyInfo" structure as described in
    PKCS #8 and [RFC5958].
 
@@ -652,25 +652,11 @@ Internet-Draft                pkix-textual                     July 2012
 
 Editorial Comments
 
-   [DP1]          S.L.: Non-alphabetic characters is too broad.
-                  Characters such as "+", "/", and "=" are valid base64;
-                  characters such as "-" and "_" are alternate base64
-                  characters but are not used in this specification. In
-                  any event, any non-whitespace characters will cause
-                  existing implementations to fail.
-
-   [mustshould1]  S.L.: SHOULD?
-
-   [mustshould2]  S.L.: SHOULD?
-
-
-
-
-
-
-Josefsson & Leonard     Expires January 20, 2013               [Page 12]
-
-Internet-Draft                pkix-textual                     July 2012
+   [DP1]  S.L.: Non-alphabetic characters is too broad. Characters such
+          as "+", "/", and "=" are valid base64; characters such as "-"
+          and "_" are alternate base64 characters but are not used in
+          this specification. In any event, any non-whitespace
+          characters will cause existing implementations to fail.
 
 
 Appendix A.  Non-Conforming Examples
@@ -679,6 +665,13 @@ Appendix A.  Non-Conforming Examples
    described earlier in this document.  As discussed earlier, supporting
    these are not required and sometimes discouraged.  Still, they can be
    useful for interoperability testing and for easy reference.
+
+
+
+Josefsson & Leonard     Expires January 20, 2013               [Page 12]
+
+Internet-Draft                pkix-textual                     July 2012
+
 
    -----BEGIN X509 CERTIFICATE-----
    MIICLDCCAdKgAwIBAgIBADAKBggqhkjOPQQDAjB9MQswCQYDVQQGEwJCRTEPMA0G
@@ -716,19 +709,6 @@ Appendix A.  Non-Conforming Examples
             Figure 12: Non-standard 'X.509' Certificate Example
 
 
-
-
-
-
-
-
-
-
-Josefsson & Leonard     Expires January 20, 2013               [Page 13]
-
-Internet-Draft                pkix-textual                     July 2012
-
-
    -----BEGIN NEW CERTIFICATE REQUEST-----
    MIIBWDCCAQcCAQAwTjELMAkGA1UEBhMCU0UxJzAlBgNVBAoTHlNpbW9uIEpvc2Vm
    c3NvbiBEYXRha29uc3VsdCBBQjEWMBQGA1UEAxMNam9zZWZzc29uLm9yZzBOMBAG
@@ -741,6 +721,12 @@ Internet-Draft                pkix-textual                     July 2012
    -----END NEW CERTIFICATE REQUEST-----
 
               Figure 13: Non-standard 'NEW' PKCS #10 Example
+
+
+
+Josefsson & Leonard     Expires January 20, 2013               [Page 13]
+
+Internet-Draft                pkix-textual                     July 2012
 
 
    -----BEGIN CERTIFICATE CHAIN-----
@@ -775,6 +761,20 @@ Authors' Addresses
 
    Email: dev+ietf@seantek.com
    URI:   http://www.penango.com/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -49,7 +49,8 @@
       <tr><td class="lineno" valign="top"></td><td class="lblock">                                                           July <span class="delete">17,</span> 2012</td><td> </td><td class="rblock">                                                           July <span class="insert">19,</span> 2012</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">               Text Encodings of PKIX and CMS Structures</td><td> </td><td class="right">               Text Encodings of PKIX and CMS Structures</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">                    draft-josefsson-pkix-textual-01</td><td> </td><td class="right">                    draft-josefsson-pkix-textual-01</td><td class="lineno" valign="top"></td></tr>
+      <tr><td><a name="diff0002" /></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock">                   <span class="delete"> draft-josefsson-pkix-textual-01</span></td><td> </td><td class="rblock">                   <span class="insert">draft-josefsson-pkix-textual-02rc</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">Abstract</td><td> </td><td class="right">Abstract</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
@@ -57,6 +58,9 @@
       <tr><td class="lineno" valign="top"></td><td class="left">   Infrastructure using X.509 (PKIX) Certificates, PKIX Certificate</td><td> </td><td class="right">   Infrastructure using X.509 (PKIX) Certificates, PKIX Certificate</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   Revocation Lists (CRLs), PKCS #10 Certification Request Syntax, PKCS</td><td> </td><td class="right">   Revocation Lists (CRLs), PKCS #10 Certification Request Syntax, PKCS</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   #7 structures, Cryptographic Message Syntax (CMS), PKCS #8 Private-</td><td> </td><td class="right">   #7 structures, Cryptographic Message Syntax (CMS), PKCS #8 Private-</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">   Key Information Syntax, and Attribute Certificates.  The text</td><td> </td><td class="right">   Key Information Syntax, and Attribute Certificates.  The text</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">   encodings are well-known, are implemented by several applications and</td><td> </td><td class="right">   encodings are well-known, are implemented by several applications and</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">   libraries, and are widely deployed.  This document is intended to</td><td> </td><td class="right">   libraries, and are widely deployed.  This document is intended to</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
       <tr bgcolor="gray" ><td></td><th><a name="part-l2" /><small>skipping to change at</small><em> page 1, line 40</em></th><th> </th><th><a name="part-r2" /><small>skipping to change at</small><em> page 1, line 40</em></th><td></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   Internet-Drafts are working documents of the Internet Engineering</td><td> </td><td class="right">   Internet-Drafts are working documents of the Internet Engineering</td><td class="lineno" valign="top"></td></tr>
@@ -69,7 +73,7 @@
       <tr><td class="lineno" valign="top"></td><td class="left">   time.  It is inappropriate to use Internet-Drafts as reference</td><td> </td><td class="right">   time.  It is inappropriate to use Internet-Drafts as reference</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   material or to cite them other than as "work in progress."</td><td> </td><td class="right">   material or to cite them other than as "work in progress."</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0002" /></td></tr>
+      <tr><td><a name="diff0003" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">   This Internet-Draft will expire on January <span class="delete">18</span>, 2013.</td><td> </td><td class="rblock">   This Internet-Draft will expire on January <span class="insert">20</span>, 2013.</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">Copyright Notice</td><td> </td><td class="right">Copyright Notice</td><td class="lineno" valign="top"></td></tr>
@@ -93,7 +97,7 @@
       <tr><td class="lineno" valign="top"></td><td class="left">       Asymmetric Key . . . . . . . . . . . . . . . . . . . . . . . .  9</td><td> </td><td class="right">       Asymmetric Key . . . . . . . . . . . . . . . . . . . . . . . .  9</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   10. Text Encoding of PKCS #8 Encrypted Private Key Info  . . . . .  9</td><td> </td><td class="right">   10. Text Encoding of PKCS #8 Encrypted Private Key Info  . . . . .  9</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   11. Text Encoding of Attribute Certificates  . . . . . . . . . . . 10</td><td> </td><td class="right">   11. Text Encoding of Attribute Certificates  . . . . . . . . . . . 10</td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0003" /></td></tr>
+      <tr><td><a name="diff0004" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">   12. <span class="delete">Non-Conforming Examples  . . . . . . . . . . . . . . . . . . . 10</span></td><td> </td><td class="rblock">   12. Security Considerations  . . . . . . . . . . . . . . . . . . . <span class="insert">10</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">   13.</span> Security Considerations  . . . . . . . . . . . . . . . . . . . <span class="delete">12</span></td><td> </td><td class="rblock"><span class="insert">   13.</span> IANA Considerations  . . . . . . . . . . . . . . . . . . . . . <span class="insert">11</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">   14.</span> IANA Considerations  . . . . . . . . . . . . . . . . . . . . . <span class="delete">12</span></td><td> </td><td class="rblock"><span class="insert">   14.</span> Acknowledgements . . . . . . . . . . . . . . . . . . . . . . . <span class="insert">11</span></td><td class="lineno" valign="top"></td></tr>
@@ -102,8 +106,8 @@
       <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">     16.1.</span> Normative References . . . . . . . . . . . . . . . . . . . <span class="delete">13</span></td><td> </td><td class="rblock"><span class="insert">     15.2.</span> Informative References . . . . . . . . . . . . . . . . . . <span class="insert">12</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">     16.2.</span> Informative References . . . . . . . . . . . . . . . . . . <span class="delete">13</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   Editorial Comments . . . . . . . . . . . . . . . . . . . . . . . .</td><td> </td><td class="right">   Editorial Comments . . . . . . . . . . . . . . . . . . . . . . . .</td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0004" /></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   Appendix A.  Non-Conforming Examples . . . . . . . . . . . . . . . 13</span></td><td class="lineno" valign="top"></td></tr>
+      <tr><td><a name="diff0005" /></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   Appendix A.  Non-Conforming Examples . . . . . . . . . . . . . . . 12</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   Authors' Addresses . . . . . . . . . . . . . . . . . . . . . . . . 14</td><td> </td><td class="right">   Authors' Addresses . . . . . . . . . . . . . . . . . . . . . . . . 14</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">1.  Introduction</td><td> </td><td class="right">1.  Introduction</td><td class="lineno" valign="top"></td></tr>
@@ -126,15 +130,15 @@
       <tr><td class="lineno" valign="top"></td><td class="left">   [RFC0934].  Originally called "PEM encapsulation mechanism",</td><td> </td><td class="right">   [RFC0934].  Originally called "PEM encapsulation mechanism",</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   "encapsulated PEM message", or (arguably) "PEM printable encoding",</td><td> </td><td class="right">   "encapsulated PEM message", or (arguably) "PEM printable encoding",</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   today the format is sometimes referred to as "PEM encoding".</td><td> </td><td class="right">   today the format is sometimes referred to as "PEM encoding".</td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0005" /></td></tr>
+      <tr><td><a name="diff0006" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">   Variations include OpenPGP ASCII Armor and OpenSSH Key File <span class="delete">Format.</span></td><td> </td><td class="rblock">   Variations include OpenPGP ASCII Armor <span class="insert">[RFC2015]</span> and OpenSSH Key File</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock">   <span class="insert">Format [RFC4716].</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0006" /></td></tr>
+      <tr><td><a name="diff0007" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">   For reasons that basically boil down to non-coordination <span class="delete">(or gross</span></td><td> </td><td class="rblock">   For reasons that basically boil down to non-coordination <span class="insert">or</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">   inattention),</span> many PKIX and CMS libraries implement a text encoding</td><td> </td><td class="rblock"><span class="insert">   inattention,</span> many PKIX and CMS libraries implement a text encoding</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   that is similar to--but not identical with--PEM encoding.  This</td><td> </td><td class="right">   that is similar to--but not identical with--PEM encoding.  This</td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0007" /></td></tr>
+      <tr><td><a name="diff0008" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">   <span class="delete">Internet-Draft calls this format</span> "PKIX text <span class="delete">encoding",</span> articulates</td><td> </td><td class="rblock">   <span class="insert">document specify the</span> "PKIX text <span class="insert">encoding" format,</span> articulates the <span class="insert">de-</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">   the <span class="delete">de-facto</span> rules that most implementations operate by, and provides</td><td> </td><td class="rblock"><span class="insert">   facto</span> rules that most implementations operate by, and provides</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   recommendations that will promote interoperability going forward.</td><td> </td><td class="right">   recommendations that will promote interoperability going forward.</td><td class="lineno" valign="top"></td></tr>
@@ -159,7 +163,7 @@
       <tr><td class="lineno" valign="top"></td><td class="left">4.2.  Explanatory Text</td><td> </td><td class="right">4.2.  Explanatory Text</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   Many tools are known to emit explanatory text before the BEGIN and</td><td> </td><td class="right">   Many tools are known to emit explanatory text before the BEGIN and</td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0008" /></td></tr>
+      <tr><td><a name="diff0009" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">   after the END l<span class="delete">abel</span>s for PKIX certificates, more than any other type.</td><td> </td><td class="rblock">   after the END l<span class="insert">ine</span>s for PKIX certificates, more than any other type.</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   If emitted, such text SHOULD be related to the certificate, such as</td><td> </td><td class="right">   If emitted, such text SHOULD be related to the certificate, such as</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   providing a textual representation of key data elements in the</td><td> </td><td class="right">   providing a textual representation of key data elements in the</td><td class="lineno" valign="top"></td></tr>
@@ -172,8 +176,45 @@
       <tr><td class="lineno" valign="top"></td><td class="left">   MIIBmTCCAUegAwIBAgIBKjAJBgUrDgMCHQUAMBMxETAPBgNVBAMTCEF0bGFudGlz</td><td> </td><td class="right">   MIIBmTCCAUegAwIBAgIBKjAJBgUrDgMCHQUAMBMxETAPBgNVBAMTCEF0bGFudGlz</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   MB4XDTEyMDcwOTAzMTAzOFoXDTEzMDcwOTAzMTAzN1owEzERMA8GA1UEAxMIQXRs</td><td> </td><td class="right">   MB4XDTEyMDcwOTAzMTAzOFoXDTEzMDcwOTAzMTAzN1owEzERMA8GA1UEAxMIQXRs</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
-      <tr bgcolor="gray" ><td></td><th><a name="part-l6" /><small>skipping to change at</small><em> page 9, line 19</em></th><th> </th><th><a name="part-r6" /><small>skipping to change at</small><em> page 9, line 19</em></th><td></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">   "ContentInfo" structure as described in [RFC5652].</td><td> </td><td class="right">   "ContentInfo" structure as described in [RFC5652].</td><td class="lineno" valign="top"></td></tr>
+      <tr bgcolor="gray" ><td></td><th><a name="part-l6" /><small>skipping to change at</small><em> page 8, line 28</em></th><th> </th><th><a name="part-r6" /><small>skipping to change at</small><em> page 8, line 28</em></th><td></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">                        Figure 5: PKCS #10 Example</td><td> </td><td class="right">                        Figure 5: PKCS #10 Example</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">   The label "NEW CERTIFICATE REQUEST" is also in wide use.  Generators</td><td> </td><td class="right">   The label "NEW CERTIFICATE REQUEST" is also in wide use.  Generators</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">   conforming to this document MUST generate "CERTIFICATE REQUEST"</td><td> </td><td class="right">   conforming to this document MUST generate "CERTIFICATE REQUEST"</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">   labels.  Parsers MAY treat "NEW CERTIFICATE REQUEST" as equivalent to</td><td> </td><td class="right">   labels.  Parsers MAY treat "NEW CERTIFICATE REQUEST" as equivalent to</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">   "CERTIFICATE REQUEST".</td><td> </td><td class="right">   "CERTIFICATE REQUEST".</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">7.  Text Encoding of PKCS #7 Cryptographic Message Syntax</td><td> </td><td class="right">7.  Text Encoding of PKCS #7 Cryptographic Message Syntax</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">   PKCS #7 Cryptographic Message Syntax structures are encoded using the</td><td> </td><td class="right">   PKCS #7 Cryptographic Message Syntax structures are encoded using the</td><td class="lineno" valign="top"></td></tr>
+      <tr><td><a name="diff0010" /></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock">   "PKCS7" label.  The encoded data <span class="delete">MUST[mustshould1]</span> be a DER encoded</td><td> </td><td class="rblock">   "PKCS7" label.  The encoded data <span class="insert">MUST</span> be a DER encoded ASN.1</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock">   ASN.1 "ContentInfo" structure as described in [RFC2315].</td><td> </td><td class="rblock">   "ContentInfo" structure as described in [RFC2315].</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">   -----BEGIN PKCS7-----</td><td> </td><td class="right">   -----BEGIN PKCS7-----</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">   MIHjBgsqhkiG9w0BCRABF6CB0zCB0AIBADFho18CAQCgGwYJKoZIhvcNAQUMMA4E</td><td> </td><td class="right">   MIHjBgsqhkiG9w0BCRABF6CB0zCB0AIBADFho18CAQCgGwYJKoZIhvcNAQUMMA4E</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">   CLfrI6dr0gUWAgITiDAjBgsqhkiG9w0BCRADCTAUBggqhkiG9w0DBwQIZpECRWtz</td><td> </td><td class="right">   CLfrI6dr0gUWAgITiDAjBgsqhkiG9w0BCRADCTAUBggqhkiG9w0DBwQIZpECRWtz</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">   u5kEGDCjerXY8odQ7EEEromZJvAurk/j81IrozBSBgkqhkiG9w0BBwEwMwYLKoZI</td><td> </td><td class="right">   u5kEGDCjerXY8odQ7EEEromZJvAurk/j81IrozBSBgkqhkiG9w0BBwEwMwYLKoZI</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">   hvcNAQkQAw8wJDAUBggqhkiG9w0DBwQI0tCBcU09nxEwDAYIKwYBBQUIAQIFAIAQ</td><td> </td><td class="right">   hvcNAQkQAw8wJDAUBggqhkiG9w0DBwQI0tCBcU09nxEwDAYIKwYBBQUIAQIFAIAQ</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">   OsYGYUFdAH0RNc1p4VbKEAQUM2Xo8PMHBoYdqEcsbTodlCFAZH4=</td><td> </td><td class="right">   OsYGYUFdAH0RNc1p4VbKEAQUM2Xo8PMHBoYdqEcsbTodlCFAZH4=</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">   -----END PKCS7-----</td><td> </td><td class="right">   -----END PKCS7-----</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">                         Figure 6: PKCS #7 Example</td><td> </td><td class="right">                         Figure 6: PKCS #7 Example</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
+      <tr bgcolor="gray" ><td></td><th><a name="part-l7" /><small>skipping to change at</small><em> page 9, line 8</em></th><th> </th><th><a name="part-r7" /><small>skipping to change at</small><em> page 9, line 8</em></th><td></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">   are NOT RECOMMENDED to treat "CERTIFICATE CHAIN" as equivalent to</td><td> </td><td class="right">   are NOT RECOMMENDED to treat "CERTIFICATE CHAIN" as equivalent to</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">   "PKCS7".</td><td> </td><td class="right">   "PKCS7".</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">   PKCS #7 is an old standard that has long been superseded by CMS.</td><td> </td><td class="right">   PKCS #7 is an old standard that has long been superseded by CMS.</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">   Implementations SHOULD NOT generate PKCS #7 when CMS is an</td><td> </td><td class="right">   Implementations SHOULD NOT generate PKCS #7 when CMS is an</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">   alternative.</td><td> </td><td class="right">   alternative.</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">8.  Text Encoding of Cryptographic Message Syntax</td><td> </td><td class="right">8.  Text Encoding of Cryptographic Message Syntax</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">   Cryptographic Message Syntax structures are encoded using the "CMS"</td><td> </td><td class="right">   Cryptographic Message Syntax structures are encoded using the "CMS"</td><td class="lineno" valign="top"></td></tr>
+      <tr><td><a name="diff0011" /></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock">   label.  The encoded data <span class="delete">MUST[mustshould2]</span> be a DER encoded ASN.1</td><td> </td><td class="rblock">   label.  The encoded data <span class="insert">MUST</span> be a DER encoded ASN.1 "ContentInfo"</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock">   "ContentInfo" structure as described in [RFC5652].</td><td> </td><td class="rblock">   structure as described in [RFC5652].</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   -----BEGIN CMS-----</td><td> </td><td class="right">   -----BEGIN CMS-----</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   MIGDBgsqhkiG9w0BCRABCaB0MHICAQAwDQYLKoZIhvcNAQkQAwgwXgYJKoZIhvcN</td><td> </td><td class="right">   MIGDBgsqhkiG9w0BCRABCaB0MHICAQAwDQYLKoZIhvcNAQkQAwgwXgYJKoZIhvcN</td><td class="lineno" valign="top"></td></tr>
@@ -183,7 +224,7 @@
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">                           Figure 7: CMS Example</td><td> </td><td class="right">                           Figure 7: CMS Example</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0009" /></td></tr>
+      <tr><td><a name="diff0012" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">   CMS is the IETF successor to PKCS #7.  Section 1.1.1 of <span class="delete">RFC 5652</span></td><td> </td><td class="rblock">   CMS is the IETF successor to PKCS #7.  Section 1.1.1 of <span class="insert">[RFC5652]</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   describes the changes since PKCS #7 v1.5.  Implementations SHOULD</td><td> </td><td class="right">   describes the changes since PKCS #7 v1.5.  Implementations SHOULD</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   generate CMS when it is an alternative, promoting ineroperability and</td><td> </td><td class="right">   generate CMS when it is an alternative, promoting ineroperability and</td><td class="lineno" valign="top"></td></tr>
@@ -193,10 +234,38 @@
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   The PrivateKeyInfo structure of PKCS #8 Private Key Information</td><td> </td><td class="right">   The PrivateKeyInfo structure of PKCS #8 Private Key Information</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   Syntax, renamed to OneAsymmetricKey in [RFC5958], is encoded using</td><td> </td><td class="right">   Syntax, renamed to OneAsymmetricKey in [RFC5958], is encoded using</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">   the "PRIVATE KEY" label.  The encoded data SHOULD be a DER encoded</td><td> </td><td class="right">   the "PRIVATE KEY" label.  The encoded data SHOULD be a DER encoded</td><td class="lineno" valign="top"></td></tr>
+      <tr><td><a name="diff0013" /></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock">   the "PRIVATE KEY" label.  The encoded data <span class="delete">SHOULD</span> be a DER encoded</td><td> </td><td class="rblock">   the "PRIVATE KEY" label.  The encoded data <span class="insert">MUST</span> be a DER encoded</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   ASN.1 "PrivateKeyInfo" structure as described in PKCS #8, or the</td><td> </td><td class="right">   ASN.1 "PrivateKeyInfo" structure as described in PKCS #8, or the</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">   "OneAsymmetricKey" structure as described in [RFC5958].  The two are</td><td> </td><td class="right">   "OneAsymmetricKey" structure as described in [RFC5958].  The two are</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">   semantically identical, and can be distinguished by version number.</td><td> </td><td class="right">   semantically identical, and can be distinguished by version number.</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">   -----BEGIN PRIVATE KEY-----</td><td> </td><td class="right">   -----BEGIN PRIVATE KEY-----</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">   MIGEAgEAMBAGByqGSM49AgEGBSuBBAAKBG0wawIBAQQgVcB/UNPxalR9zDYAjQIf</td><td> </td><td class="right">   MIGEAgEAMBAGByqGSM49AgEGBSuBBAAKBG0wawIBAQQgVcB/UNPxalR9zDYAjQIf</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">   jojUDiQuGnSJrFEEzZPT/92hRANCAASc7UJtgnF/abqWM60T3XNJEzBv5ez9TdwK</td><td> </td><td class="right">   jojUDiQuGnSJrFEEzZPT/92hRANCAASc7UJtgnF/abqWM60T3XNJEzBv5ez9TdwK</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">   H0M6xpM2q+53wmsN/eYLdgtjgBd3DBmHtPilCkiFICXyaA8z9LkJ</td><td> </td><td class="right">   H0M6xpM2q+53wmsN/eYLdgtjgBd3DBmHtPilCkiFICXyaA8z9LkJ</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">   -----END PRIVATE KEY-----</td><td> </td><td class="right">   -----END PRIVATE KEY-----</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">                 Figure 8: PKCS #8 PrivateKeyInfo Example</td><td> </td><td class="right">                 Figure 8: PKCS #8 PrivateKeyInfo Example</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">10.  Text Encoding of PKCS #8 Encrypted Private Key Info</td><td> </td><td class="right">10.  Text Encoding of PKCS #8 Encrypted Private Key Info</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">   The EncryptedPrivateKeyInfo structure of PKCS #8 Private Key</td><td> </td><td class="right">   The EncryptedPrivateKeyInfo structure of PKCS #8 Private Key</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">   Information Syntax, called the same in [RFC5958], is encoded using</td><td> </td><td class="right">   Information Syntax, called the same in [RFC5958], is encoded using</td><td class="lineno" valign="top"></td></tr>
+      <tr><td><a name="diff0014" /></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock">   the "ENCRYPTED PRIVATE KEY" label.  The encoded data <span class="delete">SHOULD</span> be a DER</td><td> </td><td class="rblock">   the "ENCRYPTED PRIVATE KEY" label.  The encoded data <span class="insert">MUST</span> be a DER</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">   encoded ASN.1 "EncryptedPrivateKeyInfo" structure as described in</td><td> </td><td class="right">   encoded ASN.1 "EncryptedPrivateKeyInfo" structure as described in</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">   PKCS #8 and [RFC5958].</td><td> </td><td class="right">   PKCS #8 and [RFC5958].</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">   -----BEGIN ENCRYPTED PRIVATE KEY-----</td><td> </td><td class="right">   -----BEGIN ENCRYPTED PRIVATE KEY-----</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">   MIHNMEAGCSqGSIb3DQEFDTAzMBsGCSqGSIb3DQEFDDAOBAghhICA6T/51QICCAAw</td><td> </td><td class="right">   MIHNMEAGCSqGSIb3DQEFDTAzMBsGCSqGSIb3DQEFDDAOBAghhICA6T/51QICCAAw</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">   FAYIKoZIhvcNAwcECBCxDgvI59i9BIGIY3CAqlMNBgaSI5QiiWVNJ3IpfLnEiEsW</td><td> </td><td class="right">   FAYIKoZIhvcNAwcECBCxDgvI59i9BIGIY3CAqlMNBgaSI5QiiWVNJ3IpfLnEiEsW</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">   Z0JIoHyRmKK/+cr9QPLnzxImm0TR9s4JrG3CilzTWvb0jIvbG3hu0zyFPraoMkap</td><td> </td><td class="right">   Z0JIoHyRmKK/+cr9QPLnzxImm0TR9s4JrG3CilzTWvb0jIvbG3hu0zyFPraoMkap</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">   8eRzWsIvC5SVel+CSjoS2mVS87cyjlD+txrmrXOVYDE+eTgMLbrLmsWh3QkCTRtF</td><td> </td><td class="right">   8eRzWsIvC5SVel+CSjoS2mVS87cyjlD+txrmrXOVYDE+eTgMLbrLmsWh3QkCTRtF</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">   QC7k0NNzUHTV9yGDwfqMbw==</td><td> </td><td class="right">   QC7k0NNzUHTV9yGDwfqMbw==</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left">   -----END ENCRYPTED PRIVATE KEY-----</td><td> </td><td class="right">   -----END ENCRYPTED PRIVATE KEY-----</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
-      <tr bgcolor="gray" ><td></td><th><a name="part-l7" /><small>skipping to change at</small><em> page 10, line 38</em></th><th> </th><th><a name="part-r7" /><small>skipping to change at</small><em> page 10, line 38</em></th><td></td></tr>
+      <tr bgcolor="gray" ><td></td><th><a name="part-l8" /><small>skipping to change at</small><em> page 10, line 38</em></th><th> </th><th><a name="part-r8" /><small>skipping to change at</small><em> page 10, line 38</em></th><td></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   dGFsbGVyQGljLnN1bnlzYi5lZHUwDQYJKoZIhvcNAQEFBQACBgEVq4FFSjAiGA8z</td><td> </td><td class="right">   dGFsbGVyQGljLnN1bnlzYi5lZHUwDQYJKoZIhvcNAQEFBQACBgEVq4FFSjAiGA8z</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   OTA3MDIwMTA1MDAwMFoYDzM5MTEwMTMxMDUwMDAwWjArMCkGA1UYSDEiMCCGHmh0</td><td> </td><td class="right">   OTA3MDIwMTA1MDAwMFoYDzM5MTEwMTMxMDUwMDAwWjArMCkGA1UYSDEiMCCGHmh0</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   dHA6Ly9pZGVyYXNobi5vcmcvaW5kZXguaHRtbDANBgkqhkiG9w0BAQUFAAOBgQAV</td><td> </td><td class="right">   dHA6Ly9pZGVyYXNobi5vcmcvaW5kZXguaHRtbDANBgkqhkiG9w0BAQUFAAOBgQAV</td><td class="lineno" valign="top"></td></tr>
@@ -207,7 +276,7 @@
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">                 Figure 10: Attribute Certificate Example</td><td> </td><td class="right">                 Figure 10: Attribute Certificate Example</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0010" /></td></tr>
+      <tr><td><a name="diff0015" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">12.  <span class="delete">Non-Conforming Examples</span></td><td> </td><td class="rblock">12.  Security Considerations</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete"></span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">   [DPncfex] This section contains examples for the non-recommended</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
@@ -292,19 +361,19 @@
       <tr><td class="lineno" valign="top"></td><td class="left">   canonical form (namely, DER encoding).  Data encoding ambiguities</td><td> </td><td class="right">   canonical form (namely, DER encoding).  Data encoding ambiguities</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   also create opportunities for side channels.</td><td> </td><td class="right">   also create opportunities for side channels.</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0011" /></td></tr>
+      <tr><td><a name="diff0016" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">1<span class="delete">4</span>.  IANA Considerations</td><td> </td><td class="rblock">1<span class="insert">3</span>.  IANA Considerations</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   This document implies no IANA Considerations.</td><td> </td><td class="right">   This document implies no IANA Considerations.</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0012" /></td></tr>
+      <tr><td><a name="diff0017" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">1<span class="delete">5</span>.  Acknowledgements</td><td> </td><td class="rblock">1<span class="insert">4</span>.  Acknowledgements</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   Peter Gutmann suggested to document labels for Attribute Certificates</td><td> </td><td class="right">   Peter Gutmann suggested to document labels for Attribute Certificates</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   and PKCS #7 messages, and to add examples for the non-standard</td><td> </td><td class="right">   and PKCS #7 messages, and to add examples for the non-standard</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   variants.</td><td> </td><td class="right">   variants.</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0013" /></td></tr>
+      <tr><td><a name="diff0018" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">16.</span>  References</td><td> </td><td class="rblock"><span class="insert">15.</span>  References</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">16.1.</span>  Normative References</td><td> </td><td class="rblock">                                                                         </td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">15.1.</span>  Normative References</td><td class="lineno" valign="top"></td></tr>
@@ -319,7 +388,7 @@
       <tr><td class="lineno" valign="top"></td><td class="left">              Request Syntax Specification Version 1.7", RFC 2986,</td><td> </td><td class="right">              Request Syntax Specification Version 1.7", RFC 2986,</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">              November 2000.</td><td> </td><td class="right">              November 2000.</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno"></td></tr>
-      <tr bgcolor="gray" ><td></td><th><a name="part-l8" /><small>skipping to change at</small><em> page 13, line 45</em></th><th> </th><th><a name="part-r8" /><small>skipping to change at</small><em> page 12, line 19</em></th><td></td></tr>
+      <tr bgcolor="gray" ><td></td><th><a name="part-l9" /><small>skipping to change at</small><em> page 13, line 45</em></th><th> </th><th><a name="part-r9" /><small>skipping to change at</small><em> page 12, line 19</em></th><td></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   [RFC5958]  Turner, S., "Asymmetric Key Packages", RFC 5958,</td><td> </td><td class="right">   [RFC5958]  Turner, S., "Asymmetric Key Packages", RFC 5958,</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">              August 2010.</td><td> </td><td class="right">              August 2010.</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
@@ -330,7 +399,7 @@
       <tr><td class="lineno" valign="top"></td><td class="left">              encoding rules (CER) and Distinguished encoding rules</td><td> </td><td class="right">              encoding rules (CER) and Distinguished encoding rules</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">              (DER)", CCITT Recommendation X.690, July 2002.</td><td> </td><td class="right">              (DER)", CCITT Recommendation X.690, July 2002.</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0014" /></td></tr>
+      <tr><td><a name="diff0019" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock">1<span class="delete">6</span>.2.  Informative References</td><td> </td><td class="rblock">1<span class="insert">5</span>.2.  Informative References</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   [RFC0934]  Rose, M. and E. Stefferud, "Proposed standard for message</td><td> </td><td class="right">   [RFC0934]  Rose, M. and E. Stefferud, "Proposed standard for message</td><td class="lineno" valign="top"></td></tr>
@@ -343,7 +412,7 @@
       <tr><td class="lineno" valign="top"></td><td class="left">   [RFC2015]  Elkins, M., "MIME Security with Pretty Good Privacy</td><td> </td><td class="right">   [RFC2015]  Elkins, M., "MIME Security with Pretty Good Privacy</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">              (PGP)", RFC 2015, October 1996.</td><td> </td><td class="right">              (PGP)", RFC 2015, October 1996.</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0015" /></td></tr>
+      <tr><td><a name="diff0020" /></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock">   <span class="insert">[RFC4716]  Galbraith, J. and R. Thayer, "The Secure Shell (SSH)</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">              Public Key File Format", RFC 4716, November 2006.</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock">                                                                         </td><td class="lineno" valign="top"></td></tr>
@@ -353,30 +422,26 @@
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">Editorial Comments</td><td> </td><td class="right">Editorial Comments</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">   [DP1]          S.L.: Non-alphabetic characters is too broad.</td><td> </td><td class="right">   [DP1]          S.L.: Non-alphabetic characters is too broad.</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">                  Characters such as "+", "/", and "=" are valid base64;</td><td> </td><td class="right">                  Characters such as "+", "/", and "=" are valid base64;</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">                  characters such as "-" and "_" are alternate base64</td><td> </td><td class="right">                  characters such as "-" and "_" are alternate base64</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">                  characters but are not used in this specification. In</td><td> </td><td class="right">                  characters but are not used in this specification. In</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">                  any event, any non-whitespace characters will cause</td><td> </td><td class="right">                  any event, any non-whitespace characters will cause</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">                  existing implementations to fail.</td><td> </td><td class="right">                  existing implementations to fail.</td><td class="lineno" valign="top"></td></tr>
+      <tr><td><a name="diff0021" /></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock">   [DP1]          S.L.: Non-alphabetic characters is too broad.</td><td> </td><td class="rblock">   [DP1]  S.L.: Non-alphabetic characters is too broad. Characters such</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock">                  Characters such as "+", "/", and "=" are valid base64;</td><td> </td><td class="rblock">          as "+", "/", and "=" are valid base64; characters such as "-"</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock">                  characters such as "-" and "_" are alternate base64</td><td> </td><td class="rblock">          and "_" are alternate base64 characters but are not used in</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock">                  characters but are not used in this specification. In</td><td> </td><td class="rblock">          this specification. In any event, any non-whitespace</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock">                  any event, any non-whitespace characters will cause</td><td> </td><td class="rblock">          characters will cause existing implementations to fail.</td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock">                  existing implementations to fail.</td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0016" /></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock">   <span class="delete">[DPncfex]      S.L.: The utility of this section is questionable. We</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
+      <tr><td><a name="diff0022" /></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock">   <span class="delete">[DPncfex]      S.L.: The utility of this section is questionable. We</span></td><td> </td><td class="rblock"><span class="insert">Appendix A.  Non-Conforming Examples</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"><span class="delete">                  can shorten up the RFC by removing this section.</span></td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock">                                                                         </td><td> </td><td class="rblock"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">   [mustshould1]  S.L.: SHOULD?</td><td> </td><td class="right">   [mustshould1]  S.L.: SHOULD?</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">   [mustshould2]  S.L.: SHOULD?</td><td> </td><td class="right">   [mustshould2]  S.L.: SHOULD?</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
-      <tr><td><a name="diff0017" /></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">Appendix A.  Non-Conforming Examples</span></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert"></span></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   This section contains examples for the non-recommended label variants</span></td><td class="lineno" valign="top"></td></tr>
+      <tr><td><a name="diff0023" /></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock">   <span class="delete">[mustshould1]  S.L.: SHOULD?</span></td><td> </td><td class="rblock">   <span class="insert">This section contains examples for the non-recommended label variants</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   described earlier in this document.  As discussed earlier, supporting</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   these are not required and sometimes discouraged.  Still, they can be</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   useful for interoperability testing and for easy reference.</span></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert"></span></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   -----BEGIN X509 CERTIFICATE-----</span></td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
+      <tr><td><a name="diff0024" /></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="lblock">   <span class="delete">[mustshould2]  S.L.: SHOULD?</span></td><td> </td><td class="rblock">   <span class="insert">-----BEGIN X509 CERTIFICATE-----</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   MIICLDCCAdKgAwIBAgIBADAKBggqhkjOPQQDAjB9MQswCQYDVQQGEwJCRTEPMA0G</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   A1UEChMGR251VExTMSUwIwYDVQQLExxHbnVUTFMgY2VydGlmaWNhdGUgYXV0aG9y</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   aXR5MQ8wDQYDVQQIEwZMZXV2ZW4xJTAjBgNVBAMTHEdudVRMUyBjZXJ0aWZpY2F0</span></td><td class="lineno" valign="top"></td></tr>
@@ -432,7 +497,7 @@
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">   -----END CERTIFICATE CHAIN-----</span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert"></span></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock"><span class="insert">            Figure 14: Non-standard 'CERTIFICATE CHAIN' Example</span></td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="lblock"></td><td> </td><td class="rblock">                                                                         </td><td class="lineno" valign="top"></td></tr>
+      <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">Authors' Addresses</td><td> </td><td class="right">Authors' Addresses</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   Simon Josefsson</td><td> </td><td class="right">   Simon Josefsson</td><td class="lineno" valign="top"></td></tr>
@@ -442,11 +507,10 @@
       <tr><td class="lineno" valign="top"></td><td class="left">   SE</td><td> </td><td class="right">   SE</td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left"></td><td> </td><td class="right"></td><td class="lineno" valign="top"></td></tr>
       <tr><td class="lineno" valign="top"></td><td class="left">   Email: simon@josefsson.org</td><td> </td><td class="right">   Email: simon@josefsson.org</td><td class="lineno" valign="top"></td></tr>
-      <tr><td class="lineno" valign="top"></td><td class="left">   URI:   http://josefsson.org/</td><td> </td><td class="right">   URI:   http://josefsson.org/</td><td class="lineno" valign="top"></td></tr>
 
      <tr><td></td><td class="left"></td><td> </td><td class="right"></td><td></td></tr>
-     <tr bgcolor="gray"><th colspan="5" align="center"><a name="end">&nbsp;End of changes. 17 change blocks.&nbsp;</a></th></tr>
-     <tr class="stats"><td></td><th><i>91 lines changed or deleted</i></th><th><i> </i></th><th><i>92 lines changed or added</i></th><td></td></tr>
+     <tr bgcolor="gray"><th colspan="5" align="center"><a name="end">&nbsp;End of changes. 24 change blocks.&nbsp;</a></th></tr>
+     <tr class="stats"><td></td><th><i>105 lines changed or deleted</i></th><th><i> </i></th><th><i>101 lines changed or added</i></th><td></td></tr>
      <tr><td colspan="5" align="center" class="small"><br/>This html diff was produced by rfcdiff 1.41. The latest version is available from <a href="http://www.tools.ietf.org/tools/rfcdiff/" >http://tools.ietf.org/tools/rfcdiff/</a> </td></tr>
    </table>
    </body>
