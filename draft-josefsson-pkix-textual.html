@@ -144,8 +144,8 @@
 <tr><td class="header">Network Working Group</td><td class="header">S. Josefsson</td></tr>
 <tr><td class="header">Internet-Draft</td><td class="header">SJD AB</td></tr>
 <tr><td class="header">Intended status: Standards Track</td><td class="header">S. Leonard</td></tr>
-<tr><td class="header">Expires: January 18, 2013</td><td class="header">Penango, Inc.</td></tr>
-<tr><td class="header">&nbsp;</td><td class="header">July 17, 2012</td></tr>
+<tr><td class="header">Expires: January 20, 2013</td><td class="header">Penango, Inc.</td></tr>
+<tr><td class="header">&nbsp;</td><td class="header">July 19, 2012</td></tr>
 </table></td></tr></table>
 <h1><br />Text Encodings of PKIX and CMS Structures<br />draft-josefsson-pkix-textual-01</h1>
 
@@ -179,7 +179,7 @@ and may be updated, replaced, or obsoleted by other documents at any time.
 It is inappropriate to use Internet-Drafts as reference material or to cite
 them other than as &ldquo;work in progress.&rdquo;</p>
 <p>
-This Internet-Draft will expire on January 18, 2013.</p>
+This Internet-Draft will expire on January 20, 2013.</p>
 
 <h3>Copyright Notice</h3>
 <p>
@@ -226,20 +226,20 @@ Text Encoding of PKCS #8 Private Key Info, and One Asymmetric Key<br />
 Text Encoding of PKCS #8 Encrypted Private Key Info<br />
 <a href="#attrcert">11.</a>&nbsp;
 Text Encoding of Attribute Certificates<br />
-<a href="#anchor4">12.</a>&nbsp;
-Non-Conforming Examples<br />
-<a href="#security">13.</a>&nbsp;
+<a href="#security">12.</a>&nbsp;
 Security Considerations<br />
-<a href="#iana">14.</a>&nbsp;
+<a href="#iana">13.</a>&nbsp;
 IANA Considerations<br />
-<a href="#ack">15.</a>&nbsp;
+<a href="#ack">14.</a>&nbsp;
 Acknowledgements<br />
-<a href="#rfc.references1">16.</a>&nbsp;
+<a href="#rfc.references1">15.</a>&nbsp;
 References<br />
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#rfc.references1">16.1.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#rfc.references1">15.1.</a>&nbsp;
 Normative References<br />
-&nbsp;&nbsp;&nbsp;&nbsp;<a href="#rfc.references2">16.2.</a>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;<a href="#rfc.references2">15.2.</a>&nbsp;
 Informative References<br />
+<a href="#anchor6">Appendix&nbsp;A.</a>&nbsp;
+Non-Conforming Examples<br />
 <a href="#rfc.authors">&#167;</a>&nbsp;
 Authors' Addresses<br />
 </p>
@@ -297,15 +297,15 @@ Introduction</h3>
 				Originally called "PEM encapsulation mechanism",
 				"encapsulated PEM message", or (arguably)
 				"PEM printable encoding", today the format is sometimes referred to as
-				"PEM encoding". Variations include OpenPGP ASCII Armor and
-				OpenSSH Key File Format.
+				"PEM encoding". Variations include <a class='info' href='#RFC2015'>OpenPGP ASCII Armor<span> (</span><span class='info'>Elkins, M., &ldquo;MIME Security with Pretty Good Privacy (PGP),&rdquo; October&nbsp;1996.</span><span>)</span></a> [RFC2015] and
+				<a class='info' href='#RFC4716'>OpenSSH Key File Format<span> (</span><span class='info'>Galbraith, J. and R. Thayer, &ldquo;The Secure Shell (SSH) Public Key File Format,&rdquo; November&nbsp;2006.</span><span>)</span></a> [RFC4716].
 			
 </p>
 <p>For reasons that basically boil down to non-coordination
-			(or gross inattention), many PKIX and
+			or inattention, many PKIX and
 			CMS libraries implement a text encoding
 			that is similar to--but not identical with--PEM encoding.
-			This Internet-Draft calls this format "PKIX text encoding",
+			This document specify the "PKIX text encoding" format,
 			articulates the de-facto rules that most implementations operate by,
 			and provides recommendations that will promote interoperability
 			going forward.
@@ -469,7 +469,7 @@ l4wOuDwKQa+upc8GftXE2C//4mKANBC6It01gUaTIpo=
 Explanatory Text</h3>
 
 <p>Many tools are known to emit explanatory text before the BEGIN
-					and after the END labels for PKIX certificates, more than
+					and after the END lines for PKIX certificates, more than
 					any other type. If emitted, such text SHOULD be
 					related to the certificate, such as providing a textual representation
 					of key data elements in the certificate.
@@ -627,7 +627,7 @@ dvb05OXi5XLPLEtViMwvLVLwSE0sKlFIVHAqSk3MBkkBAJv0Fx0=
 </pre></div><table border="0" cellpadding="0" cellspacing="2" align="center"><tr><td align="center"><font face="monaco, MS Sans Serif" size="1"><b>&nbsp;Figure&nbsp;7: CMS Example&nbsp;</b></font><br /></td></tr></table><hr class="insert" />
 
 <p>CMS is the IETF successor to PKCS #7. Section 1.1.1
-			of RFC 5652 describes the changes since PKCS #7 v1.5. Implementations
+			of <a class='info' href='#RFC5652'>[RFC5652]<span> (</span><span class='info'>Housley, R., &ldquo;Cryptographic Message Syntax (CMS),&rdquo; September&nbsp;2009.</span><span>)</span></a> describes the changes since PKCS #7 v1.5. Implementations
 			SHOULD generate CMS when it is an alternative, promoting ineroperability
 			and forwards-compatibility.
 </p>
@@ -710,18 +710,129 @@ Smluak1aZIttePeTAHeJJs8izNJ5aR3Wcd3A5gLztQ==
 -----END ATTRIBUTE CERTIFICATE-----
 </pre></div><table border="0" cellpadding="0" cellspacing="2" align="center"><tr><td align="center"><font face="monaco, MS Sans Serif" size="1"><b>&nbsp;Figure&nbsp;10: Attribute Certificate Example&nbsp;</b></font><br /></td></tr></table><hr class="insert" />
 
-<a name="anchor4"></a><br /><hr />
+<a name="security"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
 <a name="rfc.section.12"></a><h3>12.&nbsp;
+Security Considerations</h3>
+
+<p>Data in this format often originates from untrusted
+      sources, thus parsers must be prepared to handle unexpected data
+      without causing security vulnerabilities.
+</p>
+<p>Ambiguities are introduced by having more than one canonical
+			encoding of the same data.
+			The first ambiguity is introduced by
+      permitting the text encoded representation instead of the binary
+      DER encoding, but further ambiguities arise when multiple labels
+      are treated as similar.
+			Variations of whitespace
+      and non-base64 alphabetic characters can create further
+      ambiguities.  Implementations that rely on canonical
+      representation or the ability to fingerprint a particular data
+      format need to understand that this
+			Internet-Draft does not define canonical encodings.
+			If canonical encodings
+			are desired, the encoded structure must be decoded and processed
+			into a canonical form (namely, DER encoding).
+			Data encoding
+      ambiguities also create opportunities for side channels.
+</p>
+<a name="iana"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.13"></a><h3>13.&nbsp;
+IANA Considerations</h3>
+
+<p>This document implies no IANA Considerations.
+</p>
+<a name="ack"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.14"></a><h3>14.&nbsp;
+Acknowledgements</h3>
+
+<p>Peter Gutmann suggested to document labels for Attribute
+      Certificates and PKCS #7 messages, and to add examples for the
+      non-standard variants.
+</p>
+<a name="rfc.references"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.15"></a><h3>15.&nbsp;
+References</h3>
+
+<a name="rfc.references1"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<h3>15.1.&nbsp;Normative References</h3>
+<table width="99%" border="0">
+<tr><td class="author-text" valign="top"><a name="RFC2119">[RFC2119]</a></td>
+<td class="author-text"><a href="mailto:sob@harvard.edu">Bradner, S.</a>, &ldquo;<a href="http://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>,&rdquo; BCP&nbsp;14, RFC&nbsp;2119, March&nbsp;1997 (<a href="http://www.rfc-editor.org/rfc/rfc2119.txt">TXT</a>, <a href="http://xml.resource.org/public/rfc/html/rfc2119.html">HTML</a>, <a href="http://xml.resource.org/public/rfc/xml/rfc2119.xml">XML</a>).</td></tr>
+<tr><td class="author-text" valign="top"><a name="RFC2315">[RFC2315]</a></td>
+<td class="author-text"><a href="mailto:burt@rsa.com">Kaliski, B.</a>, &ldquo;<a href="http://tools.ietf.org/html/rfc2315">PKCS #7: Cryptographic Message Syntax Version 1.5</a>,&rdquo; RFC&nbsp;2315, March&nbsp;1998 (<a href="http://www.rfc-editor.org/rfc/rfc2315.txt">TXT</a>, <a href="http://xml.resource.org/public/rfc/html/rfc2315.html">HTML</a>, <a href="http://xml.resource.org/public/rfc/xml/rfc2315.xml">XML</a>).</td></tr>
+<tr><td class="author-text" valign="top"><a name="RFC2986">[RFC2986]</a></td>
+<td class="author-text">Nystrom, M. and B. Kaliski, &ldquo;<a href="http://tools.ietf.org/html/rfc2986">PKCS #10: Certification Request Syntax Specification Version 1.7</a>,&rdquo; RFC&nbsp;2986, November&nbsp;2000 (<a href="http://www.rfc-editor.org/rfc/rfc2986.txt">TXT</a>).</td></tr>
+<tr><td class="author-text" valign="top"><a name="RFC4648">[RFC4648]</a></td>
+<td class="author-text">Josefsson, S., &ldquo;<a href="http://tools.ietf.org/html/rfc4648">The Base16, Base32, and Base64 Data Encodings</a>,&rdquo; RFC&nbsp;4648, October&nbsp;2006 (<a href="http://www.rfc-editor.org/rfc/rfc4648.txt">TXT</a>).</td></tr>
+<tr><td class="author-text" valign="top"><a name="RFC5208">[RFC5208]</a></td>
+<td class="author-text">Kaliski, B., &ldquo;<a href="http://tools.ietf.org/html/rfc5208">Public-Key Cryptography Standards (PKCS) #8: Private-Key Information Syntax Specification Version 1.2</a>,&rdquo; RFC&nbsp;5208, May&nbsp;2008 (<a href="http://www.rfc-editor.org/rfc/rfc5208.txt">TXT</a>).</td></tr>
+<tr><td class="author-text" valign="top"><a name="RFC5280">[RFC5280]</a></td>
+<td class="author-text">Cooper, D., Santesson, S., Farrell, S., Boeyen, S., Housley, R., and W. Polk, &ldquo;<a href="http://tools.ietf.org/html/rfc5280">Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile</a>,&rdquo; RFC&nbsp;5280, May&nbsp;2008 (<a href="http://www.rfc-editor.org/rfc/rfc5280.txt">TXT</a>).</td></tr>
+<tr><td class="author-text" valign="top"><a name="RFC5652">[RFC5652]</a></td>
+<td class="author-text">Housley, R., &ldquo;<a href="http://tools.ietf.org/html/rfc5652">Cryptographic Message Syntax (CMS)</a>,&rdquo; STD&nbsp;70, RFC&nbsp;5652, September&nbsp;2009 (<a href="http://www.rfc-editor.org/rfc/rfc5652.txt">TXT</a>).</td></tr>
+<tr><td class="author-text" valign="top"><a name="RFC5755">[RFC5755]</a></td>
+<td class="author-text">Farrell, S., Housley, R., and S. Turner, &ldquo;<a href="http://tools.ietf.org/html/rfc5755">An Internet Attribute Certificate Profile for Authorization</a>,&rdquo; RFC&nbsp;5755, January&nbsp;2010 (<a href="http://www.rfc-editor.org/rfc/rfc5755.txt">TXT</a>).</td></tr>
+<tr><td class="author-text" valign="top"><a name="RFC5958">[RFC5958]</a></td>
+<td class="author-text">Turner, S., &ldquo;<a href="http://tools.ietf.org/html/rfc5958">Asymmetric Key Packages</a>,&rdquo; RFC&nbsp;5958, August&nbsp;2010 (<a href="http://www.rfc-editor.org/rfc/rfc5958.txt">TXT</a>).</td></tr>
+<tr><td class="author-text" valign="top"><a name="CCITT.X690.2002">[CCITT.X690.2002]</a></td>
+<td class="author-text">International International Telephone and Telegraph
+Consultative Committee, &ldquo;ASN.1 encoding rules: Specification of basic encoding Rules (BER), Canonical encoding rules (CER) and Distinguished encoding rules (DER),&rdquo; CCITT&nbsp;Recommendation X.690, July&nbsp;2002.</td></tr>
+</table>
+
+<a name="rfc.references2"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<h3>15.2.&nbsp;Informative References</h3>
+<table width="99%" border="0">
+<tr><td class="author-text" valign="top"><a name="RFC0934">[RFC0934]</a></td>
+<td class="author-text"><a href="mailto:MRose@UDel.ARPA">Rose, M.</a> and <a href="mailto:Stef@UCI.ARPA">E. Stefferud</a>, &ldquo;<a href="http://tools.ietf.org/html/rfc934">Proposed standard for message encapsulation</a>,&rdquo; RFC&nbsp;934, January&nbsp;1985 (<a href="http://www.rfc-editor.org/rfc/rfc934.txt">TXT</a>).</td></tr>
+<tr><td class="author-text" valign="top"><a name="RFC1421">[RFC1421]</a></td>
+<td class="author-text"><a href="mailto:104-8456@mcimail.com">Linn, J.</a>, &ldquo;<a href="http://tools.ietf.org/html/rfc1421">Privacy Enhancement for Internet Electronic Mail: Part I: Message Encryption and Authentication Procedures</a>,&rdquo; RFC&nbsp;1421, February&nbsp;1993 (<a href="http://www.rfc-editor.org/rfc/rfc1421.txt">TXT</a>).</td></tr>
+<tr><td class="author-text" valign="top"><a name="RFC2015">[RFC2015]</a></td>
+<td class="author-text">Elkins, M., &ldquo;<a href="http://tools.ietf.org/html/rfc2015">MIME Security with Pretty Good Privacy (PGP)</a>,&rdquo; RFC&nbsp;2015, October&nbsp;1996 (<a href="http://www.rfc-editor.org/rfc/rfc2015.txt">TXT</a>, <a href="http://xml.resource.org/public/rfc/html/rfc2015.html">HTML</a>, <a href="http://xml.resource.org/public/rfc/xml/rfc2015.xml">XML</a>).</td></tr>
+<tr><td class="author-text" valign="top"><a name="RFC4716">[RFC4716]</a></td>
+<td class="author-text">Galbraith, J. and R. Thayer, &ldquo;<a href="http://tools.ietf.org/html/rfc4716">The Secure Shell (SSH) Public Key File Format</a>,&rdquo; RFC&nbsp;4716, November&nbsp;2006 (<a href="http://www.rfc-editor.org/rfc/rfc4716.txt">TXT</a>).</td></tr>
+<tr><td class="author-text" valign="top"><a name="X509SG">[X509SG]</a></td>
+<td class="author-text">Gutmann, P., &ldquo;X.509 Style Guide,&rdquo; WWW&nbsp;http://www.cs.auckland.ac.nz/~pgut001/pubs/x509guide.txt, October&nbsp;2000.</td></tr>
+</table>
+
+<a name="rfc.comments"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<h3>Editorial Comments</h3>
+<table border="0">
+<tr><td class="author-text" valign="top">
+<a class="info" href="#DP1">
+DP1</a><a name="comment.DP1"></a>:
+</td><td class="author-text">
+S.L.: Non-alphabetic characters is too broad. Characters such as "+", "/", and "=" are valid base64; characters such as "-" and "_" are alternate base64 characters but are not used in this specification. In any event, any non-whitespace characters will cause existing implementations to fail.</td></tr>
+<tr><td class="author-text" valign="top">
+<a class="info" href="#mustshould1">
+mustshould1</a><a name="comment.mustshould1"></a>:
+</td><td class="author-text">
+S.L.: SHOULD?</td></tr>
+<tr><td class="author-text" valign="top">
+<a class="info" href="#mustshould2">
+mustshould2</a><a name="comment.mustshould2"></a>:
+</td><td class="author-text">
+S.L.: SHOULD?</td></tr>
+</table>
+
+<a name="anchor6"></a><br /><hr />
+<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
+<a name="rfc.section.A"></a><h3>Appendix A.&nbsp;
 Non-Conforming Examples</h3>
 
 <p>
-				<a class='info' href='#comment.DPncfex'>[DPncfex]<span> (</span><span class='info'>S.L.: The utility of this section is questionable. We can shorten up the RFC by removing this section.</span><span>)</span></a><a name='DPncfex'></a>
-				This section contains examples for the non-recommended label
-      variants described earlier in this document.  As discussed
-      earlier, supporting these are not required and sometimes
-      discouraged.  Still, they can be useful for interoperability
-      testing and for easy reference.
+	This section contains examples for the non-recommended label
+	variants described earlier in this document.  As discussed
+	earlier, supporting these are not required and sometimes
+	discouraged.  Still, they can be useful for interoperability
+	testing and for easy reference.
 </p><br /><hr class="insert" />
 <a name="certexample2"></a>
 <div style='display: table; width: 0; margin-left: 3em; margin-right: auto'><pre>
@@ -783,121 +894,6 @@ hvcNAQkQAw8wJDAUBggqhkiG9w0DBwQI0tCBcU09nxEwDAYIKwYBBQUIAQIFAIAQ
 OsYGYUFdAH0RNc1p4VbKEAQUM2Xo8PMHBoYdqEcsbTodlCFAZH4=
 -----END CERTIFICATE CHAIN-----
 </pre></div><table border="0" cellpadding="0" cellspacing="2" align="center"><tr><td align="center"><font face="monaco, MS Sans Serif" size="1"><b>&nbsp;Figure&nbsp;14: Non-standard 'CERTIFICATE CHAIN' Example&nbsp;</b></font><br /></td></tr></table><hr class="insert" />
-
-<a name="security"></a><br /><hr />
-<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
-<a name="rfc.section.13"></a><h3>13.&nbsp;
-Security Considerations</h3>
-
-<p>Data in this format often originates from untrusted
-      sources, thus parsers must be prepared to handle unexpected data
-      without causing security vulnerabilities.
-</p>
-<p>Ambiguities are introduced by having more than one canonical
-			encoding of the same data.
-			The first ambiguity is introduced by
-      permitting the text encoded representation instead of the binary
-      DER encoding, but further ambiguities arise when multiple labels
-      are treated as similar.
-			Variations of whitespace
-      and non-base64 alphabetic characters can create further
-      ambiguities.  Implementations that rely on canonical
-      representation or the ability to fingerprint a particular data
-      format need to understand that this
-			Internet-Draft does not define canonical encodings.
-			If canonical encodings
-			are desired, the encoded structure must be decoded and processed
-			into a canonical form (namely, DER encoding).
-			Data encoding
-      ambiguities also create opportunities for side channels.
-</p>
-<a name="iana"></a><br /><hr />
-<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
-<a name="rfc.section.14"></a><h3>14.&nbsp;
-IANA Considerations</h3>
-
-<p>This document implies no IANA Considerations.
-</p>
-<a name="ack"></a><br /><hr />
-<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
-<a name="rfc.section.15"></a><h3>15.&nbsp;
-Acknowledgements</h3>
-
-<p>Peter Gutmann suggested to document labels for Attribute
-      Certificates and PKCS #7 messages, and to add examples for the
-      non-standard variants.
-</p>
-<a name="rfc.references"></a><br /><hr />
-<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
-<a name="rfc.section.16"></a><h3>16.&nbsp;
-References</h3>
-
-<a name="rfc.references1"></a><br /><hr />
-<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
-<h3>16.1.&nbsp;Normative References</h3>
-<table width="99%" border="0">
-<tr><td class="author-text" valign="top"><a name="RFC2119">[RFC2119]</a></td>
-<td class="author-text"><a href="mailto:sob@harvard.edu">Bradner, S.</a>, &ldquo;<a href="http://tools.ietf.org/html/rfc2119">Key words for use in RFCs to Indicate Requirement Levels</a>,&rdquo; BCP&nbsp;14, RFC&nbsp;2119, March&nbsp;1997 (<a href="http://www.rfc-editor.org/rfc/rfc2119.txt">TXT</a>, <a href="http://xml.resource.org/public/rfc/html/rfc2119.html">HTML</a>, <a href="http://xml.resource.org/public/rfc/xml/rfc2119.xml">XML</a>).</td></tr>
-<tr><td class="author-text" valign="top"><a name="RFC2315">[RFC2315]</a></td>
-<td class="author-text"><a href="mailto:burt@rsa.com">Kaliski, B.</a>, &ldquo;<a href="http://tools.ietf.org/html/rfc2315">PKCS #7: Cryptographic Message Syntax Version 1.5</a>,&rdquo; RFC&nbsp;2315, March&nbsp;1998 (<a href="http://www.rfc-editor.org/rfc/rfc2315.txt">TXT</a>, <a href="http://xml.resource.org/public/rfc/html/rfc2315.html">HTML</a>, <a href="http://xml.resource.org/public/rfc/xml/rfc2315.xml">XML</a>).</td></tr>
-<tr><td class="author-text" valign="top"><a name="RFC2986">[RFC2986]</a></td>
-<td class="author-text">Nystrom, M. and B. Kaliski, &ldquo;<a href="http://tools.ietf.org/html/rfc2986">PKCS #10: Certification Request Syntax Specification Version 1.7</a>,&rdquo; RFC&nbsp;2986, November&nbsp;2000 (<a href="http://www.rfc-editor.org/rfc/rfc2986.txt">TXT</a>).</td></tr>
-<tr><td class="author-text" valign="top"><a name="RFC4648">[RFC4648]</a></td>
-<td class="author-text">Josefsson, S., &ldquo;<a href="http://tools.ietf.org/html/rfc4648">The Base16, Base32, and Base64 Data Encodings</a>,&rdquo; RFC&nbsp;4648, October&nbsp;2006 (<a href="http://www.rfc-editor.org/rfc/rfc4648.txt">TXT</a>).</td></tr>
-<tr><td class="author-text" valign="top"><a name="RFC5208">[RFC5208]</a></td>
-<td class="author-text">Kaliski, B., &ldquo;<a href="http://tools.ietf.org/html/rfc5208">Public-Key Cryptography Standards (PKCS) #8: Private-Key Information Syntax Specification Version 1.2</a>,&rdquo; RFC&nbsp;5208, May&nbsp;2008 (<a href="http://www.rfc-editor.org/rfc/rfc5208.txt">TXT</a>).</td></tr>
-<tr><td class="author-text" valign="top"><a name="RFC5280">[RFC5280]</a></td>
-<td class="author-text">Cooper, D., Santesson, S., Farrell, S., Boeyen, S., Housley, R., and W. Polk, &ldquo;<a href="http://tools.ietf.org/html/rfc5280">Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile</a>,&rdquo; RFC&nbsp;5280, May&nbsp;2008 (<a href="http://www.rfc-editor.org/rfc/rfc5280.txt">TXT</a>).</td></tr>
-<tr><td class="author-text" valign="top"><a name="RFC5652">[RFC5652]</a></td>
-<td class="author-text">Housley, R., &ldquo;<a href="http://tools.ietf.org/html/rfc5652">Cryptographic Message Syntax (CMS)</a>,&rdquo; STD&nbsp;70, RFC&nbsp;5652, September&nbsp;2009 (<a href="http://www.rfc-editor.org/rfc/rfc5652.txt">TXT</a>).</td></tr>
-<tr><td class="author-text" valign="top"><a name="RFC5755">[RFC5755]</a></td>
-<td class="author-text">Farrell, S., Housley, R., and S. Turner, &ldquo;<a href="http://tools.ietf.org/html/rfc5755">An Internet Attribute Certificate Profile for Authorization</a>,&rdquo; RFC&nbsp;5755, January&nbsp;2010 (<a href="http://www.rfc-editor.org/rfc/rfc5755.txt">TXT</a>).</td></tr>
-<tr><td class="author-text" valign="top"><a name="RFC5958">[RFC5958]</a></td>
-<td class="author-text">Turner, S., &ldquo;<a href="http://tools.ietf.org/html/rfc5958">Asymmetric Key Packages</a>,&rdquo; RFC&nbsp;5958, August&nbsp;2010 (<a href="http://www.rfc-editor.org/rfc/rfc5958.txt">TXT</a>).</td></tr>
-<tr><td class="author-text" valign="top"><a name="CCITT.X690.2002">[CCITT.X690.2002]</a></td>
-<td class="author-text">International International Telephone and Telegraph
-Consultative Committee, &ldquo;ASN.1 encoding rules: Specification of basic encoding Rules (BER), Canonical encoding rules (CER) and Distinguished encoding rules (DER),&rdquo; CCITT&nbsp;Recommendation X.690, July&nbsp;2002.</td></tr>
-</table>
-
-<a name="rfc.references2"></a><br /><hr />
-<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
-<h3>16.2.&nbsp;Informative References</h3>
-<table width="99%" border="0">
-<tr><td class="author-text" valign="top"><a name="RFC0934">[RFC0934]</a></td>
-<td class="author-text"><a href="mailto:MRose@UDel.ARPA">Rose, M.</a> and <a href="mailto:Stef@UCI.ARPA">E. Stefferud</a>, &ldquo;<a href="http://tools.ietf.org/html/rfc934">Proposed standard for message encapsulation</a>,&rdquo; RFC&nbsp;934, January&nbsp;1985 (<a href="http://www.rfc-editor.org/rfc/rfc934.txt">TXT</a>).</td></tr>
-<tr><td class="author-text" valign="top"><a name="RFC1421">[RFC1421]</a></td>
-<td class="author-text"><a href="mailto:104-8456@mcimail.com">Linn, J.</a>, &ldquo;<a href="http://tools.ietf.org/html/rfc1421">Privacy Enhancement for Internet Electronic Mail: Part I: Message Encryption and Authentication Procedures</a>,&rdquo; RFC&nbsp;1421, February&nbsp;1993 (<a href="http://www.rfc-editor.org/rfc/rfc1421.txt">TXT</a>).</td></tr>
-<tr><td class="author-text" valign="top"><a name="RFC2015">[RFC2015]</a></td>
-<td class="author-text">Elkins, M., &ldquo;<a href="http://tools.ietf.org/html/rfc2015">MIME Security with Pretty Good Privacy (PGP)</a>,&rdquo; RFC&nbsp;2015, October&nbsp;1996 (<a href="http://www.rfc-editor.org/rfc/rfc2015.txt">TXT</a>, <a href="http://xml.resource.org/public/rfc/html/rfc2015.html">HTML</a>, <a href="http://xml.resource.org/public/rfc/xml/rfc2015.xml">XML</a>).</td></tr>
-<tr><td class="author-text" valign="top"><a name="X509SG">[X509SG]</a></td>
-<td class="author-text">Gutmann, P., &ldquo;X.509 Style Guide,&rdquo; WWW&nbsp;http://www.cs.auckland.ac.nz/~pgut001/pubs/x509guide.txt, October&nbsp;2000.</td></tr>
-</table>
-
-<a name="rfc.comments"></a><br /><hr />
-<table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>
-<h3>Editorial Comments</h3>
-<table border="0">
-<tr><td class="author-text" valign="top">
-<a class="info" href="#DP1">
-DP1</a><a name="comment.DP1"></a>:
-</td><td class="author-text">
-S.L.: Non-alphabetic characters is too broad. Characters such as "+", "/", and "=" are valid base64; characters such as "-" and "_" are alternate base64 characters but are not used in this specification. In any event, any non-whitespace characters will cause existing implementations to fail.</td></tr>
-<tr><td class="author-text" valign="top">
-<a class="info" href="#DPncfex">
-DPncfex</a><a name="comment.DPncfex"></a>:
-</td><td class="author-text">
-S.L.: The utility of this section is questionable. We can shorten up the RFC by removing this section.</td></tr>
-<tr><td class="author-text" valign="top">
-<a class="info" href="#mustshould1">
-mustshould1</a><a name="comment.mustshould1"></a>:
-</td><td class="author-text">
-S.L.: SHOULD?</td></tr>
-<tr><td class="author-text" valign="top">
-<a class="info" href="#mustshould2">
-mustshould2</a><a name="comment.mustshould2"></a>:
-</td><td class="author-text">
-S.L.: SHOULD?</td></tr>
-</table>
 
 <a name="rfc.authors"></a><br /><hr />
 <table summary="layout" cellpadding="0" cellspacing="2" class="TOCbug" align="right"><tr><td class="TOCbug"><a href="#toc">&nbsp;TOC&nbsp;</a></td></tr></table>

@@ -4,8 +4,8 @@
 Network Working Group                                       S. Josefsson
 Internet-Draft                                                    SJD AB
 Intended status: Standards Track                              S. Leonard
-Expires: January 20, 2013                                  Penango, Inc.
-                                                           July 19, 2012
+Expires: January 18, 2013                                  Penango, Inc.
+                                                           July 17, 2012
 
 
                Text Encodings of PKIX and CMS Structures
@@ -39,7 +39,7 @@ Status of this Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on January 20, 2013.
+   This Internet-Draft will expire on January 18, 2013.
 
 Copyright Notice
 
@@ -52,7 +52,7 @@ Copyright Notice
 
 
 
-Josefsson & Leonard     Expires January 20, 2013                [Page 1]
+Josefsson & Leonard     Expires January 18, 2013                [Page 1]
 
 Internet-Draft                pkix-textual                     July 2012
 
@@ -82,14 +82,14 @@ Table of Contents
        Asymmetric Key . . . . . . . . . . . . . . . . . . . . . . . .  9
    10. Text Encoding of PKCS #8 Encrypted Private Key Info  . . . . .  9
    11. Text Encoding of Attribute Certificates  . . . . . . . . . . . 10
-   12. Security Considerations  . . . . . . . . . . . . . . . . . . . 10
-   13. IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 11
-   14. Acknowledgements . . . . . . . . . . . . . . . . . . . . . . . 11
-   15. References . . . . . . . . . . . . . . . . . . . . . . . . . . 11
-     15.1. Normative References . . . . . . . . . . . . . . . . . . . 11
-     15.2. Informative References . . . . . . . . . . . . . . . . . . 12
+   12. Non-Conforming Examples  . . . . . . . . . . . . . . . . . . . 10
+   13. Security Considerations  . . . . . . . . . . . . . . . . . . . 12
+   14. IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 12
+   15. Acknowledgements . . . . . . . . . . . . . . . . . . . . . . . 12
+   16. References . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+     16.1. Normative References . . . . . . . . . . . . . . . . . . . 13
+     16.2. Informative References . . . . . . . . . . . . . . . . . . 13
    Editorial Comments . . . . . . . . . . . . . . . . . . . . . . . .
-   Appendix A.  Non-Conforming Examples . . . . . . . . . . . . . . . 13
    Authors' Addresses . . . . . . . . . . . . . . . . . . . . . . . . 14
 
 
@@ -108,7 +108,7 @@ Table of Contents
 
 
 
-Josefsson & Leonard     Expires January 20, 2013                [Page 2]
+Josefsson & Leonard     Expires January 18, 2013                [Page 2]
 
 Internet-Draft                pkix-textual                     July 2012
 
@@ -143,14 +143,13 @@ Internet-Draft                pkix-textual                     July 2012
    [RFC0934].  Originally called "PEM encapsulation mechanism",
    "encapsulated PEM message", or (arguably) "PEM printable encoding",
    today the format is sometimes referred to as "PEM encoding".
-   Variations include OpenPGP ASCII Armor [RFC2015] and OpenSSH Key File
-   Format [RFC4716].
+   Variations include OpenPGP ASCII Armor and OpenSSH Key File Format.
 
-   For reasons that basically boil down to non-coordination or
-   inattention, many PKIX and CMS libraries implement a text encoding
+   For reasons that basically boil down to non-coordination (or gross
+   inattention), many PKIX and CMS libraries implement a text encoding
    that is similar to--but not identical with--PEM encoding.  This
-   document specify the "PKIX text encoding" format, articulates the de-
-   facto rules that most implementations operate by, and provides
+   Internet-Draft calls this format "PKIX text encoding", articulates
+   the de-facto rules that most implementations operate by, and provides
    recommendations that will promote interoperability going forward.
    Peter Gutmann's X.509 Style Guide [X509SG] contains a section "base64
    Encoding" that describes the formats and contains suggestions similar
@@ -164,7 +163,8 @@ Internet-Draft                pkix-textual                     July 2012
 
 
 
-Josefsson & Leonard     Expires January 20, 2013                [Page 3]
+
+Josefsson & Leonard     Expires January 18, 2013                [Page 3]
 
 Internet-Draft                pkix-textual                     July 2012
 
@@ -220,7 +220,7 @@ Internet-Draft                pkix-textual                     July 2012
 
 
 
-Josefsson & Leonard     Expires January 20, 2013                [Page 4]
+Josefsson & Leonard     Expires January 18, 2013                [Page 4]
 
 Internet-Draft                pkix-textual                     July 2012
 
@@ -276,7 +276,7 @@ Internet-Draft                pkix-textual                     July 2012
 
 
 
-Josefsson & Leonard     Expires January 20, 2013                [Page 5]
+Josefsson & Leonard     Expires January 18, 2013                [Page 5]
 
 Internet-Draft                pkix-textual                     July 2012
 
@@ -309,7 +309,7 @@ Internet-Draft                pkix-textual                     July 2012
 4.2.  Explanatory Text
 
    Many tools are known to emit explanatory text before the BEGIN and
-   after the END lines for PKIX certificates, more than any other type.
+   after the END labels for PKIX certificates, more than any other type.
    If emitted, such text SHOULD be related to the certificate, such as
    providing a textual representation of key data elements in the
    certificate.
@@ -332,7 +332,7 @@ Internet-Draft                pkix-textual                     July 2012
 
 
 
-Josefsson & Leonard     Expires January 20, 2013                [Page 6]
+Josefsson & Leonard     Expires January 18, 2013                [Page 6]
 
 Internet-Draft                pkix-textual                     July 2012
 
@@ -388,7 +388,7 @@ Internet-Draft                pkix-textual                     July 2012
 
 
 
-Josefsson & Leonard     Expires January 20, 2013                [Page 7]
+Josefsson & Leonard     Expires January 18, 2013                [Page 7]
 
 Internet-Draft                pkix-textual                     July 2012
 
@@ -444,7 +444,7 @@ Internet-Draft                pkix-textual                     July 2012
 
 
 
-Josefsson & Leonard     Expires January 20, 2013                [Page 8]
+Josefsson & Leonard     Expires January 18, 2013                [Page 8]
 
 Internet-Draft                pkix-textual                     July 2012
 
@@ -463,7 +463,7 @@ Internet-Draft                pkix-textual                     July 2012
 
                            Figure 7: CMS Example
 
-   CMS is the IETF successor to PKCS #7.  Section 1.1.1 of [RFC5652]
+   CMS is the IETF successor to PKCS #7.  Section 1.1.1 of RFC 5652
    describes the changes since PKCS #7 v1.5.  Implementations SHOULD
    generate CMS when it is an alternative, promoting ineroperability and
    forwards-compatibility.
@@ -500,7 +500,7 @@ Internet-Draft                pkix-textual                     July 2012
 
 
 
-Josefsson & Leonard     Expires January 20, 2013                [Page 9]
+Josefsson & Leonard     Expires January 18, 2013                [Page 9]
 
 Internet-Draft                pkix-textual                     July 2012
 
@@ -540,145 +540,26 @@ Internet-Draft                pkix-textual                     July 2012
                  Figure 10: Attribute Certificate Example
 
 
-12.  Security Considerations
+12.  Non-Conforming Examples
 
-   Data in this format often originates from untrusted sources, thus
-   parsers must be prepared to handle unexpected data without causing
-   security vulnerabilities.
-
-   Ambiguities are introduced by having more than one canonical encoding
-   of the same data.  The first ambiguity is introduced by permitting
-   the text encoded representation instead of the binary DER encoding,
-   but further ambiguities arise when multiple labels are treated as
-   similar.  Variations of whitespace and non-base64 alphabetic
-   characters can create further ambiguities.  Implementations that rely
-   on canonical representation or the ability to fingerprint a
+   [DPncfex] This section contains examples for the non-recommended
+   label variants described earlier in this document.  As discussed
+   earlier, supporting these are not required and sometimes discouraged.
+   Still, they can be useful for interoperability testing and for easy
+   reference.
 
 
 
-Josefsson & Leonard     Expires January 20, 2013               [Page 10]
+
+
+
+
+
+
+Josefsson & Leonard     Expires January 18, 2013               [Page 10]
 
 Internet-Draft                pkix-textual                     July 2012
 
-
-   particular data format need to understand that this Internet-Draft
-   does not define canonical encodings.  If canonical encodings are
-   desired, the encoded structure must be decoded and processed into a
-   canonical form (namely, DER encoding).  Data encoding ambiguities
-   also create opportunities for side channels.
-
-
-13.  IANA Considerations
-
-   This document implies no IANA Considerations.
-
-
-14.  Acknowledgements
-
-   Peter Gutmann suggested to document labels for Attribute Certificates
-   and PKCS #7 messages, and to add examples for the non-standard
-   variants.
-
-
-15.  References
-
-15.1.  Normative References
-
-   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
-              Requirement Levels", BCP 14, RFC 2119, March 1997.
-
-   [RFC2315]  Kaliski, B., "PKCS #7: Cryptographic Message Syntax
-              Version 1.5", RFC 2315, March 1998.
-
-   [RFC2986]  Nystrom, M. and B. Kaliski, "PKCS #10: Certification
-              Request Syntax Specification Version 1.7", RFC 2986,
-              November 2000.
-
-   [RFC4648]  Josefsson, S., "The Base16, Base32, and Base64 Data
-              Encodings", RFC 4648, October 2006.
-
-   [RFC5208]  Kaliski, B., "Public-Key Cryptography Standards (PKCS) #8:
-              Private-Key Information Syntax Specification Version 1.2",
-              RFC 5208, May 2008.
-
-   [RFC5280]  Cooper, D., Santesson, S., Farrell, S., Boeyen, S.,
-              Housley, R., and W. Polk, "Internet X.509 Public Key
-              Infrastructure Certificate and Certificate Revocation List
-              (CRL) Profile", RFC 5280, May 2008.
-
-   [RFC5652]  Housley, R., "Cryptographic Message Syntax (CMS)", STD 70,
-              RFC 5652, September 2009.
-
-
-
-
-Josefsson & Leonard     Expires January 20, 2013               [Page 11]
-
-Internet-Draft                pkix-textual                     July 2012
-
-
-   [RFC5755]  Farrell, S., Housley, R., and S. Turner, "An Internet
-              Attribute Certificate Profile for Authorization",
-              RFC 5755, January 2010.
-
-   [RFC5958]  Turner, S., "Asymmetric Key Packages", RFC 5958,
-              August 2010.
-
-   [CCITT.X690.2002]
-              International International Telephone and Telegraph
-              Consultative Committee, "ASN.1 encoding rules:
-              Specification of basic encoding Rules (BER), Canonical
-              encoding rules (CER) and Distinguished encoding rules
-              (DER)", CCITT Recommendation X.690, July 2002.
-
-15.2.  Informative References
-
-   [RFC0934]  Rose, M. and E. Stefferud, "Proposed standard for message
-              encapsulation", RFC 934, January 1985.
-
-   [RFC1421]  Linn, J., "Privacy Enhancement for Internet Electronic
-              Mail: Part I: Message Encryption and Authentication
-              Procedures", RFC 1421, February 1993.
-
-   [RFC2015]  Elkins, M., "MIME Security with Pretty Good Privacy
-              (PGP)", RFC 2015, October 1996.
-
-   [RFC4716]  Galbraith, J. and R. Thayer, "The Secure Shell (SSH)
-              Public Key File Format", RFC 4716, November 2006.
-
-   [X509SG]   Gutmann, P., "X.509 Style Guide", WWW http://
-              www.cs.auckland.ac.nz/~pgut001/pubs/x509guide.txt,
-              October 2000.
-
-Editorial Comments
-
-   [DP1]          S.L.: Non-alphabetic characters is too broad.
-                  Characters such as "+", "/", and "=" are valid base64;
-                  characters such as "-" and "_" are alternate base64
-                  characters but are not used in this specification. In
-                  any event, any non-whitespace characters will cause
-                  existing implementations to fail.
-
-   [mustshould1]  S.L.: SHOULD?
-
-   [mustshould2]  S.L.: SHOULD?
-
-
-
-
-
-
-Josefsson & Leonard     Expires January 20, 2013               [Page 12]
-
-Internet-Draft                pkix-textual                     July 2012
-
-
-Appendix A.  Non-Conforming Examples
-
-   This section contains examples for the non-recommended label variants
-   described earlier in this document.  As discussed earlier, supporting
-   these are not required and sometimes discouraged.  Still, they can be
-   useful for interoperability testing and for easy reference.
 
    -----BEGIN X509 CERTIFICATE-----
    MIICLDCCAdKgAwIBAgIBADAKBggqhkjOPQQDAjB9MQswCQYDVQQGEwJCRTEPMA0G
@@ -716,19 +597,6 @@ Appendix A.  Non-Conforming Examples
             Figure 12: Non-standard 'X.509' Certificate Example
 
 
-
-
-
-
-
-
-
-
-Josefsson & Leonard     Expires January 20, 2013               [Page 13]
-
-Internet-Draft                pkix-textual                     July 2012
-
-
    -----BEGIN NEW CERTIFICATE REQUEST-----
    MIIBWDCCAQcCAQAwTjELMAkGA1UEBhMCU0UxJzAlBgNVBAoTHlNpbW9uIEpvc2Vm
    c3NvbiBEYXRha29uc3VsdCBBQjEWMBQGA1UEAxMNam9zZWZzc29uLm9yZzBOMBAG
@@ -743,6 +611,12 @@ Internet-Draft                pkix-textual                     July 2012
               Figure 13: Non-standard 'NEW' PKCS #10 Example
 
 
+
+Josefsson & Leonard     Expires January 18, 2013               [Page 11]
+
+Internet-Draft                pkix-textual                     July 2012
+
+
    -----BEGIN CERTIFICATE CHAIN-----
    MIHjBgsqhkiG9w0BCRABF6CB0zCB0AIBADFho18CAQCgGwYJKoZIhvcNAQUMMA4E
    CLfrI6dr0gUWAgITiDAjBgsqhkiG9w0BCRADCTAUBggqhkiG9w0DBwQIZpECRWtz
@@ -752,6 +626,133 @@ Internet-Draft                pkix-textual                     July 2012
    -----END CERTIFICATE CHAIN-----
 
             Figure 14: Non-standard 'CERTIFICATE CHAIN' Example
+
+
+13.  Security Considerations
+
+   Data in this format often originates from untrusted sources, thus
+   parsers must be prepared to handle unexpected data without causing
+   security vulnerabilities.
+
+   Ambiguities are introduced by having more than one canonical encoding
+   of the same data.  The first ambiguity is introduced by permitting
+   the text encoded representation instead of the binary DER encoding,
+   but further ambiguities arise when multiple labels are treated as
+   similar.  Variations of whitespace and non-base64 alphabetic
+   characters can create further ambiguities.  Implementations that rely
+   on canonical representation or the ability to fingerprint a
+   particular data format need to understand that this Internet-Draft
+   does not define canonical encodings.  If canonical encodings are
+   desired, the encoded structure must be decoded and processed into a
+   canonical form (namely, DER encoding).  Data encoding ambiguities
+   also create opportunities for side channels.
+
+
+14.  IANA Considerations
+
+   This document implies no IANA Considerations.
+
+
+15.  Acknowledgements
+
+   Peter Gutmann suggested to document labels for Attribute Certificates
+   and PKCS #7 messages, and to add examples for the non-standard
+   variants.
+
+
+16.  References
+
+
+
+
+
+
+
+Josefsson & Leonard     Expires January 18, 2013               [Page 12]
+
+Internet-Draft                pkix-textual                     July 2012
+
+
+16.1.  Normative References
+
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119, March 1997.
+
+   [RFC2315]  Kaliski, B., "PKCS #7: Cryptographic Message Syntax
+              Version 1.5", RFC 2315, March 1998.
+
+   [RFC2986]  Nystrom, M. and B. Kaliski, "PKCS #10: Certification
+              Request Syntax Specification Version 1.7", RFC 2986,
+              November 2000.
+
+   [RFC4648]  Josefsson, S., "The Base16, Base32, and Base64 Data
+              Encodings", RFC 4648, October 2006.
+
+   [RFC5208]  Kaliski, B., "Public-Key Cryptography Standards (PKCS) #8:
+              Private-Key Information Syntax Specification Version 1.2",
+              RFC 5208, May 2008.
+
+   [RFC5280]  Cooper, D., Santesson, S., Farrell, S., Boeyen, S.,
+              Housley, R., and W. Polk, "Internet X.509 Public Key
+              Infrastructure Certificate and Certificate Revocation List
+              (CRL) Profile", RFC 5280, May 2008.
+
+   [RFC5652]  Housley, R., "Cryptographic Message Syntax (CMS)", STD 70,
+              RFC 5652, September 2009.
+
+   [RFC5755]  Farrell, S., Housley, R., and S. Turner, "An Internet
+              Attribute Certificate Profile for Authorization",
+              RFC 5755, January 2010.
+
+   [RFC5958]  Turner, S., "Asymmetric Key Packages", RFC 5958,
+              August 2010.
+
+   [CCITT.X690.2002]
+              International International Telephone and Telegraph
+              Consultative Committee, "ASN.1 encoding rules:
+              Specification of basic encoding Rules (BER), Canonical
+              encoding rules (CER) and Distinguished encoding rules
+              (DER)", CCITT Recommendation X.690, July 2002.
+
+16.2.  Informative References
+
+   [RFC0934]  Rose, M. and E. Stefferud, "Proposed standard for message
+              encapsulation", RFC 934, January 1985.
+
+   [RFC1421]  Linn, J., "Privacy Enhancement for Internet Electronic
+              Mail: Part I: Message Encryption and Authentication
+
+
+
+Josefsson & Leonard     Expires January 18, 2013               [Page 13]
+
+Internet-Draft                pkix-textual                     July 2012
+
+
+              Procedures", RFC 1421, February 1993.
+
+   [RFC2015]  Elkins, M., "MIME Security with Pretty Good Privacy
+              (PGP)", RFC 2015, October 1996.
+
+   [X509SG]   Gutmann, P., "X.509 Style Guide", WWW http://
+              www.cs.auckland.ac.nz/~pgut001/pubs/x509guide.txt,
+              October 2000.
+
+Editorial Comments
+
+   [DP1]          S.L.: Non-alphabetic characters is too broad.
+                  Characters such as "+", "/", and "=" are valid base64;
+                  characters such as "-" and "_" are alternate base64
+                  characters but are not used in this specification. In
+                  any event, any non-whitespace characters will cause
+                  existing implementations to fail.
+
+   [DPncfex]      S.L.: The utility of this section is questionable. We
+                  can shorten up the RFC by removing this section.
+
+   [mustshould1]  S.L.: SHOULD?
+
+   [mustshould2]  S.L.: SHOULD?
 
 
 Authors' Addresses
@@ -779,6 +780,5 @@ Authors' Addresses
 
 
 
-
-Josefsson & Leonard     Expires January 20, 2013               [Page 14]
+Josefsson & Leonard     Expires January 18, 2013               [Page 14]
 
