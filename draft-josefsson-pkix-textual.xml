@@ -177,7 +177,7 @@ CryptStringToBinary: http://msdn.microsoft.com/aa380285
        "-----BEGIN" and after the "-----END" encapsulation boundaries
        are permitted and MUST NOT cause parsers to malfunction.
        Furthermore, parsers MUST ignore whitespace and other
-       non-alphabetic characters and MUST handle different newline
+       non-base64 characters and MUST handle different newline
        conventions.</t>
 
        <t>The type of data encoded is labeled depending on the type
