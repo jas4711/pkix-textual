@@ -33,7 +33,7 @@ CryptStringToBinary: http://msdn.microsoft.com/aa380285
 <?rfc comments="yes"?>
 
 <rfc category="std"
-     docName="draft-josefsson-pkix-textual-02rc"
+     docName="draft-josefsson-pkix-textual-02"
      ipr="trust200902">
 
   <front>
@@ -74,7 +74,7 @@ CryptStringToBinary: http://msdn.microsoft.com/aa380285
 			</address>
 		</author>
 
-		<date month="July" year="2012"/>
+		<date month="October" year="2012"/>
 
     <abstract>
 

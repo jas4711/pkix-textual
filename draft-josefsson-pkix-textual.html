@@ -144,10 +144,10 @@
 <tr><td class="header">Network Working Group</td><td class="header">S. Josefsson</td></tr>
 <tr><td class="header">Internet-Draft</td><td class="header">SJD AB</td></tr>
 <tr><td class="header">Intended status: Standards Track</td><td class="header">S. Leonard</td></tr>
-<tr><td class="header">Expires: January 20, 2013</td><td class="header">Penango, Inc.</td></tr>
-<tr><td class="header">&nbsp;</td><td class="header">July 19, 2012</td></tr>
+<tr><td class="header">Expires: April 9, 2013</td><td class="header">Penango, Inc.</td></tr>
+<tr><td class="header">&nbsp;</td><td class="header">October 6, 2012</td></tr>
 </table></td></tr></table>
-<h1><br />Text Encodings of PKIX and CMS Structures<br />draft-josefsson-pkix-textual-02rc</h1>
+<h1><br />Text Encodings of PKIX and CMS Structures<br />draft-josefsson-pkix-textual-02</h1>
 
 <h3>Abstract</h3>
 
@@ -179,7 +179,7 @@ and may be updated, replaced, or obsoleted by other documents at any time.
 It is inappropriate to use Internet-Drafts as reference material or to cite
 them other than as &ldquo;work in progress.&rdquo;</p>
 <p>
-This Internet-Draft will expire on January 20, 2013.</p>
+This Internet-Draft will expire on April 9, 2013.</p>
 
 <h3>Copyright Notice</h3>
 <p>
@@ -330,7 +330,7 @@ General Considerations</h3>
        "-----BEGIN" and after the "-----END" encapsulation boundaries
        are permitted and MUST NOT cause parsers to malfunction.
        Furthermore, parsers MUST ignore whitespace and other
-       non-alphabetic characters and MUST handle different newline
+       non-base64 characters and MUST handle different newline
        conventions.
 </p>
 <p>The type of data encoded is labeled depending on the type

@@ -4,12 +4,12 @@
 Network Working Group                                       S. Josefsson
 Internet-Draft                                                    SJD AB
 Intended status: Standards Track                              S. Leonard
-Expires: January 20, 2013                                  Penango, Inc.
-                                                           July 19, 2012
+Expires: April 9, 2013                                     Penango, Inc.
+                                                         October 6, 2012
 
 
                Text Encodings of PKIX and CMS Structures
-                   draft-josefsson-pkix-textual-02rc
+                    draft-josefsson-pkix-textual-02
 
 Abstract
 
@@ -39,7 +39,7 @@ Status of this Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on January 20, 2013.
+   This Internet-Draft will expire on April 9, 2013.
 
 Copyright Notice
 
@@ -52,9 +52,9 @@ Copyright Notice
 
 
 
-Josefsson & Leonard     Expires January 20, 2013                [Page 1]
+Josefsson & Leonard       Expires April 9, 2013                 [Page 1]
 
-Internet-Draft                pkix-textual                     July 2012
+Internet-Draft                pkix-textual                  October 2012
 
 
    publication of this document.  Please review these documents
@@ -108,9 +108,9 @@ Table of Contents
 
 
 
-Josefsson & Leonard     Expires January 20, 2013                [Page 2]
+Josefsson & Leonard       Expires April 9, 2013                 [Page 2]
 
-Internet-Draft                pkix-textual                     July 2012
+Internet-Draft                pkix-textual                  October 2012
 
 
 1.  Introduction
@@ -164,9 +164,9 @@ Internet-Draft                pkix-textual                     July 2012
 
 
 
-Josefsson & Leonard     Expires January 20, 2013                [Page 3]
+Josefsson & Leonard       Expires April 9, 2013                 [Page 3]
 
-Internet-Draft                pkix-textual                     July 2012
+Internet-Draft                pkix-textual                  October 2012
 
 
 2.  General Considerations
@@ -176,7 +176,7 @@ Internet-Draft                pkix-textual                     July 2012
    "encapsulation boundaries", are base64 [RFC4648]-encoded data.  Data
    before the "-----BEGIN" and after the "-----END" encapsulation
    boundaries are permitted and MUST NOT cause parsers to malfunction.
-   Furthermore, parsers MUST ignore whitespace and other non-alphabetic
+   Furthermore, parsers MUST ignore whitespace and other non-base64
    characters and MUST handle different newline conventions.
 
    The type of data encoded is labeled depending on the type label in
@@ -220,9 +220,9 @@ Internet-Draft                pkix-textual                     July 2012
 
 
 
-Josefsson & Leonard     Expires January 20, 2013                [Page 4]
+Josefsson & Leonard       Expires April 9, 2013                 [Page 4]
 
-Internet-Draft                pkix-textual                     July 2012
+Internet-Draft                pkix-textual                  October 2012
 
 
    pkixmsg    ::= preeb
@@ -276,9 +276,9 @@ Internet-Draft                pkix-textual                     July 2012
 
 
 
-Josefsson & Leonard     Expires January 20, 2013                [Page 5]
+Josefsson & Leonard       Expires April 9, 2013                 [Page 5]
 
-Internet-Draft                pkix-textual                     July 2012
+Internet-Draft                pkix-textual                  October 2012
 
 
    -----BEGIN CERTIFICATE-----
@@ -332,9 +332,9 @@ Internet-Draft                pkix-textual                     July 2012
 
 
 
-Josefsson & Leonard     Expires January 20, 2013                [Page 6]
+Josefsson & Leonard       Expires April 9, 2013                 [Page 6]
 
-Internet-Draft                pkix-textual                     July 2012
+Internet-Draft                pkix-textual                  October 2012
 
 
             Figure 3: Certificate Example with Explanatory Text
@@ -388,9 +388,9 @@ Internet-Draft                pkix-textual                     July 2012
 
 
 
-Josefsson & Leonard     Expires January 20, 2013                [Page 7]
+Josefsson & Leonard       Expires April 9, 2013                 [Page 7]
 
-Internet-Draft                pkix-textual                     July 2012
+Internet-Draft                pkix-textual                  October 2012
 
 
    REQUEST" label.  The encoded data MUST be a DER encoded ASN.1
@@ -444,9 +444,9 @@ Internet-Draft                pkix-textual                     July 2012
 
 
 
-Josefsson & Leonard     Expires January 20, 2013                [Page 8]
+Josefsson & Leonard       Expires April 9, 2013                 [Page 8]
 
-Internet-Draft                pkix-textual                     July 2012
+Internet-Draft                pkix-textual                  October 2012
 
 
 8.  Text Encoding of Cryptographic Message Syntax
@@ -500,9 +500,9 @@ Internet-Draft                pkix-textual                     July 2012
 
 
 
-Josefsson & Leonard     Expires January 20, 2013                [Page 9]
+Josefsson & Leonard       Expires April 9, 2013                 [Page 9]
 
-Internet-Draft                pkix-textual                     July 2012
+Internet-Draft                pkix-textual                  October 2012
 
 
    -----BEGIN ENCRYPTED PRIVATE KEY-----
@@ -556,9 +556,9 @@ Internet-Draft                pkix-textual                     July 2012
 
 
 
-Josefsson & Leonard     Expires January 20, 2013               [Page 10]
+Josefsson & Leonard       Expires April 9, 2013                [Page 10]
 
-Internet-Draft                pkix-textual                     July 2012
+Internet-Draft                pkix-textual                  October 2012
 
 
    particular data format need to understand that this Internet-Draft
@@ -612,9 +612,9 @@ Internet-Draft                pkix-textual                     July 2012
 
 
 
-Josefsson & Leonard     Expires January 20, 2013               [Page 11]
+Josefsson & Leonard       Expires April 9, 2013                [Page 11]
 
-Internet-Draft                pkix-textual                     July 2012
+Internet-Draft                pkix-textual                  October 2012
 
 
    [RFC5755]  Farrell, S., Housley, R., and S. Turner, "An Internet
@@ -668,9 +668,9 @@ Appendix A.  Non-Conforming Examples
 
 
 
-Josefsson & Leonard     Expires January 20, 2013               [Page 12]
+Josefsson & Leonard       Expires April 9, 2013                [Page 12]
 
-Internet-Draft                pkix-textual                     July 2012
+Internet-Draft                pkix-textual                  October 2012
 
 
    -----BEGIN X509 CERTIFICATE-----
@@ -724,9 +724,9 @@ Internet-Draft                pkix-textual                     July 2012
 
 
 
-Josefsson & Leonard     Expires January 20, 2013               [Page 13]
+Josefsson & Leonard       Expires April 9, 2013                [Page 13]
 
-Internet-Draft                pkix-textual                     July 2012
+Internet-Draft                pkix-textual                  October 2012
 
 
    -----BEGIN CERTIFICATE CHAIN-----
@@ -780,5 +780,5 @@ Authors' Addresses
 
 
 
-Josefsson & Leonard     Expires January 20, 2013               [Page 14]
+Josefsson & Leonard       Expires April 9, 2013                [Page 14]
 
