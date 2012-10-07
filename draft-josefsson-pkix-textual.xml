@@ -151,7 +151,7 @@ CryptStringToBinary: http://msdn.microsoft.com/aa380285
 			or inattention, many PKIX and
 			CMS libraries implement a text encoding
 			that is similar to--but not identical with--PEM encoding.
-			This document specify the "PKIX text encoding" format,
+			This document specifies the "PKIX text encoding" format,
 			articulates the de-facto rules that most implementations operate by,
 			and provides recommendations that will promote interoperability
 			going forward.
