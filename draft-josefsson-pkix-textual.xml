@@ -60,11 +60,11 @@ CryptStringToBinary: http://msdn.microsoft.com/aa380285
 			<organization>Penango, Inc.</organization>
 			<address>
 				<postal>
-					<street>1215 K Street</street>
-					<street>17th Floor</street>
-					<city>Sacramento</city>
+					<street>11400 West Olympic Boulevard</street>
+					<street>Suite 1500</street>
+					<city>Los Angeles</city>
 					<region>CA</region>
-					<code>95814</code>
+					<code>90064</code>
 					<country>USA</country>
 				</postal>
 
@@ -74,7 +74,7 @@ CryptStringToBinary: http://msdn.microsoft.com/aa380285
 			</address>
 		</author>
 
-		<date month="October" year="2012"/>
+		<date month="October" year="2013"/>
 
     <abstract>
 
@@ -154,7 +154,8 @@ CryptStringToBinary: http://msdn.microsoft.com/aa380285
 			This document specifies the "PKIX text encoding" format,
 			articulates the de-facto rules that most implementations operate by,
 			and provides recommendations that will promote interoperability
-			going forward.
+			going forward. This document also provides common nomenclature
+			for syntax elements, reflecting the evolution of this de-facto standard format.
 			Peter Gutmann's
       <xref target="X509SG">X.509 Style Guide</xref> contains a
       section "base64 Encoding" that describes the formats and contains
@@ -200,14 +201,15 @@ CryptStringToBinary: http://msdn.microsoft.com/aa380285
 				 the <xref target="security" format="title" /> section.
 			 </t>
 			 
-			 <t>Unlike PEM encoding, OpenPGP ASCII armor, and OpenSSH key file format,
+			 <t>Unlike <xref target="RFC1421">legacy PEM encoding</xref>,
+			 OpenPGP ASCII armor, and the OpenSSH key file format,
 			 PKIX text encoding does NOT define or permit attributes
 			 to be encoded alongside the PKIX or CMS data.
 			 Whitespace MAY appear between the pre-encapsulation boundary
 			 and the base64, but generators SHOULD NOT emit such whitespace.</t>
 			 
-			 <t>Files MAY contain multiple instances of the text encoded
-       representation.  This is used, for example, when a file
+			 <t>Files MAY contain multiple PKIX text encoding instances.
+			 This is used, for example, when a file
        contains several certificates.  Whether the instances are
        ordered or unordered depends on the context.</t>
 
@@ -226,6 +228,42 @@ CryptStringToBinary: http://msdn.microsoft.com/aa380285
 				<artwork><![CDATA[
 pkixmsg    ::= preeb
                *eolWSP
+               base64text
+               posteb
+
+preeb      ::= "-----BEGIN " label "-----" eol
+
+posteb     ::= "-----END " label "-----" eol
+
+base64char ::= ALPHA / DIGIT / "+" / "/"
+
+base64pad  ::= "="
+
+base64line ::= 1*base64char eol
+
+base64finl ::= *base64char *2base64pad eol  ; implies that:
+                                            ; ...AB= <CRLF> = <CRLF>
+                                            ; is invalid. not sure
+                                            ; if this is a good idea
+
+base64text ::= *base64line base64finl
+; we could also use <encbinbody> from RFC 1421,
+; which requires 16 groups of 4 chars, which means 64 chars
+; exactly per line, except the final line
+
+labelchar  ::= %x21-2C / %x2E-%7E   ; any printable character,
+                                    ; except hyphen
+
+label      ::= labelchar *(labelchar / labelchar "-" / SP) labelchar
+
+eol        ::= CRLF / CR / LF
+
+eolWSP     ::= WSP / CR / LF    ; compare with LWSP
+
+]]></artwork></figure>
+<figure anchor="abnf-fig" title="ABNF">
+				<artwork><![CDATA[
+pkixmsgstrict ::= preeb
                base64text
                posteb
 
