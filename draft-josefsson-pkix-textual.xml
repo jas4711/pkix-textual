@@ -215,7 +215,7 @@ CryptStringToBinary: http://msdn.microsoft.com/aa380285
 
        <t>Generators MUST wrap the base64 encoded lines so that each
        line consists of exactly 64 characters except for the final
-       line which will encode as much data is left (within the 64
+       line which will encode the remainder of the data (within the 64
        character line boundary).  Parsers MAY handle other line
        sizes. These requirements are consistent with
 			 <xref target="RFC1421">PEM</xref>.</t>
@@ -241,15 +241,14 @@ base64pad  ::= "="
 
 base64line ::= 1*base64char eol
 
-base64finl ::= *base64char *2base64pad eol  ; implies that:
-                                            ; ...AB= <CRLF> = <CRLF>
-                                            ; is invalid. not sure
-                                            ; if this is a good idea
+base64finl ::= *base64char (base64pad eol base64pad /
+               *2base64pad) eol
+               ; ...AB= <CRLF> = <CRLF> is not good, but is valid
 
 base64text ::= *base64line base64finl
-; we could also use <encbinbody> from RFC 1421,
-; which requires 16 groups of 4 chars, which means 64 chars
-; exactly per line, except the final line
+        ; we could also use <encbinbody> from RFC 1421, which requires
+        ; 16 groups of 4 chars, which means exactly 64 chars per
+        ; line, except the final line, but this is more accurate
 
 labelchar  ::= %x21-2C / %x2E-%7E   ; any printable character,
                                     ; except hyphen
@@ -259,44 +258,22 @@ label      ::= labelchar *(labelchar / labelchar "-" / SP) labelchar
 eol        ::= CRLF / CR / LF
 
 eolWSP     ::= WSP / CR / LF    ; compare with LWSP
-
 ]]></artwork></figure>
-<figure anchor="abnf-fig" title="ABNF">
+<figure anchor="abnf-strict-fig" title="ABNF (Strict)">
 				<artwork><![CDATA[
-pkixmsgstrict ::= preeb
-               base64text
-               posteb
+pkixmsgstrict    ::= preeb
+                     strictbase64text
+                     posteb
 
-preeb      ::= "-----BEGIN " label "-----" eol
+strictbase64finl ::= *15(4base64char) (4base64char / 3base64char
+                     base64pad / 2base64char 2base64pad) eol
 
-posteb     ::= "-----END " label "-----" eol
+base64fullline   ::= 64base64char eol
 
-base64char ::= ALPHA / DIGIT / "+" / "/"
-
-base64pad  ::= "="
-
-base64line ::= 1*base64char eol
-
-base64finl ::= *base64char *2base64pad eol  ; implies that:
-                                            ; ...AB= <CRLF> = <CRLF>
-                                            ; is invalid. not sure
-                                            ; if this is a good idea
-
-base64text ::= *base64line base64finl
-; we could also use <encbinbody> from RFC 1421,
-; which requires 16 groups of 4 chars, which means 64 chars
-; exactly per line, except the final line
-
-labelchar  ::= %x21-2C / %x2E-%7E   ; any printable character,
-                                    ; except hyphen
-
-label      ::= labelchar *(labelchar / labelchar "-" / SP) labelchar
-
-eol        ::= CRLF / CR / LF
-
-eolWSP     ::= WSP / CR / LF    ; compare with LWSP
-
+strictbase64text ::= *base64fullline strictbase64finl
 ]]></artwork></figure>
+    <t>This specification RECOMMENDS that new implementations emit
+		<xref target="abnf-strict-fig">the strict format</xref> specified above.</t>
 		</section>
 
      <section anchor="certificate"
