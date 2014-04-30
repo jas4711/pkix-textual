@@ -33,7 +33,7 @@ CryptStringToBinary: http://msdn.microsoft.com/aa380285
 <?rfc comments="yes"?>
 
 <rfc category="std"
-     docName="draft-josefsson-pkix-textual-02"
+     docName="draft-josefsson-pkix-textual-03"
      ipr="trust200902">
 
   <front>
@@ -74,7 +74,7 @@ CryptStringToBinary: http://msdn.microsoft.com/aa380285
 			</address>
 		</author>
 
-		<date month="October" year="2013"/>
+		<date month="April" year="2014"/>
 
     <abstract>
 
@@ -174,7 +174,7 @@ CryptStringToBinary: http://msdn.microsoft.com/aa380285
        <t>PKIX text encoding begins with a line starting with
        "-----BEGIN" and ends with a line starting with "-----END".
        Between these lines, or "encapsulation boundaries", are <xref
-       target="RFC4648">base64</xref>-encoded data.  Data before the
+       target="RFC4648">base64-encoded</xref> data.  Data before the
        "-----BEGIN" and after the "-----END" encapsulation boundaries
        are permitted and MUST NOT cause parsers to malfunction.
        Furthermore, parsers MUST ignore whitespace and other
