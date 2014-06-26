@@ -33,7 +33,7 @@ CryptStringToBinary: http://msdn.microsoft.com/aa380285
 <?rfc comments="yes"?>
 
 <rfc category="std"
-     docName="draft-josefsson-pkix-textual-03"
+     docName="draft-josefsson-pkix-textual-04"
      ipr="trust200902">
 
   <front>
@@ -60,11 +60,11 @@ CryptStringToBinary: http://msdn.microsoft.com/aa380285
 			<organization>Penango, Inc.</organization>
 			<address>
 				<postal>
-					<street>11400 West Olympic Boulevard</street>
-					<street>Suite 1500</street>
+					<street>5900 Wilshire Boulevard</street>
+					<street>21st Floor</street>
 					<city>Los Angeles</city>
 					<region>CA</region>
-					<code>90064</code>
+					<code>90036</code>
 					<country>USA</country>
 				</postal>
 
@@ -74,7 +74,7 @@ CryptStringToBinary: http://msdn.microsoft.com/aa380285
 			</address>
 		</author>
 
-		<date month="April" year="2014"/>
+		<date month="June" year="2014"/>
 
     <abstract>
 
@@ -467,7 +467,7 @@ dvb05OXi5XLPLEtViMwvLVLwSE0sKlFIVHAqSk3MBkkBAJv0Fx0=
       </figure>
       <t>CMS is the IETF successor to PKCS #7. Section 1.1.1
 			of <xref target="RFC5652" /> describes the changes since PKCS #7 v1.5. Implementations
-			SHOULD generate CMS when it is an alternative, promoting ineroperability
+			SHOULD generate CMS when it is an alternative, promoting interoperability
 			and forwards-compatibility.</t>
     </section>
 
