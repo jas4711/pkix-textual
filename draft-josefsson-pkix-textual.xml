@@ -33,7 +33,7 @@ CryptStringToBinary: http://msdn.microsoft.com/aa380285
 <?rfc comments="yes"?>
 
 <rfc category="std"
-     docName="draft-josefsson-pkix-textual-04"
+     docName="draft-josefsson-pkix-textual-05"
      ipr="trust200902">
 
   <front>
@@ -74,12 +74,12 @@ CryptStringToBinary: http://msdn.microsoft.com/aa380285
 			</address>
 		</author>
 
-		<date day="30" month="June" year="2014"/>
+		<date day="2" month="July" year="2014"/>
 
     <abstract>
 
       <t>
-				This document describes and discuss the text encodings of
+				This document describes and discusses the text encodings of
 				Public-Key Infrastructure using X.509 (PKIX) Certificates, PKIX
 				Certificate Revocation Lists (CRLs), PKCS #10 Certification
 				Request Syntax, PKCS #7 structures, Cryptographic Message Syntax (CMS),
@@ -225,8 +225,7 @@ CryptStringToBinary: http://msdn.microsoft.com/aa380285
 		<section anchor="abnf" title="ABNF">
 			<t>The ABNF of the PKIX text encoding is:</t>
 			<figure anchor="abnf-fig" title="ABNF">
-				<artwork><![CDATA[
-pkixmsg    ::= preeb
+				<artwork><![CDATA[pkixmsg    ::= preeb
                *eolWSP
                base64text
                posteb
@@ -257,11 +256,9 @@ label      ::= labelchar *(labelchar / labelchar "-" / SP) labelchar
 
 eol        ::= CRLF / CR / LF
 
-eolWSP     ::= WSP / CR / LF    ; compare with LWSP
-]]></artwork></figure>
+eolWSP     ::= WSP / CR / LF    ; compare with LWSP]]></artwork></figure>
 <figure anchor="abnf-strict-fig" title="ABNF (Strict)">
-				<artwork><![CDATA[
-pkixmsgstrict    ::= preeb
+				<artwork><![CDATA[pkixmsgstrict    ::= preeb
                      strictbase64text
                      posteb
 
@@ -270,8 +267,7 @@ strictbase64finl ::= *15(4base64char) (4base64char / 3base64char
 
 base64fullline   ::= 64base64char eol
 
-strictbase64text ::= *base64fullline strictbase64finl
-]]></artwork></figure>
+strictbase64text ::= *base64fullline strictbase64finl]]></artwork></figure>
     <t>This specification RECOMMENDS that new implementations emit
 		<xref target="abnf-strict-fig">the strict format</xref> specified above.</t>
 		</section>
