@@ -7,6 +7,9 @@ http://cvs.openssl.org/fileview?f=openssl/crypto/pem/pem.h
 CryptBinaryToString: http://msdn.microsoft.com/aa379887
 CryptStringToBinary: http://msdn.microsoft.com/aa380285
 
+2014-07-03: updated to use verbatim (spanx verb) styling, and to use xml:space=default in key cases
+it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the - is a true hyphen, NOT a Unicode non-breaking hyphen!!!
+
 -->
 
 <!DOCTYPE rfc SYSTEM "rfc2629.dtd" [
@@ -74,7 +77,7 @@ CryptStringToBinary: http://msdn.microsoft.com/aa380285
 			</address>
 		</author>
 
-		<date day="2" month="July" year="2014"/>
+		<date day="3" month="July" year="2014"/>
 
     <abstract>
 
@@ -139,7 +142,8 @@ CryptStringToBinary: http://msdn.microsoft.com/aa380285
 			<t>
 				The tradition within the RFC
 				series can be traced back to <xref target="RFC1421">PEM</xref>,
-				based on a proposal by M. Rose in
+				based on a proposal by
+				M.<!-- TODO: no double spacing! --> <!-- ok? -->Rose in
 				<xref target="RFC0934">Message Encapsulation</xref>.
 				Originally called "PEM encapsulation mechanism",
 				"encapsulated PEM message", or (arguably)
@@ -172,24 +176,25 @@ CryptStringToBinary: http://msdn.microsoft.com/aa380285
 	      title="General Considerations">
 
        <t>PKIX text encoding begins with a line starting with
-       "-----BEGIN" and ends with a line starting with "-----END".
+       <spanx style="verb">-----BEGIN </spanx> and ends with a line starting with
+			 <spanx style="verb">-----END </spanx>.
        Between these lines, or "encapsulation boundaries", are <xref
        target="RFC4648">base64-encoded</xref> data.  Data before the
-       "-----BEGIN" and after the "-----END" encapsulation boundaries
+       <spanx style="verb">-----BEGIN </spanx> and after the <spanx style="verb">-----END </spanx> encapsulation boundaries
        are permitted and MUST NOT cause parsers to malfunction.
        Furthermore, parsers MUST ignore whitespace and other
        non-base64 characters and MUST handle different newline
        conventions.</t>
 
        <t>The type of data encoded is labeled depending on the type
-       label in the "-----BEGIN" line (pre-encapsulation boundary).
+       label in the <spanx style="verb">-----BEGIN </spanx> line (pre-encapsulation boundary).
 			 For example, the line may be
-       "-----BEGIN CERTIFICATE-----" to indicate that the content is a
+       <spanx style="verb">-----BEGIN CERTIFICATE-----</spanx> to indicate that the content is a
        PKIX certificate (see further below).  Generators MUST put the
-       same label on the "-----END" line (post-encapsulation boundary)
+       same label on the <spanx style="verb">-----END </spanx> line (post-encapsulation boundary)
 			 as the corresponding
-       "-----BEGIN" line.  Parsers MAY disregard the label on the
-       "-----END" line instead of signaling an error if there is a
+       <spanx style="verb">-----BEGIN </spanx> line.  Parsers MAY disregard the label on the
+       <spanx style="verb">-----END </spanx> line instead of signaling an error if there is a
        label mismatch.</t>
        <t>
 				 The label type implies that the encoded data
@@ -275,14 +280,13 @@ strictbase64text ::= *base64fullline strictbase64finl]]></artwork></figure>
      <section anchor="certificate"
 	      title="Text Encoding of PKIX Certificates">
 <section title="Encoding">
-       <t>PKIX certificates are encoded using the "CERTIFICATE" label.
-       The encoded data MUST be a DER encoded ASN.1 "Certificate"
+       <t>PKIX certificates are encoded using the <spanx style="verb">CERTIFICATE</spanx> label.
+       The encoded data MUST be a DER encoded ASN.1 <spanx style="verb">Certificate</spanx>
        structure as described in section 4 of <xref
        target="RFC5280"/>.</t>
 
       <figure anchor="certexample" title="Certificate Example">
-	<artwork>
------BEGIN CERTIFICATE-----
+	<artwork>-----BEGIN CERTIFICATE-----
 MIICLDCCAdKgAwIBAgIBADAKBggqhkjOPQQDAjB9MQswCQYDVQQGEwJCRTEPMA0G
 A1UEChMGR251VExTMSUwIwYDVQQLExxHbnVUTFMgY2VydGlmaWNhdGUgYXV0aG9y
 aXR5MQ8wDQYDVQQIEwZMZXV2ZW4xJTAjBgNVBAMTHEdudVRMUyBjZXJ0aWZpY2F0
@@ -295,17 +299,16 @@ uQ4RTEiywK87WRcWMGgJB5kX/t2no0MwQTAPBgNVHRMBAf8EBTADAQH/MA8GA1Ud
 DwEB/wQFAwMHBgAwHQYDVR0OBBYEFPC0gf6YEr+1KLlkQAPLzB9mTigDMAoGCCqG
 SM49BAMCA0gAMEUCIDGuwD1KPyG+hRf88MeyMQcqOFZD0TbVleF+UsAGQ4enAiEA
 l4wOuDwKQa+upc8GftXE2C//4mKANBC6It01gUaTIpo=
------END CERTIFICATE-----
-	</artwork>
+-----END CERTIFICATE-----</artwork>
       </figure>
 
-       <t>Historically the label "X509 CERTIFICATE" and also, less
-       common, "X.509 CERTIFICATE" have been used.  Generators
-       conforming to this document MUST generate "CERTIFICATE" labels
-       and MUST NOT generate "X509 CERTIFICATE" or "X.509 CERTIFICATE"
-       labels. Parsers are NOT RECOMMENDED to treat "X509
-       CERTIFICATE" or "X.509 CERTIFICATE" as equivalent to
-       "CERTIFICATE", but a valid exception may be for backwards
+       <t>Historically the label <spanx style="verb">X509 CERTIFICATE</spanx> and also, less
+       common, <spanx style="verb">X.509 CERTIFICATE</spanx> have been used.  Generators
+       conforming to this document MUST generate <spanx style="verb">CERTIFICATE</spanx> labels
+       and MUST NOT generate <spanx style="verb">X509 CERTIFICATE</spanx> or <spanx style="verb">X.509 CERTIFICATE</spanx>
+       labels. Parsers are NOT RECOMMENDED to treat <spanx style="verb">X509
+       CERTIFICATE</spanx> or <spanx style="verb">X.509 CERTIFICATE</spanx> as equivalent to
+       <spanx style="verb">CERTIFICATE</spanx>, but a valid exception may be for backwards
        compatibility (potentially together with a warning).</t>
 	</section>		
 				<section title="Explanatory Text">
@@ -315,8 +318,7 @@ l4wOuDwKQa+upc8GftXE2C//4mKANBC6It01gUaTIpo=
 					related to the certificate, such as providing a textual representation
 					of key data elements in the certificate.</t>
 					<figure anchor="certexplexample" title="Certificate Example with Explanatory Text">
-						<artwork><![CDATA[
-Subject: CN=Atlantis
+						<artwork><![CDATA[Subject: CN=Atlantis
 Issuer: CN=Atlantis
 Validity: from 7/9/2012 3:10:38 AM UTC to 7/9/2013 3:10:37 AM UTC
 -----BEGIN CERTIFICATE-----
@@ -329,8 +331,7 @@ gjcCARUDAgeAMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEFBQcDAzA1BgNVHQEE
 LjAsgBA0jOnSSuIHYmnVryHAdywMoRUwEzERMA8GA1UEAxMIQXRsYW50aXOCASow
 CQYFKw4DAh0FAANBAKi6HRBaNEL5R0n56nvfclQNaXiDT174uf+lojzA4lhVInc0
 ILwpnZ1izL4MlI9eCSHhVQBHEp2uQdXJB+d5Byg=
------END CERTIFICATE-----
-]]></artwork></figure>
+-----END CERTIFICATE-----]]></artwork></figure>
 				</section>
 				<section title="File Extension">
 					<t>Although text encodings of PKIX structures can occur
@@ -338,6 +339,7 @@ ILwpnZ1izL4MlI9eCSHhVQBHEp2uQdXJB+d5Byg=
 					PKIX structures in this text encoding.
 					To promote interoperability and to separate DER encodings
 					from text encodings,
+					<!-- TODO: should we put .crt in a verb (verbatim) spanx? -->
 					This Internet-Draft RECOMMENDS that the extension ".crt"
 					be used for this text encoding.
 				  Implementations should be aware that in spite of this recommendation,
@@ -349,14 +351,13 @@ ILwpnZ1izL4MlI9eCSHhVQBHEp2uQdXJB+d5Byg=
      <section anchor="crl"
 	      title="Text Encoding of PKIX CRLs">
 
-       <t>PKIX CRLs are encoded using the "X509 CRL" label.  The
-       encoded data MUST be a DER encoded ASN.1 "CertificateList"
+       <t>PKIX CRLs are encoded using the <spanx style="verb">X509 CRL</spanx> label.  The
+       encoded data MUST be a DER encoded ASN.1 <spanx style="verb">CertificateList</spanx>
        structure as described in Section 5 of <xref
        target="RFC5280"/>.</t>
 
        <figure anchor="crlexample" title="CRL Example">
-	 <artwork>
------BEGIN X509 CRL-----
+	 <artwork>-----BEGIN X509 CRL-----
 MIIB9DCCAV8CAQEwCwYJKoZIhvcNAQEFMIIBCDEXMBUGA1UEChMOVmVyaVNpZ24s
 IEluYy4xHzAdBgNVBAsTFlZlcmlTaWduIFRydXN0IE5ldHdvcmsxRjBEBgNVBAsT
 PXd3dy52ZXJpc2lnbi5jb20vcmVwb3NpdG9yeS9SUEEgSW5jb3JwLiBieSBSZWYu
@@ -368,31 +369,30 @@ elUNpllhhTgXDTA2MTIyNzA4MDIzNFowCwYJKoZIhvcNAQEFA4GBAD0zX+J2hkcc
 Nbrq1Dn5IKL8nXLgPGcHv1I/le1MNo9t1ohGQxB5HnFUkRPAY82fR6Epor4aHgVy
 b+5y+neKN9Kn2mPF4iiun+a4o26CjJ0pArojCL1p8T0yyi9Xxvyc/ezaZ98HiIyP
 c3DGMNR+oUmSjKZ0jIhAYmeLxaPHfQwR
------END X509 CRL-----
-	 </artwork>
+-----END X509 CRL-----</artwork>
        </figure>
 
-       <t>Historically the label "CRL" has rarely been used. Today it is
+       <t>Historically the label <spanx style="verb">CRL</spanx> has rarely been used. Today it is
        not common and many popular tools do not understand the
-       label. Therefore, this document standardizes "X509 CRL"
+       label. Therefore, this document standardizes <spanx style="verb">X509 CRL</spanx>
 			 in order to promote interoperability and backwards-compatibility.
 			 Generators conforming to this document MUST generate
-       "X509 CRL" labels and MUST NOT generate "CRL" labels.  Parsers
-       are NOT RECOMMENDED to treat "CRL" as equivalent to "X509
-       CRL".</t>
+       <spanx style="verb">X509 CRL</spanx> labels and MUST NOT generate
+			 <spanx style="verb">CRL</spanx> labels.  Parsers
+       are NOT RECOMMENDED to treat <spanx style="verb">CRL</spanx>
+			 as equivalent to <spanx style="verb">X509 CRL</spanx>.</t>
      </section>
 
      <section anchor="crs"
 	      title="Text Encoding of PKCS #10 Certification Request Syntax">
 
        <t>PKCS #10 Certification Requests are encoded using the
-       "CERTIFICATE REQUEST" label.  The encoded data MUST be a DER
-       encoded ASN.1 "CertificationRequest" structure as described in
+       <spanx style="verb">CERTIFICATE REQUEST</spanx> label.  The encoded data MUST be a DER
+       encoded ASN.1 <spanx style="verb">CertificationRequest</spanx> structure as described in
        <xref target="RFC2986"/>.</t>
 
        <figure anchor="pkcs10example" title="PKCS #10 Example">
-	 <artwork><![CDATA[
------BEGIN CERTIFICATE REQUEST-----
+	 <artwork><![CDATA[-----BEGIN CERTIFICATE REQUEST-----
 MIIBWDCCAQcCAQAwTjELMAkGA1UEBhMCU0UxJzAlBgNVBAoTHlNpbW9uIEpvc2Vm
 c3NvbiBEYXRha29uc3VsdCBBQjEWMBQGA1UEAxMNam9zZWZzc29uLm9yZzBOMBAG
 ByqGSM49AgEGBSuBBAAhAzoABLLPSkuXY0l66MbxVJ3Mot5FCFuqQfn6dTs+9/CM
@@ -401,42 +401,40 @@ BgNVHREEETAPgg1qb3NlZnNzb24ub3JnMAwGA1UdEwEB/wQCMAAwDwYDVR0PAQH/
 BAUDAwegADAWBgNVHSUBAf8EDDAKBggrBgEFBQcDATAKBggqhkjOPQQDAgM/ADA8
 AhxBvfhxPFfbBbsE1NoFmCUczOFApEuQVUw3ZP69AhwWXk3dgSUsKnuwL5g/ftAY
 dEQc8B8jAcnuOrfU
------END CERTIFICATE REQUEST-----
-]]></artwork>
+-----END CERTIFICATE REQUEST-----]]></artwork>
       </figure>
 
-      <t>The label "NEW CERTIFICATE REQUEST" is also in wide use.
+      <t>The label <spanx style="verb">NEW CERTIFICATE REQUEST</spanx> is also in wide use.
       Generators conforming to this document MUST generate
-      "CERTIFICATE REQUEST" labels.  Parsers MAY treat "NEW
-      CERTIFICATE REQUEST" as equivalent to "CERTIFICATE REQUEST".</t>
+      <spanx style="verb">CERTIFICATE REQUEST</spanx> labels.
+			Parsers MAY treat <spanx style="verb" xml:space="default">NEW
+      CERTIFICATE REQUEST</spanx> as equivalent to <spanx style="verb">CERTIFICATE REQUEST</spanx>.</t>
 		</section>
 
      <section anchor="pkcs7"
 	      title="Text Encoding of PKCS #7 Cryptographic Message Syntax">
 
        <t>PKCS #7 Cryptographic Message Syntax structures are encoded
-       using the "PKCS7" label.  The encoded data MUST be a DER
-       encoded ASN.1 "ContentInfo" structure as described in <xref
+       using the <spanx style="verb">PKCS7</spanx> label.  The encoded data MUST be a DER
+       encoded ASN.1 <spanx style="verb">ContentInfo</spanx> structure as described in <xref
        target="RFC2315"/>.</t>
 
        <figure anchor="pkcs7example" title="PKCS #7 Example">
-	 <artwork><![CDATA[
------BEGIN PKCS7-----
+	 <artwork><![CDATA[-----BEGIN PKCS7-----
 MIHjBgsqhkiG9w0BCRABF6CB0zCB0AIBADFho18CAQCgGwYJKoZIhvcNAQUMMA4E
 CLfrI6dr0gUWAgITiDAjBgsqhkiG9w0BCRADCTAUBggqhkiG9w0DBwQIZpECRWtz
 u5kEGDCjerXY8odQ7EEEromZJvAurk/j81IrozBSBgkqhkiG9w0BBwEwMwYLKoZI
 hvcNAQkQAw8wJDAUBggqhkiG9w0DBwQI0tCBcU09nxEwDAYIKwYBBQUIAQIFAIAQ
 OsYGYUFdAH0RNc1p4VbKEAQUM2Xo8PMHBoYdqEcsbTodlCFAZH4=
------END PKCS7-----
-]]></artwork>
+-----END PKCS7-----]]></artwork>
       </figure>
 
-      <t>The label "CERTIFICATE CHAIN" has been in use to denote a
+      <t>The label <spanx style="verb">CERTIFICATE CHAIN</spanx> has been in use to denote a
       degenerative PKCS #7 structure that contains only a list of
       certificates.  Several modern tools do not support this label.
-      Generators MUST NOT generate the "CERTIFICATE CHAIN" label.
-      Parsers are NOT RECOMMENDED to treat "CERTIFICATE CHAIN" as
-      equivalent to "PKCS7".</t>
+      Generators MUST NOT generate the <spanx style="verb">CERTIFICATE CHAIN</spanx> label.
+      Parsers are NOT RECOMMENDED to treat <spanx style="verb">CERTIFICATE CHAIN</spanx> as
+      equivalent to <spanx style="verb">PKCS7</spanx>.</t>
 
 			<t>PKCS #7 is an old standard that has long been superseded
 			by <xref target="RFC5652" format="none">CMS</xref>.
@@ -448,18 +446,16 @@ OsYGYUFdAH0RNc1p4VbKEAQUM2Xo8PMHBoYdqEcsbTodlCFAZH4=
 	      title="Text Encoding of Cryptographic Message Syntax">
 
        <t>Cryptographic Message Syntax structures are encoded using
-       the "CMS" label.  The encoded data MUST be a DER encoded ASN.1
-       "ContentInfo" structure as described in <xref
+       the <spanx style="verb">CMS</spanx> label.  The encoded data MUST be a DER encoded ASN.1
+       <spanx style="verb">ContentInfo</spanx> structure as described in <xref
        target="RFC5652"/>.</t>
 
        <figure anchor="cmsexample" title="CMS Example">
-	 <artwork><![CDATA[
------BEGIN CMS-----
+	 <artwork><![CDATA[-----BEGIN CMS-----
 MIGDBgsqhkiG9w0BCRABCaB0MHICAQAwDQYLKoZIhvcNAQkQAwgwXgYJKoZIhvcN
 AQcBoFEET3icc87PK0nNK9ENqSxItVIoSa0o0S/ISczMs1ZIzkgsKk4tsQ0N1nUM
 dvb05OXi5XLPLEtViMwvLVLwSE0sKlFIVHAqSk3MBkkBAJv0Fx0=
------END CMS-----
-]]></artwork>
+-----END CMS-----]]></artwork>
       </figure>
       <t>CMS is the IETF successor to PKCS #7. Section 1.1.1
 			of <xref target="RFC5652" /> describes the changes since PKCS #7 v1.5. Implementations
@@ -471,65 +467,58 @@ dvb05OXi5XLPLEtViMwvLVLwSE0sKlFIVHAqSk3MBkkBAJv0Fx0=
 			 title="Text Encoding of PKCS #8 Private Key Info, and One Asymmetric Key">
 
 			<t>
-				The PrivateKeyInfo structure of PKCS #8 Private Key Information Syntax,
-				renamed to OneAsymmetricKey in <xref target="RFC5958" />,
-				is encoded using the "PRIVATE KEY" label.
+				The <spanx style="vbare">PrivateKeyInfo</spanx> structure of PKCS #8 Private Key Information Syntax,
+				renamed to <spanx style="vbare">OneAsymmetricKey</spanx> in <xref target="RFC5958" />,
+				is encoded using the <spanx style="verb">PRIVATE KEY</spanx> label.
 				The encoded data MUST be a DER
-				encoded ASN.1 "PrivateKeyInfo" structure as described in
+				encoded ASN.1 <spanx style="verb">PrivateKeyInfo</spanx> structure as described in
 				<xref target="RFC5208" format="none">PKCS #8</xref>,
-				or the "OneAsymmetricKey" structure as described in <xref
+				or the <spanx style="verb">OneAsymmetricKey</spanx> structure as described in <xref
        target="RFC5958"/>. The two are semantically identical, and can be distinguished
 				by version number.
 			</t>
 
 			<figure anchor="pkcs8example" title="PKCS #8 PrivateKeyInfo Example">
-				<artwork>
-					<![CDATA[
------BEGIN PRIVATE KEY-----
+				<artwork><![CDATA[-----BEGIN PRIVATE KEY-----
 MIGEAgEAMBAGByqGSM49AgEGBSuBBAAKBG0wawIBAQQgVcB/UNPxalR9zDYAjQIf
 jojUDiQuGnSJrFEEzZPT/92hRANCAASc7UJtgnF/abqWM60T3XNJEzBv5ez9TdwK
 H0M6xpM2q+53wmsN/eYLdgtjgBd3DBmHtPilCkiFICXyaA8z9LkJ
------END PRIVATE KEY-----
-]]></artwork>
+-----END PRIVATE KEY-----]]></artwork>
 			</figure>
 		</section>
 		<section anchor="pkcs8enc"
 			 title="Text Encoding of PKCS #8 Encrypted Private Key Info">
 			<t>
-				The EncryptedPrivateKeyInfo structure of PKCS #8 Private Key Information Syntax,
+				The <spanx style="vbare">EncryptedPrivateKeyInfo</spanx> structure of PKCS #8 Private Key Information Syntax,
 				called the same in <xref target="RFC5958" />,
-				is encoded using the "ENCRYPTED PRIVATE KEY" label.
+				is encoded using the <spanx style="verb">ENCRYPTED PRIVATE KEY</spanx> label.
 				The encoded data MUST be a DER
-				encoded ASN.1 "EncryptedPrivateKeyInfo" structure as described in
+				encoded ASN.1 <spanx style="verb">EncryptedPrivateKeyInfo</spanx> structure as described in
 				<xref target="RFC5208" format="none">PKCS #8</xref>
-				and <xref
-       target="RFC5958"/>.
+				and <xref target="RFC5958"/>.
 			</t>
 
 			<figure anchor="pkcs8encexample" title="PKCS #8 EncryptedPrivateKeyInfo Example">
-				<artwork><![CDATA[
------BEGIN ENCRYPTED PRIVATE KEY-----
+				<artwork><![CDATA[-----BEGIN ENCRYPTED PRIVATE KEY-----
 MIHNMEAGCSqGSIb3DQEFDTAzMBsGCSqGSIb3DQEFDDAOBAghhICA6T/51QICCAAw
 FAYIKoZIhvcNAwcECBCxDgvI59i9BIGIY3CAqlMNBgaSI5QiiWVNJ3IpfLnEiEsW
 Z0JIoHyRmKK/+cr9QPLnzxImm0TR9s4JrG3CilzTWvb0jIvbG3hu0zyFPraoMkap
 8eRzWsIvC5SVel+CSjoS2mVS87cyjlD+txrmrXOVYDE+eTgMLbrLmsWh3QkCTRtF
 QC7k0NNzUHTV9yGDwfqMbw==
------END ENCRYPTED PRIVATE KEY-----
-]]></artwork>
+-----END ENCRYPTED PRIVATE KEY-----]]></artwork>
 			</figure>
 		</section>
 
 		<section anchor="attrcert"
 	      title="Text Encoding of Attribute Certificates">
 
-       <t>Attribute certificates are encoded using the "ATTRIBUTE
-       CERTIFICATE" label.  The encoded data MUST be a DER encoded
-       ASN.1 "AttributeCertificate" structure as described in <xref
+       <t>Attribute certificates are encoded using the <spanx style="verb" xml:space="default">ATTRIBUTE
+       CERTIFICATE</spanx> label.  The encoded data MUST be a DER encoded
+       ASN.1 <spanx style="verb">AttributeCertificate</spanx> structure as described in <xref
        target="RFC5755"/>.</t>
 
        <figure anchor="attrcertexample" title="Attribute Certificate Example">
-	 <artwork><![CDATA[
------BEGIN ATTRIBUTE CERTIFICATE-----
+	 <artwork><![CDATA[-----BEGIN ATTRIBUTE CERTIFICATE-----
 MIICKzCCAZQCAQEwgZeggZQwgYmkgYYwgYMxCzAJBgNVBAYTAlVTMREwDwYDVQQI
 DAhOZXcgWW9yazEUMBIGA1UEBwwLU3RvbnkgQnJvb2sxDzANBgNVBAoMBkNTRTU5
 MjE6MDgGA1UEAwwxU2NvdHQgU3RhbGxlci9lbWFpbEFkZHJlc3M9c3N0YWxsZXJA
@@ -542,8 +531,7 @@ dHA6Ly9pZGVyYXNobi5vcmcvaW5kZXguaHRtbDANBgkqhkiG9w0BAQUFAAOBgQAV
 M9axFPXXozEFcer06bj9MCBBCQLtAM7ZXcZjcxyva7xCBDmtZXPYUluHf5OcWPJz
 5XPus/xS9wBgtlM3fldIKNyNO8RsMp6Ocx+PGlICc7zpZiGmCYLl64lAEGPO/bsw
 Smluak1aZIttePeTAHeJJs8izNJ5aR3Wcd3A5gLztQ==
------END ATTRIBUTE CERTIFICATE-----
-]]></artwork>
+-----END ATTRIBUTE CERTIFICATE-----]]></artwork>
        </figure>
 
     </section>
@@ -630,8 +618,7 @@ Smluak1aZIttePeTAHeJJs8izNJ5aR3Wcd3A5gLztQ==
 
     <section title="Non-Conforming Examples">
 
-      <t>
-	This section contains examples for the non-recommended label
+      <t>This section contains examples for the non-recommended label
 	variants described earlier in this document.  As discussed
 	earlier, supporting these are not required and sometimes
 	discouraged.  Still, they can be useful for interoperability
@@ -639,8 +626,7 @@ Smluak1aZIttePeTAHeJJs8izNJ5aR3Wcd3A5gLztQ==
 
       <figure anchor="certexample2"
 	      title="Non-standard 'X509' Certificate Example">
-	<artwork>
------BEGIN X509 CERTIFICATE-----
+	<artwork>-----BEGIN X509 CERTIFICATE-----
 MIICLDCCAdKgAwIBAgIBADAKBggqhkjOPQQDAjB9MQswCQYDVQQGEwJCRTEPMA0G
 A1UEChMGR251VExTMSUwIwYDVQQLExxHbnVUTFMgY2VydGlmaWNhdGUgYXV0aG9y
 aXR5MQ8wDQYDVQQIEwZMZXV2ZW4xJTAjBgNVBAMTHEdudVRMUyBjZXJ0aWZpY2F0
@@ -653,14 +639,12 @@ uQ4RTEiywK87WRcWMGgJB5kX/t2no0MwQTAPBgNVHRMBAf8EBTADAQH/MA8GA1Ud
 DwEB/wQFAwMHBgAwHQYDVR0OBBYEFPC0gf6YEr+1KLlkQAPLzB9mTigDMAoGCCqG
 SM49BAMCA0gAMEUCIDGuwD1KPyG+hRf88MeyMQcqOFZD0TbVleF+UsAGQ4enAiEA
 l4wOuDwKQa+upc8GftXE2C//4mKANBC6It01gUaTIpo=
------END X509 CERTIFICATE-----
-	</artwork>
+-----END X509 CERTIFICATE-----</artwork>
       </figure>
 
       <figure anchor="certexample3"
 	      title="Non-standard 'X.509' Certificate Example">
-	<artwork>
------BEGIN X.509 CERTIFICATE-----
+	<artwork>-----BEGIN X.509 CERTIFICATE-----
 MIICLDCCAdKgAwIBAgIBADAKBggqhkjOPQQDAjB9MQswCQYDVQQGEwJCRTEPMA0G
 A1UEChMGR251VExTMSUwIwYDVQQLExxHbnVUTFMgY2VydGlmaWNhdGUgYXV0aG9y
 aXR5MQ8wDQYDVQQIEwZMZXV2ZW4xJTAjBgNVBAMTHEdudVRMUyBjZXJ0aWZpY2F0
@@ -673,14 +657,12 @@ uQ4RTEiywK87WRcWMGgJB5kX/t2no0MwQTAPBgNVHRMBAf8EBTADAQH/MA8GA1Ud
 DwEB/wQFAwMHBgAwHQYDVR0OBBYEFPC0gf6YEr+1KLlkQAPLzB9mTigDMAoGCCqG
 SM49BAMCA0gAMEUCIDGuwD1KPyG+hRf88MeyMQcqOFZD0TbVleF+UsAGQ4enAiEA
 l4wOuDwKQa+upc8GftXE2C//4mKANBC6It01gUaTIpo=
------END X.509 CERTIFICATE-----
-	</artwork>
+-----END X.509 CERTIFICATE-----</artwork>
       </figure>
 
       <figure anchor="pkcs10example2"
 	      title="Non-standard 'NEW' PKCS #10 Example">
-	<artwork>
------BEGIN NEW CERTIFICATE REQUEST-----
+	<artwork>-----BEGIN NEW CERTIFICATE REQUEST-----
 MIIBWDCCAQcCAQAwTjELMAkGA1UEBhMCU0UxJzAlBgNVBAoTHlNpbW9uIEpvc2Vm
 c3NvbiBEYXRha29uc3VsdCBBQjEWMBQGA1UEAxMNam9zZWZzc29uLm9yZzBOMBAG
 ByqGSM49AgEGBSuBBAAhAzoABLLPSkuXY0l66MbxVJ3Mot5FCFuqQfn6dTs+9/CM
@@ -689,21 +671,18 @@ BgNVHREEETAPgg1qb3NlZnNzb24ub3JnMAwGA1UdEwEB/wQCMAAwDwYDVR0PAQH/
 BAUDAwegADAWBgNVHSUBAf8EDDAKBggrBgEFBQcDATAKBggqhkjOPQQDAgM/ADA8
 AhxBvfhxPFfbBbsE1NoFmCUczOFApEuQVUw3ZP69AhwWXk3dgSUsKnuwL5g/ftAY
 dEQc8B8jAcnuOrfU
------END NEW CERTIFICATE REQUEST-----
-	</artwork>
+-----END NEW CERTIFICATE REQUEST-----</artwork>
       </figure>
 
       <figure anchor="pkcs7example2"
 	      title="Non-standard 'CERTIFICATE CHAIN' Example">
-	<artwork>
------BEGIN CERTIFICATE CHAIN-----
+	<artwork>-----BEGIN CERTIFICATE CHAIN-----
 MIHjBgsqhkiG9w0BCRABF6CB0zCB0AIBADFho18CAQCgGwYJKoZIhvcNAQUMMA4E
 CLfrI6dr0gUWAgITiDAjBgsqhkiG9w0BCRADCTAUBggqhkiG9w0DBwQIZpECRWtz
 u5kEGDCjerXY8odQ7EEEromZJvAurk/j81IrozBSBgkqhkiG9w0BBwEwMwYLKoZI
 hvcNAQkQAw8wJDAUBggqhkiG9w0DBwQI0tCBcU09nxEwDAYIKwYBBQUIAQIFAIAQ
 OsYGYUFdAH0RNc1p4VbKEAQUM2Xo8PMHBoYdqEcsbTodlCFAZH4=
------END CERTIFICATE CHAIN-----
-	</artwork>
+-----END CERTIFICATE CHAIN-----</artwork>
       </figure>
 
     </section>
