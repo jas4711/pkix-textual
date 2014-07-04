@@ -208,7 +208,7 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
 			 
 			 <t>Unlike <xref target="RFC1421">legacy PEM encoding</xref>,
 			 OpenPGP ASCII armor, and the OpenSSH key file format,
-			 PKIX text encoding does NOT define or permit attributes
+			 PKIX text encoding does <spanx style="strong">not</spanx> define or permit attributes
 			 to be encoded alongside the PKIX or CMS data.
 			 Whitespace MAY appear between the pre-encapsulation boundary
 			 and the base64, but generators SHOULD NOT emit such whitespace.</t>
@@ -306,7 +306,7 @@ l4wOuDwKQa+upc8GftXE2C//4mKANBC6It01gUaTIpo=
        common, <spanx style="verb">X.509 CERTIFICATE</spanx> have been used.  Generators
        conforming to this document MUST generate <spanx style="verb">CERTIFICATE</spanx> labels
        and MUST NOT generate <spanx style="verb">X509 CERTIFICATE</spanx> or <spanx style="verb">X.509 CERTIFICATE</spanx>
-       labels. Parsers are NOT RECOMMENDED to treat <spanx style="verb">X509
+       labels. Parsers are NOT RECOMMENDED to treat <spanx style="verb" xml:space="default">X509
        CERTIFICATE</spanx> or <spanx style="verb">X.509 CERTIFICATE</spanx> as equivalent to
        <spanx style="verb">CERTIFICATE</spanx>, but a valid exception may be for backwards
        compatibility (potentially together with a warning).</t>
