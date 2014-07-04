@@ -466,14 +466,15 @@ dvb05OXi5XLPLEtViMwvLVLwSE0sKlFIVHAqSk3MBkkBAJv0Fx0=
 		<section anchor="pkcs8"
 			 title="Text Encoding of PKCS #8 Private Key Info, and One Asymmetric Key">
 
-			<t>
-				The <spanx style="vbare">PrivateKeyInfo</spanx> structure of PKCS #8 Private Key Information Syntax,
-				renamed to <spanx style="vbare">OneAsymmetricKey</spanx> in <xref target="RFC5958" />,
-				is encoded using the <spanx style="verb">PRIVATE KEY</spanx> label.
+			<t>Unencrypted PKCS #8 Private Key Information Syntax structures
+				(<spanx style="vbare">PrivateKeyInfo</spanx>),
+				renamed to Asymmetric Key Packages
+				(<spanx style="vbare">OneAsymmetricKey</spanx>),
+				are encoded using the <spanx style="verb">PRIVATE KEY</spanx> label.
 				The encoded data MUST be a DER
 				encoded ASN.1 <spanx style="verb">PrivateKeyInfo</spanx> structure as described in
 				<xref target="RFC5208" format="none">PKCS #8</xref>,
-				or the <spanx style="verb">OneAsymmetricKey</spanx> structure as described in <xref
+				or a <spanx style="verb">OneAsymmetricKey</spanx> structure as described in <xref
        target="RFC5958"/>. The two are semantically identical, and can be distinguished
 				by version number.
 			</t>
@@ -488,10 +489,10 @@ H0M6xpM2q+53wmsN/eYLdgtjgBd3DBmHtPilCkiFICXyaA8z9LkJ
 		</section>
 		<section anchor="pkcs8enc"
 			 title="Text Encoding of PKCS #8 Encrypted Private Key Info">
-			<t>
-				The <spanx style="vbare">EncryptedPrivateKeyInfo</spanx> structure of PKCS #8 Private Key Information Syntax,
+			<t>Encrypted PKCS #8 Private Key Information Syntax structures
+				(<spanx style="vbare">EncryptedPrivateKeyInfo</spanx>),
 				called the same in <xref target="RFC5958" />,
-				is encoded using the <spanx style="verb">ENCRYPTED PRIVATE KEY</spanx> label.
+				are encoded using the <spanx style="verb">ENCRYPTED PRIVATE KEY</spanx> label.
 				The encoded data MUST be a DER
 				encoded ASN.1 <spanx style="verb">EncryptedPrivateKeyInfo</spanx> structure as described in
 				<xref target="RFC5208" format="none">PKCS #8</xref>
