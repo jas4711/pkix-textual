@@ -12,7 +12,7 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
 
 2014-09-12: The following things need to be done:
 * integrate Dr. Stephen Henson's comments
-* add PUBLIC KEY
+. add PUBLIC KEY
 * add convenience table, including:
   Section # | LABEL | ASN.1 type | ASN.1 module OID | [RFC/reference]
 * add Appendix B that discusses DER expectations, and the reasons why.
@@ -565,7 +565,9 @@ Smluak1aZIttePeTAHeJJs8izNJ5aR3Wcd3A5gLztQ==
 
        <figure anchor="spkiexample" title="Subject Public Key Info">
 	 <artwork><![CDATA[-----BEGIN PUBLIC KEY-----
-PUTDATAHERETHANKSXX
+MHYwEAYHKoZIzj0CAQYFK4EEACIDYgAEn1LlwLN/KBYQRVH6HfIMTzfEqJOVztLe
+kLchp2hi78cCaMY81FBlYs8J9l7krc+M4aBeCGYFjba+hiXttJWPL7ydlE+5UG4U
+Nkn3Eos8EiZByi9DVsyfy9eejh+8AXgp
 -----END PUBLIC KEY-----]]></artwork>
        </figure>
 
