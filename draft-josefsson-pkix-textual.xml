@@ -11,23 +11,30 @@ CryptStringToBinary: http://msdn.microsoft.com/aa380285
 it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the - is a true hyphen, NOT a Unicode non-breaking hyphen!!!
 
 2014-09-12: The following things need to be done:
-* integrate Dr. Stephen Henson's comments
 . add PUBLIC KEY
-* add convenience table, including:
+. add convenience table, including:
   Section # | LABEL | ASN.1 type | ASN.1 module OID | [RFC/reference]
-* add Appendix B that discusses DER expectations, and the reasons why.
-  There are three principal reasons:
-	1. A signature computed over the DER encoding over the main part of the content,
-		so it makes no sense
-	   to provide a recipient with anything other than the DER encoding, so that
-		 the recipient does not have to resort to 'guessing'.
-	2. In practice, cryptographic hashes are computed over the DER encoding
-	  for identification.
-	3. In practice, the content is small.
 * Add a note that these text encodings are not canonicalized forms of the structures,
   so an algorithm purporting to compute hashes over some canonicalized form of
 	a structure SHOULD NOT use these structures. At a minimum, the algorithm
 	needs to decode the base64 content.
+* Integrate Dr. Stephen Henson's comments, by adding an
+  Appendix B that discusses DER expectations, and the reasons why.
+  There are three principal reasons:
+	1. A signature computed over the DER encoding over the main part of the content,
+	   so it makes no sense to provide a recipient
+	   with anything other than the DER encoding, so that
+	   the recipient does not have to resort to 'guessing'.
+	2. In practice, cryptographic hashes are computed over the DER encoding
+	   for identification.
+	3. In practice, the content is small.
+* Remove MUST be DER, etc.
+* Acknowledgement.
+* Add remarks about algorithm agility (namely: all structures in this draft are designed
+  for algorithm agility, the property that different algorithms to achieve the same
+  purpose--such as cryptographic hashing--can be used in different instances of the
+  same structure because the structure contains information that identifies the
+  algorithms that are being used in a particular instance).
 
 -->
 
@@ -45,6 +52,7 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
 <!ENTITY RFC5652 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.5652.xml'>
 <!ENTITY rfc5755 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.5755.xml'>
 <!ENTITY RFC5958 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.5958.xml'>
+<!ENTITY RFC7292 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.7292.xml'>
 <!ENTITY x690 SYSTEM 'http://xml.resource.org/public/rfc/bibxml2/reference.CCITT.X690.2002.xml'>
 ]>
 
@@ -102,11 +110,14 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
 
       <t>
 				This document describes and discusses the text encodings of
-				Public-Key Infrastructure using X.509 (PKIX) Certificates, PKIX
-				Certificate Revocation Lists (CRLs), PKCS #10 Certification
+				the Public-Key Infrastructure using X.509/PKIX Certificates,
+				X.509/PKIX Certificate Revocation Lists (CRLs),
+				PKCS #10 Certification
 				Request Syntax, PKCS #7 structures, Cryptographic Message Syntax (CMS),
-				PKCS #8 Private-Key Information Syntax,
-				and Attribute Certificates.
+				PKCS #8 (renamed to Asymmetric Key Packages)
+				Private-Key Information Syntax (One Asymmetric Key Package) and
+				Encrypted Private-Key Information Syntax structures,
+				X.509/PKIX Attribute Certificates, and Public Keys.
 				The text encodings are well-known, are implemented by several
 				applications and libraries, and are widely deployed.  This
 				document is intended to articulate the de-facto rules that
@@ -124,15 +135,17 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
 
       <t>Several security-related standards used on the Internet
       define data formats that are normally encoded using <xref
-      target="CCITT.X690.2002">Distinguished Encoding Rules
-      (DER)</xref>, which is a binary data format. This document is
-      about text encodings of some of these formats:</t>
+      target="CCITT.X690.2002">the Basic Encoding Rules (BER) or
+			Distinguished Encoding Rules
+      (DER)</xref>, which are binary, octet-oriented encodings.
+			This document is about the text encodings of some of these formats:</t>
 
       <t><list style="numbers">
-				<t><xref target="RFC5280">Internet X.509 Public Key
+				<t>Certificates, Certificate Revocation Lists (CRLs),
+				and Subject Public Key Info structures in
+				<xref target="RFC5280">Internet X.509 Public Key
 				Infrastructure Certificate and Certificate Revocation List
-				(CRL) Profile</xref>, for both Certificates and Certificate
-				Revocation Lists (CRLs).</t>
+				(CRL) Profile</xref>.</t>
 
 				<t><xref target="RFC2986">PKCS #10: Certification Request
 				Syntax</xref>.</t>
@@ -143,10 +156,13 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
 				<t><xref target="RFC5652">Cryptographic Message	Syntax</xref>.
 				</t>
 				<t><xref target="RFC5208">PKCS #8:
-				Private-Key Information Syntax</xref> and
-				One Asymmetric Key (in
-				<xref target="RFC5958">Asymmetric Key Package</xref>).</t>
-				<t><xref target="RFC5755">An Internet Attribute Certificate
+				Private-Key Information Syntax</xref>, renamed to
+				One Asymmetric Key in
+				<xref target="RFC5958">Asymmetric Key Package</xref>,
+				and Encrypted Private-Key Information Syntax
+				in the same standards.</t>
+				<t>Attribute Certificates in
+				<xref target="RFC5755">An Internet Attribute Certificate
 				Profile for Authorization</xref>.</t>
       </list></t>
 
@@ -292,14 +308,36 @@ strictbase64finl ::= *15(4base64char) (4base64char / 3base64char
 base64fullline   ::= 64base64char eol
 
 strictbase64text ::= *base64fullline strictbase64finl]]></artwork></figure>
-    <t>This specification RECOMMENDS that new implementations emit
-		<xref target="abnf-strict-fig">the strict format</xref> specified above.</t>
+			<t>This specification RECOMMENDS that new implementations emit
+				<xref target="abnf-strict-fig">the strict format</xref> specified above.</t>
 		</section>
 
+		<section anchor="guide" title="Guide">
+			<t>For convenience, this table summarizes the structures,
+			encodings, and references in the following sections:</t>
+			<figure anchor="conveniencetable" title="Convenience Guide"><artwork><![CDATA[Sec. Label                  ASN.1 Type              Reference ASN.1 Module
+----+----------------------+-----------------------+---------+-----------
+  5  CERTIFICATE            Certificate             [RFC5280] 1.3.6.1.5.5.7.0.18
+  6  X.509 CRL              CertificateList         [RFC5280] 1.3.6.1.5.5.7.0.18
+  7  CERTIFICATE REQUEST    CertificationRequest    [RFC2986] 1.2.840.113549.1.10.1.1
+  8  PKCS7                  ContentInfo             [RFC2315] 1.2.840.113549.1.7.0.1*
+  9  CMS                    ContentInfo             [RFC5652] 1.2.840.113549.1.9.16.0.24
+ 10  PRIVATE KEY            PrivateKeyInfo ::=      [RFC5208] 1.2.840.113549.1.8.1.1
+                            OneAsymmetricKey        [RFC5958] 1.2.840.113549.1.9.16.0.50
+ 11  ENCRYPTED PRIVATE KEY  EncryptedPrivateKeyInfo [RFC5958] 1.2.840.113549.1.9.16.0.50
+ 12  ATTRIBUTE CERTIFICATE  AttributeCertificate    [RFC5755] 1.3.6.1.5.5.7.0.61
+ 13  PUBLIC KEY             SubjectPublicKeyInfo    [RFC5280] 1.3.6.1.5.5.7.0.18]]></artwork>
+				<postamble>*This OID does not actually appear in
+					<xref target="RFC2315">PKCS #7 v1.5</xref>. It was defined in
+					the ASN.1 module to <xref target="PKCS7v1.6">PKCS #7 v1.6</xref>,
+					and has been carried forward through <xref target="RFC7292">PKCS #12</xref>.
+				</postamble>
+			</figure>
+		</section>
      <section anchor="certificate"
-	      title="Text Encoding of PKIX Certificates">
+	      title="Text Encoding of Certificates">
 <section title="Encoding">
-       <t>PKIX certificates are encoded using the <spanx style="verb">CERTIFICATE</spanx> label.
+       <t>Certificates are encoded using the <spanx style="verb">CERTIFICATE</spanx> label.
        The encoded data MUST be a DER encoded ASN.1 <spanx style="verb">Certificate</spanx>
        structure as described in section 4 of <xref
        target="RFC5280"/>.</t>
@@ -368,9 +406,10 @@ ILwpnZ1izL4MlI9eCSHhVQBHEp2uQdXJB+d5Byg=
 			</section>
 
      <section anchor="crl"
-	      title="Text Encoding of PKIX CRLs">
+	      title="Text Encoding of Certificate Revocation Lists">
 
-       <t>PKIX CRLs are encoded using the <spanx style="verb">X509 CRL</spanx> label.  The
+       <t>Certificate Revocation Lists (CRLs)
+			 are encoded using the <spanx style="verb">X509 CRL</spanx> label.  The
        encoded data MUST be a DER encoded ASN.1 <spanx style="verb">CertificateList</spanx>
        structure as described in Section 5 of <xref
        target="RFC5280"/>.</t>
@@ -621,7 +660,6 @@ Nkn3Eos8EiZByi9DVsyfy9eejh+8AXgp
   <back>
 
     <references title="Normative References">
-
       &rfc2119;
       &rfc2315;
       &rfc2986;
@@ -632,7 +670,6 @@ Nkn3Eos8EiZByi9DVsyfy9eejh+8AXgp
       &rfc5755;
 			&RFC5958;
       &x690;
-
     </references>
 
     <references title="Informative References">
@@ -640,15 +677,29 @@ Nkn3Eos8EiZByi9DVsyfy9eejh+8AXgp
       &rfc1421;
       &rfc2015;
       &rfc4716;
+			&RFC7292;
+
+      <reference anchor="PKCS7v1.6">
+				<front>
+					<title>Extensions and Revisions to PKCS #7 (Version 1.6 Bulletin)</title>
+					<author initials="B." surname="Kaliski" fullname="Burton S. Kaliski Jr., Ph.D."/>
+					<author initials="K." surname="Kingdon" fullname="Kevin W. Kingdon"/>
+					<date month="May" year="1997" />
+				</front>
+				<!-- TODO: is this how URLs are used? What about <reference target="uri"> ? -->
+				<seriesInfo name="WWW"
+				 value="http://www.emc.com/emc-plus/rsa-labs/standards-initiatives/pkcs-7-cryptographic-message-syntax-standar.htm" />
+      </reference>
 
       <reference anchor="X509SG">
-	<front>
-	  <title>X.509 Style Guide</title>
-	  <author initials="P." surname="Gutmann" fullname="P.  Gutmann"/>
-		<date month="October" year="2000" />
-	</front>
-	<seriesInfo name="WWW"
-		    value="http://www.cs.auckland.ac.nz/~pgut001/pubs/x509guide.txt" />
+				<front>
+					<title>X.509 Style Guide</title>
+					<author initials="P." surname="Gutmann" fullname="P. Gutmann"/>
+					<date month="October" year="2000" />
+				</front>
+				<!-- TODO: is this how URLs are used? What about <reference target="uri"> ? -->
+				<seriesInfo name="WWW"
+							value="http://www.cs.auckland.ac.nz/~pgut001/pubs/x509guide.txt" />
       </reference>
 
     </references>
