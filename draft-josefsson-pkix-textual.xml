@@ -10,6 +10,25 @@ CryptStringToBinary: http://msdn.microsoft.com/aa380285
 2014-07-03: updated to use verbatim (spanx verb) styling, and to use xml:space=default in key cases
 it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the - is a true hyphen, NOT a Unicode non-breaking hyphen!!!
 
+2014-09-12: The following things need to be done:
+* integrate Dr. Stephen Henson's comments
+* add PUBLIC KEY
+* add convenience table, including:
+  Section # | LABEL | ASN.1 type | ASN.1 module OID | [RFC/reference]
+* add Appendix B that discusses DER expectations, and the reasons why.
+  There are three principal reasons:
+	1. A signature computed over the DER encoding over the main part of the content,
+		so it makes no sense
+	   to provide a recipient with anything other than the DER encoding, so that
+		 the recipient does not have to resort to 'guessing'.
+	2. In practice, cryptographic hashes are computed over the DER encoding
+	  for identification.
+	3. In practice, the content is small.
+* Add a note that these text encodings are not canonicalized forms of the structures,
+  so an algorithm purporting to compute hashes over some canonicalized form of
+	a structure SHOULD NOT use these structures. At a minimum, the algorithm
+	needs to decode the base64 content.
+
 -->
 
 <!DOCTYPE rfc SYSTEM "rfc2629.dtd" [
@@ -36,7 +55,7 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
 <?rfc comments="yes"?>
 
 <rfc category="std"
-     docName="draft-josefsson-pkix-textual-05"
+     docName="draft-josefsson-pkix-textual-06"
      ipr="trust200902">
 
   <front>
@@ -77,7 +96,7 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
 			</address>
 		</author>
 
-		<date day="3" month="July" year="2014"/>
+		<date day="15" month="September" year="2014"/>
 
     <abstract>
 
@@ -533,6 +552,21 @@ M9axFPXXozEFcer06bj9MCBBCQLtAM7ZXcZjcxyva7xCBDmtZXPYUluHf5OcWPJz
 5XPus/xS9wBgtlM3fldIKNyNO8RsMp6Ocx+PGlICc7zpZiGmCYLl64lAEGPO/bsw
 Smluak1aZIttePeTAHeJJs8izNJ5aR3Wcd3A5gLztQ==
 -----END ATTRIBUTE CERTIFICATE-----]]></artwork>
+       </figure>
+
+    </section>
+		<section anchor="spki"
+	      title="Text Encoding of Subject Public Key Info">
+
+       <t>Public keys are encoded using the <spanx style="verb" xml:space="default">PUBLIC KEY</spanx> label.
+			 The encoded data MUST be a DER encoded
+       ASN.1 <spanx style="verb">SubjectPublicKeyInfo</spanx> structure as described in
+			 Section 4.1.2.7 of <xref target="RFC5280"/>.</t>
+
+       <figure anchor="spkiexample" title="Subject Public Key Info">
+	 <artwork><![CDATA[-----BEGIN PUBLIC KEY-----
+PUTDATAHERETHANKSXX
+-----END PUBLIC KEY-----]]></artwork>
        </figure>
 
     </section>
