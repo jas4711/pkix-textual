@@ -30,7 +30,7 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
 	3. In practice, the content is small.
 . Remove MUST be DER, etc.
 . Acknowledgement.
-* Add remarks about algorithm agility (namely: all structures in this draft are designed
+. Add remarks about algorithm agility (namely: all structures in this draft are designed
   for algorithm agility, the property that different algorithms to achieve the same
   purpose, such as cryptographic hashing, can be used in different instances of the
   same structure because the structure contains information that identifies the
@@ -136,15 +136,15 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
 	     title="Introduction">
 
       <t>Several security-related standards used on the Internet
-      define data formats that are normally encoded using <xref
+      define ASN.1 data formats that are normally encoded using <xref
       target="CCITT.X690.2002">the Basic Encoding Rules (BER) or
 			Distinguished Encoding Rules
       (DER)</xref>, which are binary, octet-oriented encodings.
-			This document is about the text encodings of some of these formats:</t>
+			This document is about the text encodings of these formats:</t>
 
       <t><list style="numbers">
 				<t>Certificates, Certificate Revocation Lists (CRLs),
-				and Subject Public Key Info structures in
+				and Subject Public Key Info structures in the
 				<xref target="RFC5280">Internet X.509 Public Key
 				Infrastructure Certificate and Certificate Revocation List
 				(CRL) Profile</xref>.</t>
@@ -167,9 +167,19 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
 				<xref target="RFC5755">An Internet Attribute Certificate
 				Profile for Authorization</xref>.</t>
       </list></t>
+			
+			<t>Although other formats exist that use the text encoding
+			(or something like it)
+			described in this document, the included formats share
+			a common property: algorithm agility. "Algorithm agility"
+			means that different algorithms to achieve the same
+			purposes&mdash;such as content encryption or
+			integrity protection&mdash;can be used
+			in different instances of the same format because the instance
+			data identifies the algorithms and associated parameters.
+			Weakness in an algorithm does not destroy the utility of the format.</t>
 
-      <t>A disadvantage of a binary data
-      format is that it cannot be interchanged in
+      <t>A disadvantage of a binary data format is that it cannot be interchanged in
       textual transports, such as e-mail or text documents.  One
       advantage with text encodings is that they are easy to modify
       using common text editors; for example,
@@ -245,6 +255,9 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
 				 A conforming parser MAY interpret the contents as another label
 				 type, but ought to be aware of the security implications discussed in
 				 the <xref target="security" format="title" /> section.
+				 Consistent with algorithm agility, the labels
+				 described in this document are not specific
+				 to any particular cryptographic algorithm.
 			 </t>
 			 
 			 <t>Unlike <xref target="RFC1421">legacy PEM encoding</xref>,
