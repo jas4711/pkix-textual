@@ -29,13 +29,14 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
 	   for identification.
 	3. In practice, the content is small.
 . Remove MUST be DER, etc.
-* Acknowledgement.
+. Acknowledgement.
 * Add remarks about algorithm agility (namely: all structures in this draft are designed
   for algorithm agility, the property that different algorithms to achieve the same
   purpose, such as cryptographic hashing, can be used in different instances of the
   same structure because the structure contains information that identifies the
   algorithms that are being used in a particular instance).
 * Fix the overflowing table: maybe remove the ASN.1 modules?
+* Make a smaller certificate (keep it v3 though).
 
 -->
 
@@ -661,7 +662,8 @@ Nkn3Eos8EiZByi9DVsyfy9eejh+8AXgp
 
       <t>Peter Gutmann suggested to document labels for Attribute
       Certificates and PKCS #7 messages, and to add examples for the
-      non-standard variants.</t>
+      non-standard variants. Dr. Stephen Henson suggested distinguishing
+			when BER versus DER are appropriate or necessary.</t>
 
     </section>
 
