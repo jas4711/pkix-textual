@@ -35,7 +35,7 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
   purpose, such as cryptographic hashing, can be used in different instances of the
   same structure because the structure contains information that identifies the
   algorithms that are being used in a particular instance).
-* Fix the overflowing table: maybe remove the ASN.1 modules?
+. Fix the overflowing table: maybe remove the ASN.1 modules?
 * Make a smaller certificate (keep it v3 though).
 
 -->
@@ -334,18 +334,33 @@ strictbase64text ::= *base64fullline strictbase64finl]]></artwork></figure>
 		<section anchor="guide" title="Guide">
 			<t>For convenience, this table summarizes the structures,
 			encodings, and references in the following sections:</t>
-			<figure anchor="conveniencetable" title="Convenience Guide"><artwork><![CDATA[Sec. Label                  ASN.1 Type              Reference ASN.1 Module
-----+----------------------+-----------------------+---------+-----------
-  5  CERTIFICATE            Certificate             [RFC5280] 1.3.6.1.5.5.7.0.18
-  6  X.509 CRL              CertificateList         [RFC5280] 1.3.6.1.5.5.7.0.18
-  7  CERTIFICATE REQUEST    CertificationRequest    [RFC2986] 1.2.840.113549.1.10.1.1
-  8  PKCS7                  ContentInfo             [RFC2315] 1.2.840.113549.1.7.0.1*
-  9  CMS                    ContentInfo             [RFC5652] 1.2.840.113549.1.9.16.0.24
- 10  PRIVATE KEY            PrivateKeyInfo ::=      [RFC5208] 1.2.840.113549.1.8.1.1
-                            OneAsymmetricKey        [RFC5958] 1.2.840.113549.1.9.16.0.50
- 11  ENCRYPTED PRIVATE KEY  EncryptedPrivateKeyInfo [RFC5958] 1.2.840.113549.1.9.16.0.50
- 12  ATTRIBUTE CERTIFICATE  AttributeCertificate    [RFC5755] 1.3.6.1.5.5.7.0.61
- 13  PUBLIC KEY             SubjectPublicKeyInfo    [RFC5280] 1.3.6.1.5.5.7.0.18]]></artwork>
+			<figure anchor="conveniencetable" title="Convenience Guide"><artwork><![CDATA[Sec. Label                  ASN.1 Type              Reference Module
+----+----------------------+-----------------------+---------+----------
+  5  CERTIFICATE            Certificate             [RFC5280] id-pkix1-e
+  6  X.509 CRL              CertificateList         [RFC5280] id-pkix1-e
+  7  CERTIFICATE REQUEST    CertificationRequest    [RFC2986] id-pkcs10
+  8  PKCS7                  ContentInfo             [RFC2315] id-pkcs7*
+  9  CMS                    ContentInfo             [RFC5652] id-cms2004
+ 10  PRIVATE KEY            PrivateKeyInfo ::=      [RFC5208] id-pkcs8
+                            OneAsymmetricKey        [RFC5958] id-aKPV1
+ 11  ENCRYPTED PRIVATE KEY  EncryptedPrivateKeyInfo [RFC5958] id-aKPV1
+ 12  ATTRIBUTE CERTIFICATE  AttributeCertificate    [RFC5755] id-acv2
+ 13  PUBLIC KEY             SubjectPublicKeyInfo    [RFC5280] id-pkix1-e
+
+ ASN.1 Module Object Identifier Value Assignments
+ -----------------------------------------------------------------------
+ id-pkixmod OBJECT IDENTIFIER ::= {iso(1) identified-organization(3)
+            dod(6) internet(1) security(5) mechanisms(5) pkix(7) mod(0)}
+ id-pkix1-e OBJECT IDENTIFIER ::= {id-pkixmod pkix1-explicit(18)}
+ id-acv2    OBJECT IDENTIFIER ::= {id-pkixmod mod-attribute-cert-v2(61)}
+ id-pkcs    OBJECT IDENTIFIER ::= {iso(1) member-body(2) us(840)
+                                   rsadsi(113549) pkcs(1)}
+ id-pkcs10  OBJECT IDENTIFIER ::= {id-pkcs 10 modules(1) pkcs-10(1)}
+ id-pkcs7   OBJECT IDENTIFIER ::= {id-pkcs 7 modules(0) pkcs-7(1)}
+ id-pkcs8   OBJECT IDENTIFIER ::= {id-pkcs 8 modules(1) pkcs-8(1)}
+ id-sm-mod  OBJECT IDENTIFIER ::= {id-pkcs 9 smime(16) modules(0)}
+ id-aKPV1   OBJECT IDENTIFIER ::= {id-sm-mod mod-asymmetricKeyPkgV1(50)}
+ id-cms2004 OBJECT IDENTIFIER ::= {id-sm-mod cms-2004(24)}]]></artwork>
 				<postamble>*This OID does not actually appear in
 					<xref target="RFC2315">PKCS #7 v1.5</xref>. It was defined in
 					the ASN.1 module to <xref target="PKCS7v1.6">PKCS #7 v1.6</xref>,
