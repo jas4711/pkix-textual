@@ -10,34 +10,6 @@ CryptStringToBinary: http://msdn.microsoft.com/aa380285
 2014-07-03: updated to use verbatim (spanx verb) styling, and to use xml:space=default in key cases
 it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the - is a true hyphen, NOT a Unicode non-breaking hyphen!!!
 
-2014-09-12: The following things need to be done:
-. add PUBLIC KEY
-. add convenience table, including:
-  Section # | LABEL | ASN.1 type | ASN.1 module OID | [RFC/reference]
-. Add a note that these text encodings are not canonicalized forms of the structures,
-  so an algorithm purporting to compute hashes over some canonicalized form of
-	a structure SHOULD NOT use these structures. At a minimum, the algorithm
-	needs to decode the base64 content.
-. Integrate Dr. Stephen Henson's comments, by adding an
-  Appendix B that discusses DER expectations, and the reasons why.
-  There are three principal reasons:
-	1. A signature computed over the DER encoding over the main part of the content,
-	   so it makes no sense to provide a recipient
-	   with anything other than the DER encoding, so that
-	   the recipient does not have to resort to 'guessing'.
-	2. In practice, cryptographic hashes are computed over the DER encoding
-	   for identification.
-	3. In practice, the content is small.
-. Remove MUST be DER, etc.
-. Acknowledgement.
-. Add remarks about algorithm agility (namely: all structures in this draft are designed
-  for algorithm agility, the property that different algorithms to achieve the same
-  purpose, such as cryptographic hashing, can be used in different instances of the
-  same structure because the structure contains information that identifies the
-  algorithms that are being used in a particular instance).
-. Fix the overflowing table: maybe remove the ASN.1 modules?
-* Make a smaller certificate (keep it v3 though).
-
 -->
 
 <!DOCTYPE rfc SYSTEM "rfc2629.dtd" [
