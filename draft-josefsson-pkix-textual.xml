@@ -32,7 +32,7 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
 * Acknowledgement.
 * Add remarks about algorithm agility (namely: all structures in this draft are designed
   for algorithm agility, the property that different algorithms to achieve the same
-  purpose--such as cryptographic hashing--can be used in different instances of the
+  purpose, such as cryptographic hashing, can be used in different instances of the
   same structure because the structure contains information that identifies the
   algorithms that are being used in a particular instance).
 
@@ -196,7 +196,7 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
 			going forward. This document also provides common nomenclature
 			for syntax elements, reflecting the evolution of this de-facto standard format.
 			Peter Gutmann's
-      <xref target="X509SG">X.509 Style Guide</xref> contains a
+      <xref target="X.509SG">X.509 Style Guide</xref> contains a
       section "base64 Encoding" that describes the formats and contains
       suggestions similar to what is in this document.</t>
 
@@ -679,27 +679,23 @@ Nkn3Eos8EiZByi9DVsyfy9eejh+8AXgp
       &rfc4716;
 			&RFC7292;
 
-      <reference anchor="PKCS7v1.6">
+      <reference anchor="PKCS7v1.6"
+			 target="http://www.emc.com/emc-plus/rsa-labs/standards-initiatives/pkcs-7-cryptographic-message-syntax-standar.htm">
 				<front>
 					<title>Extensions and Revisions to PKCS #7 (Version 1.6 Bulletin)</title>
 					<author initials="B." surname="Kaliski" fullname="Burton S. Kaliski Jr., Ph.D."/>
 					<author initials="K." surname="Kingdon" fullname="Kevin W. Kingdon"/>
 					<date month="May" year="1997" />
 				</front>
-				<!-- TODO: is this how URLs are used? What about <reference target="uri"> ? -->
-				<seriesInfo name="WWW"
-				 value="http://www.emc.com/emc-plus/rsa-labs/standards-initiatives/pkcs-7-cryptographic-message-syntax-standar.htm" />
       </reference>
 
-      <reference anchor="X509SG">
+      <reference anchor="X.509SG"
+			 target="http://www.cs.auckland.ac.nz/~pgut001/pubs/x509guide.txt">
 				<front>
 					<title>X.509 Style Guide</title>
 					<author initials="P." surname="Gutmann" fullname="P. Gutmann"/>
 					<date month="October" year="2000" />
 				</front>
-				<!-- TODO: is this how URLs are used? What about <reference target="uri"> ? -->
-				<seriesInfo name="WWW"
-							value="http://www.cs.auckland.ac.nz/~pgut001/pubs/x509guide.txt" />
       </reference>
 
     </references>
