@@ -232,7 +232,11 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
 			 as the corresponding
        <spanx style="verb">-----BEGIN </spanx> line.  Parsers MAY disregard the label on the
        <spanx style="verb">-----END </spanx> line instead of signaling an error if there is a
-       label mismatch.</t>
+       label mismatch. There is exactly one space character (<spanx style="vbare">SP</spanx>) separating the
+			 <spanx style="verb">BEGIN</spanx> or <spanx style="verb">END</spanx>
+			 from the label. There are exactly
+			 five hyphen-minus (or dash) characters (<spanx style="vbare">"-"</spanx>)
+			 on both ends of the encapsulation boundaries, no more, no less.</t>
        <t>
 				 The label type implies that the encoded data
 				 follows the specified syntax.  Parsers MUST handle non-conforming
