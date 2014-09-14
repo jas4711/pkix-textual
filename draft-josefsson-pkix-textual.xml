@@ -137,7 +137,7 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
 
       <t>Several security-related standards used on the Internet
       define ASN.1 data formats that are normally encoded using <xref
-      target="CCITT.X690.2002">the Basic Encoding Rules (BER) or
+      target="X.690">the Basic Encoding Rules (BER) or
 			Distinguished Encoding Rules
       (DER)</xref>, which are binary, octet-oriented encodings.
 			This document is about the text encodings of these formats:</t>
@@ -363,7 +363,7 @@ strictbase64text ::= *base64fullline strictbase64finl]]></artwork></figure>
  id-cms2004 OBJECT IDENTIFIER ::= {id-sm-mod cms-2004(24)}]]></artwork>
 				<postamble>*This OID does not actually appear in
 					<xref target="RFC2315">PKCS #7 v1.5</xref>. It was defined in
-					the ASN.1 module to <xref target="PKCS7v1.6">PKCS #7 v1.6</xref>,
+					the ASN.1 module to <xref target="P7v1.6">PKCS #7 v1.6</xref>,
 					and has been carried forward through <xref target="RFC7292">PKCS #12</xref>.
 				</postamble>
 			</figure>
@@ -395,13 +395,19 @@ l4wOuDwKQa+upc8GftXE2C//4mKANBC6It01gUaTIpo=
 -----END CERTIFICATE-----</artwork>
       </figure>
 
-       <t>Historically the label <spanx style="verb">X509 CERTIFICATE</spanx> and also, less
-       common, <spanx style="verb">X.509 CERTIFICATE</spanx> have been used.  Generators
-       conforming to this document MUST generate <spanx style="verb">CERTIFICATE</spanx> labels
-       and MUST NOT generate <spanx style="verb">X509 CERTIFICATE</spanx> or <spanx style="verb">X.509 CERTIFICATE</spanx>
-       labels. Parsers are NOT RECOMMENDED to treat <spanx style="verb" xml:space="default">X509
-       CERTIFICATE</spanx> or <spanx style="verb">X.509 CERTIFICATE</spanx> as equivalent to
-       <spanx style="verb">CERTIFICATE</spanx>, but a valid exception may be for backwards
+       <t>Historically the label
+			 <spanx style="verb">X509 CERTIFICATE</spanx> and also
+			 less commonly <spanx style="verb">X.509 CERTIFICATE</spanx>
+			 have been used.  Generators
+       conforming to this document MUST generate
+			 <spanx style="verb">CERTIFICATE</spanx> labels
+       and MUST NOT generate <spanx style="verb">X509 CERTIFICATE</spanx>
+			 or <spanx style="verb">X.509 CERTIFICATE</spanx>
+       labels. Parsers are NOT RECOMMENDED to treat
+			 <spanx style="verb" xml:space="default">X509
+       CERTIFICATE</spanx> or <spanx style="verb">X.509 CERTIFICATE</spanx>
+			 as equivalent to <spanx style="verb">CERTIFICATE</spanx>,
+			 but a valid exception may be for backwards
        compatibility (potentially together with a warning).</t>
 	</section>		
 				<section title="Explanatory Text">
@@ -645,7 +651,7 @@ Smluak1aZIttePeTAHeJJs8izNJ5aR3Wcd3A5gLztQ==
        ASN.1 <spanx style="verb">SubjectPublicKeyInfo</spanx> structure as described in
 			 Section 4.1.2.7 of <xref target="RFC5280"/>.</t>
 
-       <figure anchor="spkiexample" title="Subject Public Key Info">
+       <figure anchor="spkiexample" title="Subject Public Key Info Example">
 	 <artwork><![CDATA[-----BEGIN PUBLIC KEY-----
 MHYwEAYHKoZIzj0CAQYFK4EEACIDYgAEn1LlwLN/KBYQRVH6HfIMTzfEqJOVztLe
 kLchp2hi78cCaMY81FBlYs8J9l7krc+M4aBeCGYFjba+hiXttJWPL7ydlE+5UG4U
@@ -713,7 +719,20 @@ Nkn3Eos8EiZByi9DVsyfy9eejh+8AXgp
 			&RFC5652;
       &rfc5755;
 			&RFC5958;
-      &x690;
+			<reference anchor="X.690">
+				<front>
+					<title>
+					Information Technology - ASN.1 encoding rules: Specification of Basic Encoding Rules (BER), Canonical Encoding Rules (CER) and Distinguished Encoding Rules (DER)
+					</title>
+					<author>
+					<organization>International Telecommunications Union</organization>
+					</author>
+					<date month="November" year="2008"/>
+				</front>
+				<seriesInfo name="ITU-T" value="Recommendation X.690"/>
+				<seriesInfo name="ISO/IEC" value="8825-1:2008"/>
+			</reference>
+      <!-- &x690; -->
     </references>
 
     <references title="Informative References">
@@ -723,7 +742,7 @@ Nkn3Eos8EiZByi9DVsyfy9eejh+8AXgp
       &rfc4716;
 			&RFC7292;
 
-      <reference anchor="PKCS7v1.6"
+      <reference anchor="P7v1.6"
 			 target="http://www.emc.com/emc-plus/rsa-labs/standards-initiatives/pkcs-7-cryptographic-message-syntax-standar.htm">
 				<front>
 					<title>Extensions and Revisions to PKCS #7 (Version 1.6 Bulletin)</title>
@@ -817,7 +836,7 @@ OsYGYUFdAH0RNc1p4VbKEAQUM2Xo8PMHBoYdqEcsbTodlCFAZH4=
 		<section title="DER Expectations">
 		<t>This appendix is informative. Consult the respective standards
 		 for the normative rules.</t>
-		<t>DER is a restricted profile of BER <xref target="CCITT.X690.2002"/>;
+		<t>DER is a restricted profile of BER <xref target="X.690"/>;
 		thus all DER encodings of data values are BER encodings, but just one
 		of the BER encodings is the DER encoding for a data value.
 		Canonical encoding matters when performing
