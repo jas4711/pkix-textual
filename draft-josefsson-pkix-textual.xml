@@ -28,7 +28,7 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
 	2. In practice, cryptographic hashes are computed over the DER encoding
 	   for identification.
 	3. In practice, the content is small.
-* Remove MUST be DER, etc.
+. Remove MUST be DER, etc.
 * Acknowledgement.
 * Add remarks about algorithm agility (namely: all structures in this draft are designed
   for algorithm agility, the property that different algorithms to achieve the same
@@ -338,8 +338,10 @@ strictbase64text ::= *base64fullline strictbase64finl]]></artwork></figure>
      <section anchor="certificate"
 	      title="Text Encoding of Certificates">
 <section title="Encoding">
-       <t>Certificates are encoded using the <spanx style="verb">CERTIFICATE</spanx> label.
-       The encoded data MUST be a DER encoded ASN.1 <spanx style="verb">Certificate</spanx>
+       <t>Certificates are encoded using the
+			 <spanx style="verb">CERTIFICATE</spanx> label.
+       The encoded data MUST be a BER (DER strongly preferred)
+			 encoded ASN.1 <spanx style="verb">Certificate</spanx>
        structure as described in section 4 of <xref
        target="RFC5280"/>.</t>
 
@@ -410,8 +412,9 @@ ILwpnZ1izL4MlI9eCSHhVQBHEp2uQdXJB+d5Byg=
 	      title="Text Encoding of Certificate Revocation Lists">
 
        <t>Certificate Revocation Lists (CRLs)
-			 are encoded using the <spanx style="verb">X509 CRL</spanx> label.  The
-       encoded data MUST be a DER encoded ASN.1 <spanx style="verb">CertificateList</spanx>
+			 are encoded using the <spanx style="verb">X509 CRL</spanx> label.
+			 The encoded data MUST be a BER (DER strongly preferred)
+			 encoded ASN.1 <spanx style="verb">CertificateList</spanx>
        structure as described in Section 5 of <xref
        target="RFC5280"/>.</t>
 
@@ -446,8 +449,10 @@ c3DGMNR+oUmSjKZ0jIhAYmeLxaPHfQwR
 	      title="Text Encoding of PKCS #10 Certification Request Syntax">
 
        <t>PKCS #10 Certification Requests are encoded using the
-       <spanx style="verb">CERTIFICATE REQUEST</spanx> label.  The encoded data MUST be a DER
-       encoded ASN.1 <spanx style="verb">CertificationRequest</spanx> structure as described in
+       <spanx style="verb">CERTIFICATE REQUEST</spanx> label.
+			 The encoded data MUST be a BER (DER strongly preferred)
+       encoded ASN.1 <spanx style="verb">CertificationRequest</spanx>
+			 structure as described in
        <xref target="RFC2986"/>.</t>
 
        <figure anchor="pkcs10example" title="PKCS #10 Example">
@@ -474,7 +479,8 @@ dEQc8B8jAcnuOrfU
 	      title="Text Encoding of PKCS #7 Cryptographic Message Syntax">
 
        <t>PKCS #7 Cryptographic Message Syntax structures are encoded
-       using the <spanx style="verb">PKCS7</spanx> label.  The encoded data MUST be a DER
+       using the <spanx style="verb">PKCS7</spanx> label.
+			 The encoded data MUST be a BER
        encoded ASN.1 <spanx style="verb">ContentInfo</spanx> structure as described in <xref
        target="RFC2315"/>.</t>
 
@@ -505,7 +511,8 @@ OsYGYUFdAH0RNc1p4VbKEAQUM2Xo8PMHBoYdqEcsbTodlCFAZH4=
 	      title="Text Encoding of Cryptographic Message Syntax">
 
        <t>Cryptographic Message Syntax structures are encoded using
-       the <spanx style="verb">CMS</spanx> label.  The encoded data MUST be a DER encoded ASN.1
+       the <spanx style="verb">CMS</spanx> label.  The encoded data MUST
+			 be a BER encoded ASN.1
        <spanx style="verb">ContentInfo</spanx> structure as described in <xref
        target="RFC5652"/>.</t>
 
@@ -530,7 +537,7 @@ dvb05OXi5XLPLEtViMwvLVLwSE0sKlFIVHAqSk3MBkkBAJv0Fx0=
 				renamed to Asymmetric Key Packages
 				(<spanx style="vbare">OneAsymmetricKey</spanx>),
 				are encoded using the <spanx style="verb">PRIVATE KEY</spanx> label.
-				The encoded data MUST be a DER
+				The encoded data MUST be a BER (DER preferred)
 				encoded ASN.1 <spanx style="verb">PrivateKeyInfo</spanx> structure as described in
 				<xref target="RFC5208" format="none">PKCS #8</xref>,
 				or a <spanx style="verb">OneAsymmetricKey</spanx> structure as described in <xref
@@ -552,7 +559,7 @@ H0M6xpM2q+53wmsN/eYLdgtjgBd3DBmHtPilCkiFICXyaA8z9LkJ
 				(<spanx style="vbare">EncryptedPrivateKeyInfo</spanx>),
 				called the same in <xref target="RFC5958" />,
 				are encoded using the <spanx style="verb">ENCRYPTED PRIVATE KEY</spanx> label.
-				The encoded data MUST be a DER
+				The encoded data MUST be a BER (DER preferred)
 				encoded ASN.1 <spanx style="verb">EncryptedPrivateKeyInfo</spanx> structure as described in
 				<xref target="RFC5208" format="none">PKCS #8</xref>
 				and <xref target="RFC5958"/>.
@@ -572,9 +579,11 @@ QC7k0NNzUHTV9yGDwfqMbw==
 		<section anchor="attrcert"
 	      title="Text Encoding of Attribute Certificates">
 
-       <t>Attribute certificates are encoded using the <spanx style="verb" xml:space="default">ATTRIBUTE
-       CERTIFICATE</spanx> label.  The encoded data MUST be a DER encoded
-       ASN.1 <spanx style="verb">AttributeCertificate</spanx> structure as described in <xref
+       <t>Attribute certificates are encoded using the
+			 <spanx style="verb" xml:space="default">ATTRIBUTE CERTIFICATE</spanx>
+			 label.  The encoded data MUST be a BER (DER strongly preferred) encoded
+       ASN.1 <spanx style="verb">AttributeCertificate</spanx>
+			 structure as described in <xref
        target="RFC5755"/>.</t>
 
        <figure anchor="attrcertexample" title="Attribute Certificate Example">
@@ -599,7 +608,7 @@ Smluak1aZIttePeTAHeJJs8izNJ5aR3Wcd3A5gLztQ==
 	      title="Text Encoding of Subject Public Key Info">
 
        <t>Public keys are encoded using the <spanx style="verb" xml:space="default">PUBLIC KEY</spanx> label.
-			 The encoded data MUST be a DER encoded
+			 The encoded data MUST be a BER (DER preferred) encoded
        ASN.1 <spanx style="verb">SubjectPublicKeyInfo</spanx> structure as described in
 			 Section 4.1.2.7 of <xref target="RFC5280"/>.</t>
 
@@ -776,7 +785,7 @@ OsYGYUFdAH0RNc1p4VbKEAQUM2Xo8PMHBoYdqEcsbTodlCFAZH4=
 		 for the normative rules.</t>
 		<t>DER is a restricted profile of BER <xref target="CCITT.X690.2002"/>;
 		thus all DER encodings of data values are BER encodings, but just one
-		of the BER encodings is the DER encoding for the data value.
+		of the BER encodings is the DER encoding for a data value.
 		Canonical encoding matters when performing
 		cryptographic operations; additionally,
 		canonical encoding has certain efficiency advantages for parsers.
@@ -819,7 +828,7 @@ OsYGYUFdAH0RNc1p4VbKEAQUM2Xo8PMHBoYdqEcsbTodlCFAZH4=
 				 (e.g., more than 16 kilobytes). The parser
 				 ought to be informed of large things up-front in any event,
 				 which is yet another
-				 reason to DER encode the thing in the first place.</postamble>
+				 reason to DER encode these things in the first place.</postamble>
 		 </figure></t>
 		</section>
   </back>
