@@ -14,11 +14,11 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
 . add PUBLIC KEY
 . add convenience table, including:
   Section # | LABEL | ASN.1 type | ASN.1 module OID | [RFC/reference]
-* Add a note that these text encodings are not canonicalized forms of the structures,
+. Add a note that these text encodings are not canonicalized forms of the structures,
   so an algorithm purporting to compute hashes over some canonicalized form of
 	a structure SHOULD NOT use these structures. At a minimum, the algorithm
 	needs to decode the base64 content.
-* Integrate Dr. Stephen Henson's comments, by adding an
+. Integrate Dr. Stephen Henson's comments, by adding an
   Appendix B that discusses DER expectations, and the reasons why.
   There are three principal reasons:
 	1. A signature computed over the DER encoding over the main part of the content,
@@ -35,6 +35,7 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
   purpose, such as cryptographic hashing, can be used in different instances of the
   same structure because the structure contains information that identifies the
   algorithms that are being used in a particular instance).
+* Fix the overflowing table: maybe remove the ASN.1 modules?
 
 -->
 
@@ -619,23 +620,23 @@ Nkn3Eos8EiZByi9DVsyfy9eejh+8AXgp
       sources, thus parsers must be prepared to handle unexpected data
       without causing security vulnerabilities.</t>
 
-      <t>Ambiguities are introduced by having more than one canonical
-			encoding of the same data.
-			The first ambiguity is introduced by
-      permitting the text encoded representation instead of the binary
-      DER encoding, but further ambiguities arise when multiple labels
+      <t>Implementers building implementations that rely on canonical
+      representation or the ability to fingerprint a particular data
+      object need to understand that this
+			Internet-Draft does not define canonical encodings.
+			The first ambiguity is introduced by permitting the
+			text-encoded representation
+			instead of the binary BER or DER encodings, but further
+			ambiguities arise when multiple labels
       are treated as similar.
 			Variations of whitespace
       and non-base64 alphabetic characters can create further
-      ambiguities.  Implementations that rely on canonical
-      representation or the ability to fingerprint a particular data
-      format need to understand that this
-			Internet-Draft does not define canonical encodings.
+      ambiguities. Data encoding
+      ambiguities also create opportunities for side channels.
 			If canonical encodings
 			are desired, the encoded structure must be decoded and processed
 			into a canonical form (namely, DER encoding).
-			Data encoding
-      ambiguities also create opportunities for side channels.</t>
+			</t>
 
     </section>
 
@@ -770,7 +771,56 @@ OsYGYUFdAH0RNc1p4VbKEAQUM2Xo8PMHBoYdqEcsbTodlCFAZH4=
       </figure>
 
     </section>
-
+		<section title="DER Expectations">
+		<t>This appendix is informative. Consult the respective standards
+		 for the normative rules.</t>
+		<t>DER is a restricted profile of BER <xref target="CCITT.X690.2002"/>;
+		thus all DER encodings of data values are BER encodings, but just one
+		of the BER encodings is the DER encoding for the data value.
+		Canonical encoding matters when performing
+		cryptographic operations; additionally,
+		canonical encoding has certain efficiency advantages for parsers.
+		There are three principal reasons to do encode with DER:
+		<list style="numbers">
+			<t>A digital signature is (supposed to be) computed over
+			 the DER encoding of the semantic content,
+			 so providing anything other than
+			 the DER encoding is senseless. (In practice, an implementer
+			 might choose to have a parser parse the data as-is,
+			 but this practice amounts to guesswork.)</t>
+			<t>In practice, cryptographic hashes are computed over the DER
+			 encoding for identification.</t>
+			<t>In practice, the content is small. DER always encodes
+			data values in definite length form (where the length is stated
+			at the beginning of the encoding); thus, a parser can anticipate
+			memory or resource usage up-front.</t>
+		</list></t>
+		<t><xref target="why-use-DER" /> matches the structures in this document
+		 with the particular reasons for DER encoding:
+		 <figure anchor="why-use-DER" title="Guide for DER Encoding">
+		 <artwork align="center"><![CDATA[Sec. Label                  Reasons
+----+----------------------+-------
+  5  CERTIFICATE            1  2 ~3
+  6  X.509 CRL              1
+  7  CERTIFICATE REQUEST    1    ~3
+  8  PKCS7                  *
+  9  CMS                    *
+ 10  PRIVATE KEY                  3
+ 11  ENCRYPTED PRIVATE KEY        3
+ 12  ATTRIBUTE CERTIFICATE  1    ~3
+ 13  PUBLIC KEY                2  3]]></artwork>
+ 				<postamble>*Cryptographic Message Syntax is designed for
+				 content of any length;
+				 indefinite length encoding enables one-pass processing (streaming) when
+				 generating the encoding.
+				 Only certain parts, namely signed and authenticated attributes,
+				 need to be DER encoded.<vspace/>~Although not always "small",
+				 these encoded structures should not be particularly "large"
+				 (e.g., more than 16 kilobytes). The parser
+				 ought to be informed of large things up-front in any event,
+				 which is yet another
+				 reason to DER encode the thing in the first place.</postamble>
+		 </figure></t>
+		</section>
   </back>
-
 </rfc>
