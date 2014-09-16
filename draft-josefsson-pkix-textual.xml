@@ -37,13 +37,13 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
 <?rfc comments="yes"?>
 
 <rfc category="std"
-     docName="draft-josefsson-pkix-textual-06"
+     docName="draft-josefsson-pkix-textual-06.1"
      ipr="trust200902">
 
   <front>
 
     <title abbrev="pkix-textual">
-      Text Encodings of PKIX and CMS Structures
+      Text Encodings of PKIX, PKCS, and CMS Structures
     </title>
 
     <author initials="S." surname="Josefsson" fullname="Simon Josefsson">
@@ -86,7 +86,7 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
 				This document describes and discusses the text encodings of
 				the Public-Key Infrastructure X.509 (PKIX),
 				Public-Key Cryptography Standards (PKCS), and
-				Cryptographic Message Syntax (CMS),
+				Cryptographic Message Syntax (CMS).
 				The text encodings are well-known, are implemented by several
 				applications and libraries, and are widely deployed.  This
 				document is intended to articulate the de-facto rules that
@@ -166,7 +166,7 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
 				<xref target="RFC4716">OpenSSH Key File Format</xref>.
 			</t>
 			<t>For reasons that basically boil down to non-coordination
-			or inattention, many PKIX and
+			or inattention, many PKIX, PKCS, and
 			CMS libraries implement a text encoding
 			that is similar to&mdash;but not identical with&mdash;PEM encoding.
 			This document specifies the "PKIX text encoding" format,
@@ -339,7 +339,7 @@ strictbase64text ::= *base64fullline strictbase64finl]]></artwork></figure>
      <section anchor="certificate"
 	      title="Text Encoding of Certificates">
 <section title="Encoding">
-       <t>Certificates are encoded using the
+       <t>Public-key certificates are encoded using the
 			 <spanx style="verb" xml:space="preserve">CERTIFICATE</spanx> label.
        The encoded data MUST be a BER (DER strongly preferred)
 			 encoded ASN.1 <spanx style="verb" xml:space="preserve">Certificate</spanx>
