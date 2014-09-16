@@ -15,17 +15,13 @@ Expires: March 19, 2015                                    Penango, Inc.
 Abstract
 
    This document describes and discusses the text encodings of the
-   Public-Key Infrastructure using X.509/PKIX Certificates, X.509/PKIX
-   Certificate Revocation Lists (CRLs), PKCS #10 Certification Request
-   Syntax, PKCS #7 structures, Cryptographic Message Syntax (CMS), PKCS
-   #8 (renamed to Asymmetric Key Packages) Private-Key Information
-   Syntax (One Asymmetric Key Package) and Encrypted Private-Key
-   Information Syntax structures, X.509/PKIX Attribute Certificates, and
-   Public Keys.  The text encodings are well-known, are implemented by
-   several applications and libraries, and are widely deployed.  This
-   document is intended to articulate the de-facto rules that existing
-   implementations operate by, and to give recommendations that will
-   promote interoperability going forward.
+   Public-Key Infrastructure X.509 (PKIX), Public-Key Cryptography
+   Standards (PKCS), and Cryptographic Message Syntax (CMS), The text
+   encodings are well-known, are implemented by several applications and
+   libraries, and are widely deployed.  This document is intended to
+   articulate the de-facto rules that existing implementations operate
+   by, and to give recommendations that will promote interoperability
+   going forward.
 
 Status of This Memo
 
@@ -49,7 +45,11 @@ Copyright Notice
    Copyright (c) 2014 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
-
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents
+   (http://trustee.ietf.org/license-info) in effect on the date of
+   publication of this document.  Please review these documents
+   carefully, as they describe your rights and restrictions with respect
 
 
 
@@ -58,11 +58,6 @@ Josefsson & Leonard      Expires March 19, 2015                 [Page 1]
 Internet-Draft                pkix-textual                September 2014
 
 
-   This document is subject to BCP 78 and the IETF Trust's Legal
-   Provisions Relating to IETF Documents
-   (http://trustee.ietf.org/license-info) in effect on the date of
-   publication of this document.  Please review these documents
-   carefully, as they describe your rights and restrictions with respect
    to this document.  Code Components extracted from this document must
    include Simplified BSD License text as described in Section 4.e of
    the Trust Legal Provisions and are provided without warranty as
@@ -73,9 +68,9 @@ Table of Contents
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
    2.  General Considerations  . . . . . . . . . . . . . . . . . . .   4
    3.  ABNF  . . . . . . . . . . . . . . . . . . . . . . . . . . . .   5
-   4.  Guide . . . . . . . . . . . . . . . . . . . . . . . . . . . .   7
+   4.  Guide . . . . . . . . . . . . . . . . . . . . . . . . . . . .   6
    5.  Text Encoding of Certificates . . . . . . . . . . . . . . . .   7
-     5.1.  Encoding  . . . . . . . . . . . . . . . . . . . . . . . .   8
+     5.1.  Encoding  . . . . . . . . . . . . . . . . . . . . . . . .   7
      5.2.  Explanatory Text  . . . . . . . . . . . . . . . . . . . .   8
      5.3.  File Extension  . . . . . . . . . . . . . . . . . . . . .   9
    6.  Text Encoding of Certificate Revocation Lists . . . . . . . .   9
@@ -105,7 +100,12 @@ Table of Contents
    binary, octet-oriented encodings.  This document is about the text
    encodings of these formats:
 
+   1.  Certificates, Certificate Revocation Lists (CRLs), and Subject
+       Public Key Info structures in the Internet X.509 Public Key
+       Infrastructure Certificate and Certificate Revocation List (CRL)
+       Profile [RFC5280].
 
+   2.  PKCS #10: Certification Request Syntax [RFC2986].
 
 
 
@@ -113,13 +113,6 @@ Josefsson & Leonard      Expires March 19, 2015                 [Page 2]
 
 Internet-Draft                pkix-textual                September 2014
 
-
-   1.  Certificates, Certificate Revocation Lists (CRLs), and Subject
-       Public Key Info structures in the Internet X.509 Public Key
-       Infrastructure Certificate and Certificate Revocation List (CRL)
-       Profile [RFC5280].
-
-   2.  PKCS #10: Certification Request Syntax [RFC2986].
 
    3.  PKCS #7: Cryptographic Message Syntax [RFC2315].
 
@@ -162,6 +155,13 @@ Internet-Draft                pkix-textual                September 2014
    document specifies the "PKIX text encoding" format, articulates the
    de-facto rules that most implementations operate by, and provides
    recommendations that will promote interoperability going forward.
+   This document also provides common nomenclature for syntax elements,
+   reflecting the evolution of this de-facto standard format.  Peter
+   Gutmann's X.509 Style Guide [X.509SG] contains a section "base64
+   Encoding" that describes the formats and contains suggestions similar
+   to what is in this document.
+
+
 
 
 
@@ -169,12 +169,6 @@ Josefsson & Leonard      Expires March 19, 2015                 [Page 3]
 
 Internet-Draft                pkix-textual                September 2014
 
-
-   This document also provides common nomenclature for syntax elements,
-   reflecting the evolution of this de-facto standard format.  Peter
-   Gutmann's X.509 Style Guide [X.509SG] contains a section "base64
-   Encoding" that describes the formats and contains suggestions similar
-   to what is in this document.
 
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
@@ -218,6 +212,12 @@ Internet-Draft                pkix-textual                September 2014
    Whitespace MAY appear between the pre-encapsulation boundary and the
    base64, but generators SHOULD NOT emit such whitespace.
 
+   Files MAY contain multiple PKIX text encoding instances.  This is
+   used, for example, when a file contains several certificates.
+   Whether the instances are ordered or unordered depends on the
+   context.
+
+
 
 
 
@@ -225,11 +225,6 @@ Josefsson & Leonard      Expires March 19, 2015                 [Page 4]
 
 Internet-Draft                pkix-textual                September 2014
 
-
-   Files MAY contain multiple PKIX text encoding instances.  This is
-   used, for example, when a file contains several certificates.
-   Whether the instances are ordered or unordered depends on the
-   context.
 
    Generators MUST wrap the base64 encoded lines so that each line
    consists of exactly 64 characters except for the final line which
@@ -240,47 +235,6 @@ Internet-Draft                pkix-textual                September 2014
 3.  ABNF
 
    The ABNF of the PKIX text encoding is:
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Josefsson & Leonard      Expires March 19, 2015                 [Page 5]
-
-Internet-Draft                pkix-textual                September 2014
-
 
   pkixmsg    ::= preeb
                  *eolWSP
@@ -317,6 +271,17 @@ Internet-Draft                pkix-textual                September 2014
 
                               Figure 1: ABNF
 
+
+
+
+
+
+
+Josefsson & Leonard      Expires March 19, 2015                 [Page 5]
+
+Internet-Draft                pkix-textual                September 2014
+
+
    pkixmsgstrict    ::= preeb
                         strictbase64text
                         posteb
@@ -330,14 +295,6 @@ Internet-Draft                pkix-textual                September 2014
 
                           Figure 2: ABNF (Strict)
 
-
-
-
-Josefsson & Leonard      Expires March 19, 2015                 [Page 6]
-
-Internet-Draft                pkix-textual                September 2014
-
-
    This specification RECOMMENDS that new implementations emit the
    strict format (Figure 2) specified above.
 
@@ -345,6 +302,41 @@ Internet-Draft                pkix-textual                September 2014
 
    For convenience, this table summarizes the structures, encodings, and
    references in the following sections:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Josefsson & Leonard      Expires March 19, 2015                 [Page 6]
+
+Internet-Draft                pkix-textual                September 2014
+
 
 Sec. Label                  ASN.1 Type              Reference Module
 ----+----------------------+-----------------------+---------+----------
@@ -382,6 +374,14 @@ Sec. Label                  ASN.1 Type              Reference Module
 
 5.  Text Encoding of Certificates
 
+5.1.  Encoding
+
+   Certificates are encoded using the "CERTIFICATE" label.  The encoded
+   data MUST be a BER (DER strongly preferred) encoded ASN.1
+   "Certificate" structure as described in section 4 of [RFC5280].
+
+
+
 
 
 
@@ -393,12 +393,6 @@ Josefsson & Leonard      Expires March 19, 2015                 [Page 7]
 
 Internet-Draft                pkix-textual                September 2014
 
-
-5.1.  Encoding
-
-   Certificates are encoded using the "CERTIFICATE" label.  The encoded
-   data MUST be a BER (DER strongly preferred) encoded ASN.1
-   "Certificate" structure as described in section 4 of [RFC5280].
 
    -----BEGIN CERTIFICATE-----
    MIICLDCCAdKgAwIBAgIBADAKBggqhkjOPQQDAjB9MQswCQYDVQQGEwJCRTEPMA0G
@@ -432,6 +426,12 @@ Internet-Draft                pkix-textual                September 2014
    If emitted, such text SHOULD be related to the certificate, such as
    providing a textual representation of key data elements in the
    certificate.
+
+
+
+
+
+
 
 
 
@@ -532,9 +532,9 @@ Internet-Draft                pkix-textual                September 2014
 
 7.  Text Encoding of PKCS #10 Certification Request Syntax
 
-   PKCS #10 Certification Requests are encoded using the "CERTIFICATE
-   REQUEST" label.  The encoded data MUST be a BER (DER strongly
-   preferred) encoded ASN.1 "CertificationRequest" structure as
+   PKCS #10 Certification Requests are encoded using the
+   "CERTIFICATE REQUEST" label.  The encoded data MUST be a BER (DER
+   strongly preferred) encoded ASN.1 "CertificationRequest" structure as
    described in [RFC2986].
 
    -----BEGIN CERTIFICATE REQUEST-----
@@ -913,8 +913,8 @@ Appendix B.  DER Expectations
    1.  A digital signature is (supposed to be) computed over the DER
        encoding of the semantic content, so providing anything other
        than the DER encoding is senseless.  (In practice, an implementer
-       might choose to have a parser parse the data as-is, but this
-       practice amounts to guesswork.)
+       might choose to have an implementation parse and digest the data
+       as-is, but this practice amounts to guesswork.)
 
    2.  In practice, cryptographic hashes are computed over the DER
        encoding for identification.
