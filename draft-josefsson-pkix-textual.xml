@@ -196,7 +196,7 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
        target="RFC4648">base64-encoded</xref> data.  Data before the
        <spanx style="verb" xml:space="preserve">-----BEGIN </spanx> and after the
 			 <spanx style="verb" xml:space="preserve">-----END </spanx> encapsulation boundaries
-       are permitted and MUST NOT cause parsers to malfunction.
+       are permitted and parsers MUST NOT malfunction when processing such data.
        Furthermore, parsers MUST ignore whitespace and other
        non-base64 characters and MUST handle different newline
        conventions.</t>
