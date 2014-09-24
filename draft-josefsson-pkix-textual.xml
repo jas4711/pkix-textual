@@ -37,13 +37,13 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
 <?rfc comments="yes"?>
 
 <rfc category="std"
-     docName="draft-josefsson-pkix-textual-06.1"
+     docName="draft-josefsson-pkix-textual-07"
      ipr="trust200902">
 
   <front>
 
     <title abbrev="pkix-textual">
-      Text Encodings of PKIX, PKCS, and CMS Structures
+      Textual Encodings of PKIX, PKCS, and CMS Structures
     </title>
 
     <author initials="S." surname="Josefsson" fullname="Simon Josefsson">
@@ -78,20 +78,20 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
 			</address>
 		</author>
 
-		<date day="15" month="September" year="2014"/>
+		<date day="24" month="September" year="2014"/>
 
     <abstract>
 
       <t>
-				This document describes and discusses the text encodings of
+				This document describes and discusses the textual encodings of
 				the Public-Key Infrastructure X.509 (PKIX),
 				Public-Key Cryptography Standards (PKCS), and
 				Cryptographic Message Syntax (CMS).
-				The text encodings are well-known, are implemented by several
+				The textual encodings are well-known, are implemented by several
 				applications and libraries, and are widely deployed.  This
 				document is intended to articulate the de-facto rules that
 				existing implementations operate by, and to give recommendations
-				that will promote interoperability going forward.</t>
+				that will promote interoperability.</t>
 
     </abstract>
 
@@ -107,7 +107,7 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
       target="X.690">the Basic Encoding Rules (BER) or
 			Distinguished Encoding Rules
       (DER)</xref>, which are binary, octet-oriented encodings.
-			This document is about the text encodings of these formats:</t>
+			This document is about the textual encoding of the following formats:</t>
 
       <t><list style="numbers">
 				<t>Certificates, Certificate Revocation Lists (CRLs),
@@ -135,7 +135,7 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
 				Profile for Authorization</xref>.</t>
       </list></t>
 			
-			<t>Although other formats exist that use the text encoding
+			<t>Although other formats exist that use the textual encoding
 			(or something like it)
 			described in this document, the included formats share
 			a common property: algorithm agility. "Algorithm agility"
@@ -148,7 +148,7 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
 
       <t>A disadvantage of a binary data format is that it cannot be interchanged in
       textual transports, such as e-mail or text documents.  One
-      advantage with text encodings is that they are easy to modify
+      advantage with text-based encodings is that they are easy to modify
       using common text editors; for example,
       a user may concatenate several certificates to form a certificate
       chain with copy-and-paste operations.</t>
@@ -167,9 +167,9 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
 			</t>
 			<t>For reasons that basically boil down to non-coordination
 			or inattention, many PKIX, PKCS, and
-			CMS libraries implement a text encoding
+			CMS libraries implement a text-based encoding
 			that is similar to&mdash;but not identical with&mdash;PEM encoding.
-			This document specifies the "PKIX text encoding" format,
+			This document specifies the <spanx style="emph">textual encoding</spanx> format,
 			articulates the de-facto rules that most implementations operate by,
 			and provides recommendations that will promote interoperability
 			going forward. This document also provides common nomenclature
@@ -189,7 +189,7 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
      <section anchor="general"
 	      title="General Considerations">
 
-       <t>PKIX text encoding begins with a line starting with
+       <t>Textual encoding begins with a line starting with
        <spanx style="verb" xml:space="preserve">-----BEGIN </spanx> and ends with a line starting with
 			 <spanx style="verb" xml:space="preserve">-----END </spanx>.
        Between these lines, or "encapsulation boundaries", are <xref
@@ -213,7 +213,7 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
        label mismatch. There is exactly one space character (<spanx style="vbare" xml:space="preserve">SP</spanx>) separating the
 			 <spanx style="verb" xml:space="preserve">BEGIN</spanx> or <spanx style="verb" xml:space="preserve">END</spanx>
 			 from the label. There are exactly
-			 five hyphen-minus (or dash) characters (<spanx style="vbare" xml:space="preserve">"-"</spanx>)
+			 five hyphen-minus (or dash) characters (<spanx style="verb" xml:space="preserve">-</spanx>)
 			 on both ends of the encapsulation boundaries, no more, no less.</t>
        <t>
 				 The label type implies that the encoded data
@@ -230,12 +230,12 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
 			 
 			 <t>Unlike <xref target="RFC1421">legacy PEM encoding</xref>,
 			 OpenPGP ASCII armor, and the OpenSSH key file format,
-			 PKIX text encoding does <spanx style="strong">not</spanx> define or permit attributes
+			 textual encoding does <spanx style="strong">not</spanx> define or permit attributes
 			 to be encoded alongside the PKIX or CMS data.
 			 Whitespace MAY appear between the pre-encapsulation boundary
 			 and the base64, but generators SHOULD NOT emit such whitespace.</t>
 			 
-			 <t>Files MAY contain multiple PKIX text encoding instances.
+			 <t>Files MAY contain multiple textual encoding instances.
 			 This is used, for example, when a file
        contains several certificates.  Whether the instances are
        ordered or unordered depends on the context.</t>
@@ -250,7 +250,7 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
      </section>
 
 		<section anchor="abnf" title="ABNF">
-			<t>The ABNF of the PKIX text encoding is:</t>
+			<t>The ABNF of the textual encoding is:</t>
 			<figure anchor="abnf-fig" title="ABNF">
 				<artwork><![CDATA[pkixmsg    ::= preeb
                *eolWSP
@@ -337,7 +337,7 @@ strictbase64text ::= *base64fullline strictbase64finl]]></artwork></figure>
 			</figure>
 		</section>
      <section anchor="certificate"
-	      title="Text Encoding of Certificates">
+	      title="Textual Encoding of Certificates">
 <section title="Encoding">
        <t>Public-key certificates are encoded using the
 			 <spanx style="verb" xml:space="preserve">CERTIFICATE</spanx> label.
@@ -401,22 +401,22 @@ ILwpnZ1izL4MlI9eCSHhVQBHEp2uQdXJB+d5Byg=
 -----END CERTIFICATE-----]]></artwork></figure>
 				</section>
 				<section title="File Extension">
-					<t>Although text encodings of PKIX structures can occur
-					anywhere, many tools are known to offer an option to encode
-					PKIX structures in this text encoding.
+					<t>Although textual encodings of PKIX structures can occur
+					anywhere, many tools are known to offer an option to output
+					this encoding when serializing PKIX structures.
 					To promote interoperability and to separate DER encodings
-					from text encodings,
+					from textual encodings,
 					This Internet-Draft RECOMMENDS that the extension
 					<spanx style="verb" xml:space="preserve">.crt</spanx>
-					be used for this text encoding.
+					be used for the textual encoding of a certificate.
 				  Implementations should be aware that in spite of this recommendation,
-				  many tools still default to encode certificates in this text encoding
+				  many tools still default to encode certificates in this textual encoding
 				  with the extension <spanx style="verb" xml:space="preserve">.cer</spanx>.</t>
 				</section>
 			</section>
 
      <section anchor="crl"
-	      title="Text Encoding of Certificate Revocation Lists">
+	      title="Textual Encoding of Certificate Revocation Lists">
 
        <t>Certificate Revocation Lists (CRLs)
 			 are encoded using the <spanx style="verb" xml:space="preserve">X509 CRL</spanx> label.
@@ -453,7 +453,7 @@ c3DGMNR+oUmSjKZ0jIhAYmeLxaPHfQwR
      </section>
 
      <section anchor="crs"
-	      title="Text Encoding of PKCS #10 Certification Request Syntax">
+	      title="Textual Encoding of PKCS #10 Certification Request Syntax">
 
        <t>PKCS #10 Certification Requests are encoded using the
        <spanx style="verb" xml:space="preserve">CERTIFICATE REQUEST</spanx> label.
@@ -483,7 +483,7 @@ dEQc8B8jAcnuOrfU
 		</section>
 
      <section anchor="pkcs7"
-	      title="Text Encoding of PKCS #7 Cryptographic Message Syntax">
+	      title="Textual Encoding of PKCS #7 Cryptographic Message Syntax">
 
        <t>PKCS #7 Cryptographic Message Syntax structures are encoded
        using the <spanx style="verb" xml:space="preserve">PKCS7</spanx> label.
@@ -515,7 +515,7 @@ OsYGYUFdAH0RNc1p4VbKEAQUM2Xo8PMHBoYdqEcsbTodlCFAZH4=
     </section>
 
      <section anchor="cms"
-	      title="Text Encoding of Cryptographic Message Syntax">
+	      title="Textual Encoding of Cryptographic Message Syntax">
 
        <t>Cryptographic Message Syntax structures are encoded using
        the <spanx style="verb" xml:space="preserve">CMS</spanx> label.  The encoded data MUST
@@ -537,7 +537,7 @@ dvb05OXi5XLPLEtViMwvLVLwSE0sKlFIVHAqSk3MBkkBAJv0Fx0=
     </section>
 
 		<section anchor="pkcs8"
-			 title="Text Encoding of PKCS #8 Private Key Info, and One Asymmetric Key">
+			 title="Textual Encoding of PKCS #8 Private Key Info, and One Asymmetric Key">
 
 			<t>Unencrypted PKCS #8 Private Key Information Syntax structures
 				(<spanx style="vbare" xml:space="preserve">PrivateKeyInfo</spanx>),
@@ -561,7 +561,7 @@ H0M6xpM2q+53wmsN/eYLdgtjgBd3DBmHtPilCkiFICXyaA8z9LkJ
 			</figure>
 		</section>
 		<section anchor="pkcs8enc"
-			 title="Text Encoding of PKCS #8 Encrypted Private Key Info">
+			 title="Textual Encoding of PKCS #8 Encrypted Private Key Info">
 			<t>Encrypted PKCS #8 Private Key Information Syntax structures
 				(<spanx style="vbare" xml:space="preserve">EncryptedPrivateKeyInfo</spanx>),
 				called the same in <xref target="RFC5958" />,
@@ -584,7 +584,7 @@ QC7k0NNzUHTV9yGDwfqMbw==
 		</section>
 
 		<section anchor="attrcert"
-	      title="Text Encoding of Attribute Certificates">
+	      title="Textual Encoding of Attribute Certificates">
 
        <t>Attribute certificates are encoded using the
 			 <spanx style="verb" xml:space="preserve">ATTRIBUTE CERTIFICATE</spanx>
@@ -612,7 +612,7 @@ Smluak1aZIttePeTAHeJJs8izNJ5aR3Wcd3A5gLztQ==
 
     </section>
 		<section anchor="spki"
-	      title="Text Encoding of Subject Public Key Info">
+	      title="Textual Encoding of Subject Public Key Info">
 
        <t>Public keys are encoded using the <spanx style="verb" xml:space="preserve">PUBLIC KEY</spanx> label.
 			 The encoded data MUST be a BER (DER preferred) encoded
