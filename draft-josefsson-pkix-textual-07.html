@@ -50,10 +50,18 @@
 	  }
 	  body {
 	  color: black;
-	  font-family: verdana, helvetica, arial, sans-serif;
+	  font-family: Mayberry Pro, Open Sans, verdana, helvetica, arial, sans-serif;
 	  font-size: 10pt;
 	  max-width: 55em;
 	  
+	  }
+	  samp {
+	  background-color: rgb(242, 242, 255);
+	  border: 1px solid #ddd;
+	  padding-left: 2px;
+	  padding-right: 2px;
+	  font-family: Cousine, Inconsolata, Consolas, monospace;
+	  white-space: pre;
 	  }
 	  cite {
 	  font-style: normal;
@@ -122,6 +130,7 @@
 	  margin-left: 3em;
 	  background-color: lightyellow;
 	  padding: .25em;
+	  font-family: Cousine, Inconsolata, Consolas, monospace;
 	  }
 	  pre.text2 {
 	  border-style: dotted;
@@ -343,16 +352,16 @@
 		   content: "Internet-Draft"; 
 	  } 
 	  @top-right {
-		   content: "December 2010"; 
+		   content: "September 2014"; 
 	  } 
 	  @top-center {
-		   content: "Abbreviated Title";
+		   content: "pkix-textual";
 	  } 
 	  @bottom-left {
-		   content: "Doe"; 
+		   content: "Josefsson & Leonard"; 
 	  } 
 	  @bottom-center {
-		   content: "Expires June 2011"; 
+		   content: "Expires March 2015"; 
 	  } 
 	  @bottom-right {
 		   content: "[Page " counter(page) "]"; 
@@ -520,26 +529,26 @@
       <a href="#X.509SG">X.509 Style Guide</a> <cite title="NONE">[X.509SG]</cite> contains a section "base64 Encoding" that describes the formats and contains suggestions similar to what is in this document.</p>
 <p id="rfc.section.1.p.7">The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in <a href="#RFC2119">RFC 2119</a> <cite title="NONE">[RFC2119]</cite>.</p>
 <h1 id="rfc.section.2"><a href="#rfc.section.2">2.</a> <a href="#general" id="general">General Considerations</a></h1>
-<p id="rfc.section.2.p.1">Textual encoding begins with a line starting with <samp style="white-space: pre-wrap">-----BEGIN </samp> and ends with a line starting with
-			 <samp style="white-space: pre-wrap">-----END </samp>.
-       Between these lines, or "encapsulation boundaries", are <a href="#RFC4648">base64-encoded</a> <cite title="NONE">[RFC4648]</cite> data.  Data before the <samp style="white-space: pre-wrap">-----BEGIN </samp> and after the
-			 <samp style="white-space: pre-wrap">-----END </samp> encapsulation boundaries
+<p id="rfc.section.2.p.1">Textual encoding begins with a line starting with <samp>-----BEGIN </samp> and ends with a line starting with
+			 <samp>-----END </samp>.
+       Between these lines, or "encapsulation boundaries", are <a href="#RFC4648">base64-encoded</a> <cite title="NONE">[RFC4648]</cite> data.  Data before the <samp>-----BEGIN </samp> and after the
+			 <samp>-----END </samp> encapsulation boundaries
        are permitted and parsers MUST NOT malfunction when processing such data.
        Furthermore, parsers MUST ignore whitespace and other
        non-base64 characters and MUST handle different newline
        conventions.</p>
-<p id="rfc.section.2.p.2">The type of data encoded is labeled depending on the type label in the <samp style="white-space: pre-wrap">-----BEGIN </samp> line (pre-encapsulation boundary).
+<p id="rfc.section.2.p.2">The type of data encoded is labeled depending on the type label in the <samp>-----BEGIN </samp> line (pre-encapsulation boundary).
 			 For example, the line may be
-       <samp style="white-space: pre-wrap">-----BEGIN CERTIFICATE-----</samp> to indicate that the content is a
+       <samp>-----BEGIN CERTIFICATE-----</samp> to indicate that the content is a
        PKIX certificate (see further below).  Generators MUST put the
-       same label on the <samp style="white-space: pre-wrap">-----END </samp> line (post-encapsulation boundary)
+       same label on the <samp>-----END </samp> line (post-encapsulation boundary)
 			 as the corresponding
-       <samp style="white-space: pre-wrap">-----BEGIN </samp> line.  Parsers MAY disregard the label on the
-       <samp style="white-space: pre-wrap">-----END </samp> line instead of signaling an error if there is a
-       label mismatch. There is exactly one space character (<samp style="white-space: pre-wrap">SP</samp>) separating the
-			 <samp style="white-space: pre-wrap">BEGIN</samp> or <samp style="white-space: pre-wrap">END</samp>
+       <samp>-----BEGIN </samp> line.  Parsers MAY disregard the label on the
+       <samp>-----END </samp> line instead of signaling an error if there is a
+       label mismatch. There is exactly one space character (<samp>SP</samp>) separating the
+			 <samp>BEGIN</samp> or <samp>END</samp>
 			 from the label. There are exactly
-			 five hyphen-minus (or dash) characters (<samp style="white-space: pre-wrap">-</samp>)
+			 five hyphen-minus (or dash) characters (<samp>-</samp>)
 			 on both ends of the encapsulation boundaries, no more, no less.</p>
 <p id="rfc.section.2.p.3">The label type implies that the encoded data follows the specified syntax.  Parsers MUST handle non-conforming data gracefully. However, not all parsers or generators prior to this Internet-Draft behave consistently.  A conforming parser MAY interpret the contents as another label type, but ought to be aware of the security implications discussed in the <a href="#security">Security Considerations</a> section.  Consistent with algorithm agility, the labels described in this document are not specific to any particular cryptographic algorithm.  </p>
 <p id="rfc.section.2.p.4">Unlike <a href="#RFC1421">legacy PEM encoding</a> <cite title="NONE">[RFC1421]</cite>, OpenPGP ASCII armor, and the OpenSSH key file format, textual encoding does <strong style="white-space: pre-wrap">not</strong> define or permit attributes
@@ -635,9 +644,9 @@ strictbase64text ::= *base64fullline strictbase64finl</pre>
 <p class="figure">Figure 4: ASN.1 Module Object Identifier Value Assignments</p>
 <h1 id="rfc.section.5"><a href="#rfc.section.5">5.</a> <a href="#certificate" id="certificate">Textual Encoding of Certificates</a></h1>
 <h1 id="rfc.section.5.1"><a href="#rfc.section.5.1">5.1.</a> Encoding</h1>
-<p id="rfc.section.5.1.p.1">Public-key certificates are encoded using the <samp style="white-space: pre-wrap">CERTIFICATE</samp> label.
+<p id="rfc.section.5.1.p.1">Public-key certificates are encoded using the <samp>CERTIFICATE</samp> label.
        The encoded data MUST be a BER (DER strongly preferred)
-			 encoded ASN.1 <samp style="white-space: pre-wrap">Certificate</samp>
+			 encoded ASN.1 <samp>Certificate</samp>
        structure as described in section 4 of <a href="#RFC5280">[RFC5280]</a>.</p>
 <div id="rfc.figure.5"/>
 <div id="certexample"/>
@@ -656,17 +665,17 @@ SM49BAMCA0gAMEUCIDGuwD1KPyG+hRf88MeyMQcqOFZD0TbVleF+UsAGQ4enAiEA
 l4wOuDwKQa+upc8GftXE2C//4mKANBC6It01gUaTIpo=
 -----END CERTIFICATE-----</pre>
 <p class="figure">Figure 5: Certificate Example</p>
-<p id="rfc.section.5.1.p.2">Historically the label <samp style="white-space: pre-wrap">X509 CERTIFICATE</samp> and also
-			 less commonly <samp style="white-space: pre-wrap">X.509 CERTIFICATE</samp>
+<p id="rfc.section.5.1.p.2">Historically the label <samp>X509 CERTIFICATE</samp> and also
+			 less commonly <samp>X.509 CERTIFICATE</samp>
 			 have been used.  Generators
        conforming to this document MUST generate
-			 <samp style="white-space: pre-wrap">CERTIFICATE</samp> labels
-       and MUST NOT generate <samp style="white-space: pre-wrap">X509 CERTIFICATE</samp>
-			 or <samp style="white-space: pre-wrap">X.509 CERTIFICATE</samp>
+			 <samp>CERTIFICATE</samp> labels
+       and MUST NOT generate <samp>X509 CERTIFICATE</samp>
+			 or <samp>X.509 CERTIFICATE</samp>
        labels. Parsers are NOT RECOMMENDED to treat
-			 <samp style="white-space: pre-wrap">X509 CERTIFICATE</samp> or
-			 <samp style="white-space: pre-wrap">X.509 CERTIFICATE</samp>
-			 as equivalent to <samp style="white-space: pre-wrap">CERTIFICATE</samp>,
+			 <samp>X509 CERTIFICATE</samp> or
+			 <samp>X.509 CERTIFICATE</samp>
+			 as equivalent to <samp>CERTIFICATE</samp>,
 			 but a valid exception may be for backwards
        compatibility (potentially together with a warning).</p>
 <h1 id="rfc.section.5.2"><a href="#rfc.section.5.2">5.2.</a> Explanatory Text</h1>
@@ -689,15 +698,15 @@ ILwpnZ1izL4MlI9eCSHhVQBHEp2uQdXJB+d5Byg=
 -----END CERTIFICATE-----</pre>
 <p class="figure">Figure 6: Certificate Example with Explanatory Text</p>
 <h1 id="rfc.section.5.3"><a href="#rfc.section.5.3">5.3.</a> File Extension</h1>
-<p id="rfc.section.5.3.p.1">Although textual encodings of PKIX structures can occur anywhere, many tools are known to offer an option to output this encoding when serializing PKIX structures.  To promote interoperability and to separate DER encodings from textual encodings, This Internet-Draft RECOMMENDS that the extension <samp style="white-space: pre-wrap">.crt</samp>
+<p id="rfc.section.5.3.p.1">Although textual encodings of PKIX structures can occur anywhere, many tools are known to offer an option to output this encoding when serializing PKIX structures.  To promote interoperability and to separate DER encodings from textual encodings, This Internet-Draft RECOMMENDS that the extension <samp>.crt</samp>
 					be used for the textual encoding of a certificate.
 				  Implementations should be aware that in spite of this recommendation,
 				  many tools still default to encode certificates in this textual encoding
-				  with the extension <samp style="white-space: pre-wrap">.cer</samp>.</p>
+				  with the extension <samp>.cer</samp>.</p>
 <h1 id="rfc.section.6"><a href="#rfc.section.6">6.</a> <a href="#crl" id="crl">Textual Encoding of Certificate Revocation Lists</a></h1>
-<p id="rfc.section.6.p.1">Certificate Revocation Lists (CRLs) are encoded using the <samp style="white-space: pre-wrap">X509 CRL</samp> label.
+<p id="rfc.section.6.p.1">Certificate Revocation Lists (CRLs) are encoded using the <samp>X509 CRL</samp> label.
 			 The encoded data MUST be a BER (DER strongly preferred)
-			 encoded ASN.1 <samp style="white-space: pre-wrap">CertificateList</samp>
+			 encoded ASN.1 <samp>CertificateList</samp>
        structure as described in Section 5 of <a href="#RFC5280">[RFC5280]</a>.</p>
 <div id="rfc.figure.7"/>
 <div id="crlexample"/>
@@ -715,19 +724,19 @@ b+5y+neKN9Kn2mPF4iiun+a4o26CjJ0pArojCL1p8T0yyi9Xxvyc/ezaZ98HiIyP
 c3DGMNR+oUmSjKZ0jIhAYmeLxaPHfQwR
 -----END X509 CRL-----</pre>
 <p class="figure">Figure 7: CRL Example</p>
-<p id="rfc.section.6.p.2">Historically the label <samp style="white-space: pre-wrap">CRL</samp> has rarely been used. Today it is
+<p id="rfc.section.6.p.2">Historically the label <samp>CRL</samp> has rarely been used. Today it is
        not common and many popular tools do not understand the
-       label. Therefore, this document standardizes <samp style="white-space: pre-wrap">X509 CRL</samp>
+       label. Therefore, this document standardizes <samp>X509 CRL</samp>
 			 in order to promote interoperability and backwards-compatibility.
 			 Generators conforming to this document MUST generate
-       <samp style="white-space: pre-wrap">X509 CRL</samp> labels and MUST NOT generate
-			 <samp style="white-space: pre-wrap">CRL</samp> labels.  Parsers
-       are NOT RECOMMENDED to treat <samp style="white-space: pre-wrap">CRL</samp>
-			 as equivalent to <samp style="white-space: pre-wrap">X509 CRL</samp>.</p>
+       <samp>X509 CRL</samp> labels and MUST NOT generate
+			 <samp>CRL</samp> labels.  Parsers
+       are NOT RECOMMENDED to treat <samp>CRL</samp>
+			 as equivalent to <samp>X509 CRL</samp>.</p>
 <h1 id="rfc.section.7"><a href="#rfc.section.7">7.</a> <a href="#crs" id="crs">Textual Encoding of PKCS #10 Certification Request Syntax</a></h1>
-<p id="rfc.section.7.p.1">PKCS #10 Certification Requests are encoded using the <samp style="white-space: pre-wrap">CERTIFICATE REQUEST</samp> label.
+<p id="rfc.section.7.p.1">PKCS #10 Certification Requests are encoded using the <samp>CERTIFICATE REQUEST</samp> label.
 			 The encoded data MUST be a BER (DER strongly preferred)
-       encoded ASN.1 <samp style="white-space: pre-wrap">CertificationRequest</samp>
+       encoded ASN.1 <samp>CertificationRequest</samp>
 			 structure as described in
        <a href="#RFC2986">[RFC2986]</a>.</p>
 <div id="rfc.figure.8"/>
@@ -743,15 +752,15 @@ AhxBvfhxPFfbBbsE1NoFmCUczOFApEuQVUw3ZP69AhwWXk3dgSUsKnuwL5g/ftAY
 dEQc8B8jAcnuOrfU
 -----END CERTIFICATE REQUEST-----</pre>
 <p class="figure">Figure 8: PKCS #10 Example</p>
-<p id="rfc.section.7.p.2">The label <samp style="white-space: pre-wrap">NEW CERTIFICATE REQUEST</samp> is also in wide use.
+<p id="rfc.section.7.p.2">The label <samp>NEW CERTIFICATE REQUEST</samp> is also in wide use.
       Generators conforming to this document MUST generate
-      <samp style="white-space: pre-wrap">CERTIFICATE REQUEST</samp> labels.
-			Parsers MAY treat <samp style="white-space: pre-wrap">NEW
-      CERTIFICATE REQUEST</samp> as equivalent to <samp style="white-space: pre-wrap">CERTIFICATE REQUEST</samp>.</p>
+      <samp>CERTIFICATE REQUEST</samp> labels.
+			Parsers MAY treat <samp>NEW
+      CERTIFICATE REQUEST</samp> as equivalent to <samp>CERTIFICATE REQUEST</samp>.</p>
 <h1 id="rfc.section.8"><a href="#rfc.section.8">8.</a> <a href="#pkcs7" id="pkcs7">Textual Encoding of PKCS #7 Cryptographic Message Syntax</a></h1>
-<p id="rfc.section.8.p.1">PKCS #7 Cryptographic Message Syntax structures are encoded using the <samp style="white-space: pre-wrap">PKCS7</samp> label.
+<p id="rfc.section.8.p.1">PKCS #7 Cryptographic Message Syntax structures are encoded using the <samp>PKCS7</samp> label.
 			 The encoded data MUST be a BER
-       encoded ASN.1 <samp style="white-space: pre-wrap">ContentInfo</samp> structure as described in <a href="#RFC2315">[RFC2315]</a>.</p>
+       encoded ASN.1 <samp>ContentInfo</samp> structure as described in <a href="#RFC2315">[RFC2315]</a>.</p>
 <div id="rfc.figure.9"/>
 <div id="pkcs7example"/>
 <pre>-----BEGIN PKCS7-----
@@ -762,17 +771,17 @@ hvcNAQkQAw8wJDAUBggqhkiG9w0DBwQI0tCBcU09nxEwDAYIKwYBBQUIAQIFAIAQ
 OsYGYUFdAH0RNc1p4VbKEAQUM2Xo8PMHBoYdqEcsbTodlCFAZH4=
 -----END PKCS7-----</pre>
 <p class="figure">Figure 9: PKCS #7 Example</p>
-<p id="rfc.section.8.p.2">The label <samp style="white-space: pre-wrap">CERTIFICATE CHAIN</samp> has been in use to denote a
+<p id="rfc.section.8.p.2">The label <samp>CERTIFICATE CHAIN</samp> has been in use to denote a
       degenerative PKCS #7 structure that contains only a list of
       certificates.  Several modern tools do not support this label.
-      Generators MUST NOT generate the <samp style="white-space: pre-wrap">CERTIFICATE CHAIN</samp> label.
-      Parsers are NOT RECOMMENDED to treat <samp style="white-space: pre-wrap">CERTIFICATE CHAIN</samp> as
-      equivalent to <samp style="white-space: pre-wrap">PKCS7</samp>.</p>
+      Generators MUST NOT generate the <samp>CERTIFICATE CHAIN</samp> label.
+      Parsers are NOT RECOMMENDED to treat <samp>CERTIFICATE CHAIN</samp> as
+      equivalent to <samp>PKCS7</samp>.</p>
 <p id="rfc.section.8.p.3">PKCS #7 is an old standard that has long been superseded by <a href="#RFC5652">CMS</a> <cite title="NONE">[RFC5652]</cite>.  Implementations SHOULD NOT generate PKCS #7 when CMS is an alternative.</p>
 <h1 id="rfc.section.9"><a href="#rfc.section.9">9.</a> <a href="#cms" id="cms">Textual Encoding of Cryptographic Message Syntax</a></h1>
-<p id="rfc.section.9.p.1">Cryptographic Message Syntax structures are encoded using the <samp style="white-space: pre-wrap">CMS</samp> label.  The encoded data MUST
+<p id="rfc.section.9.p.1">Cryptographic Message Syntax structures are encoded using the <samp>CMS</samp> label.  The encoded data MUST
 			 be a BER encoded ASN.1
-       <samp style="white-space: pre-wrap">ContentInfo</samp> structure as described in <a href="#RFC5652">[RFC5652]</a>.</p>
+       <samp>ContentInfo</samp> structure as described in <a href="#RFC5652">[RFC5652]</a>.</p>
 <div id="rfc.figure.10"/>
 <div id="cmsexample"/>
 <pre>-----BEGIN CMS-----
@@ -783,13 +792,13 @@ dvb05OXi5XLPLEtViMwvLVLwSE0sKlFIVHAqSk3MBkkBAJv0Fx0=
 <p class="figure">Figure 10: CMS Example</p>
 <p id="rfc.section.9.p.2">CMS is the IETF successor to PKCS #7. Section 1.1.1 of <a href="#RFC5652">[RFC5652]</a> describes the changes since PKCS #7 v1.5. Implementations SHOULD generate CMS when it is an alternative, promoting interoperability and forwards-compatibility.</p>
 <h1 id="rfc.section.10"><a href="#rfc.section.10">10.</a> <a href="#pkcs8" id="pkcs8">Textual Encoding of PKCS #8 Private Key Info, and One Asymmetric Key</a></h1>
-<p id="rfc.section.10.p.1">Unencrypted PKCS #8 Private Key Information Syntax structures (<samp style="white-space: pre-wrap">PrivateKeyInfo</samp>),
+<p id="rfc.section.10.p.1">Unencrypted PKCS #8 Private Key Information Syntax structures (<samp>PrivateKeyInfo</samp>),
 				renamed to Asymmetric Key Packages
-				(<samp style="white-space: pre-wrap">OneAsymmetricKey</samp>),
-				are encoded using the <samp style="white-space: pre-wrap">PRIVATE KEY</samp> label.
+				(<samp>OneAsymmetricKey</samp>),
+				are encoded using the <samp>PRIVATE KEY</samp> label.
 				The encoded data MUST be a BER (DER preferred)
-				encoded ASN.1 <samp style="white-space: pre-wrap">PrivateKeyInfo</samp> structure as described in
-				<a href="#RFC5208">PKCS #8</a> <cite title="NONE">[RFC5208]</cite>, or a <samp style="white-space: pre-wrap">OneAsymmetricKey</samp> structure as described in <a href="#RFC5958">[RFC5958]</a>. The two are semantically identical, and can be distinguished by version number.  </p>
+				encoded ASN.1 <samp>PrivateKeyInfo</samp> structure as described in
+				<a href="#RFC5208">PKCS #8</a> <cite title="NONE">[RFC5208]</cite>, or a <samp>OneAsymmetricKey</samp> structure as described in <a href="#RFC5958">[RFC5958]</a>. The two are semantically identical, and can be distinguished by version number.  </p>
 <div id="rfc.figure.11"/>
 <div id="pkcs8example"/>
 <pre>-----BEGIN PRIVATE KEY-----
@@ -799,10 +808,10 @@ H0M6xpM2q+53wmsN/eYLdgtjgBd3DBmHtPilCkiFICXyaA8z9LkJ
 -----END PRIVATE KEY-----</pre>
 <p class="figure">Figure 11: PKCS #8 PrivateKeyInfo Example</p>
 <h1 id="rfc.section.11"><a href="#rfc.section.11">11.</a> <a href="#pkcs8enc" id="pkcs8enc">Textual Encoding of PKCS #8 Encrypted Private Key Info</a></h1>
-<p id="rfc.section.11.p.1">Encrypted PKCS #8 Private Key Information Syntax structures (<samp style="white-space: pre-wrap">EncryptedPrivateKeyInfo</samp>),
-				called the same in <a href="#RFC5958">[RFC5958]</a>, are encoded using the <samp style="white-space: pre-wrap">ENCRYPTED PRIVATE KEY</samp> label.
+<p id="rfc.section.11.p.1">Encrypted PKCS #8 Private Key Information Syntax structures (<samp>EncryptedPrivateKeyInfo</samp>),
+				called the same in <a href="#RFC5958">[RFC5958]</a>, are encoded using the <samp>ENCRYPTED PRIVATE KEY</samp> label.
 				The encoded data MUST be a BER (DER preferred)
-				encoded ASN.1 <samp style="white-space: pre-wrap">EncryptedPrivateKeyInfo</samp> structure as described in
+				encoded ASN.1 <samp>EncryptedPrivateKeyInfo</samp> structure as described in
 				<a href="#RFC5208">PKCS #8</a> <cite title="NONE">[RFC5208]</cite> and <a href="#RFC5958">[RFC5958]</a>.  </p>
 <div id="rfc.figure.12"/>
 <div id="pkcs8encexample"/>
@@ -815,9 +824,9 @@ QC7k0NNzUHTV9yGDwfqMbw==
 -----END ENCRYPTED PRIVATE KEY-----</pre>
 <p class="figure">Figure 12: PKCS #8 EncryptedPrivateKeyInfo Example</p>
 <h1 id="rfc.section.12"><a href="#rfc.section.12">12.</a> <a href="#attrcert" id="attrcert">Textual Encoding of Attribute Certificates</a></h1>
-<p id="rfc.section.12.p.1">Attribute certificates are encoded using the <samp style="white-space: pre-wrap">ATTRIBUTE CERTIFICATE</samp>
+<p id="rfc.section.12.p.1">Attribute certificates are encoded using the <samp>ATTRIBUTE CERTIFICATE</samp>
 			 label.  The encoded data MUST be a BER (DER strongly preferred) encoded
-       ASN.1 <samp style="white-space: pre-wrap">AttributeCertificate</samp>
+       ASN.1 <samp>AttributeCertificate</samp>
 			 structure as described in <a href="#RFC5755">[RFC5755]</a>.</p>
 <div id="rfc.figure.13"/>
 <div id="attrcertexample"/>
@@ -837,9 +846,9 @@ Smluak1aZIttePeTAHeJJs8izNJ5aR3Wcd3A5gLztQ==
 -----END ATTRIBUTE CERTIFICATE-----</pre>
 <p class="figure">Figure 13: Attribute Certificate Example</p>
 <h1 id="rfc.section.13"><a href="#rfc.section.13">13.</a> <a href="#spki" id="spki">Textual Encoding of Subject Public Key Info</a></h1>
-<p id="rfc.section.13.p.1">Public keys are encoded using the <samp style="white-space: pre-wrap">PUBLIC KEY</samp> label.
+<p id="rfc.section.13.p.1">Public keys are encoded using the <samp>PUBLIC KEY</samp> label.
 			 The encoded data MUST be a BER (DER preferred) encoded
-       ASN.1 <samp style="white-space: pre-wrap">SubjectPublicKeyInfo</samp> structure as described in
+       ASN.1 <samp>SubjectPublicKeyInfo</samp> structure as described in
 			 Section 4.1.2.7 of <a href="#RFC5280">[RFC5280]</a>.</p>
 <div id="rfc.figure.14"/>
 <div id="spkiexample"/>
