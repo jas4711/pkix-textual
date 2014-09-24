@@ -107,7 +107,7 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
       target="X.690">the Basic Encoding Rules (BER) or
 			Distinguished Encoding Rules
       (DER)</xref>, which are binary, octet-oriented encodings.
-			This document is about the textual encoding of the following formats:</t>
+			This document is about the textual encodings of the following formats:</t>
 
       <t><list style="numbers">
 				<t>Certificates, Certificate Revocation Lists (CRLs),
@@ -135,8 +135,8 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
 				Profile for Authorization</xref>.</t>
       </list></t>
 			
-			<t>Although other formats exist that use the textual encoding
-			(or something like it)
+			<t>Although other formats exist that use the encodings
+			(or something like them)
 			described in this document, the included formats share
 			a common property: algorithm agility. "Algorithm agility"
 			means that different algorithms to achieve the same
