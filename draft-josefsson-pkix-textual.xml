@@ -479,8 +479,9 @@ dEQc8B8jAcnuOrfU
       <t>The label <spanx style="verb" xml:space="preserve">NEW CERTIFICATE REQUEST</spanx> is also in wide use.
       Generators conforming to this document MUST generate
       <spanx style="verb" xml:space="preserve">CERTIFICATE REQUEST</spanx> labels.
-			Parsers MAY treat <spanx style="verb" xml:space="preserve">NEW
-      CERTIFICATE REQUEST</spanx> as equivalent to <spanx style="verb" xml:space="preserve">CERTIFICATE REQUEST</spanx>.</t>
+			Parsers MAY treat
+			<spanx style="verb" xml:space="preserve">NEW CERTIFICATE REQUEST</spanx>
+			as equivalent to <spanx style="verb" xml:space="preserve">CERTIFICATE REQUEST</spanx>.</t>
 		</section>
 
      <section anchor="pkcs7"
