@@ -22,6 +22,7 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
 <!ENTITY rfc4648 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.4648.xml'>
 <!ENTITY rfc4716 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.4716.xml'>
 <!ENTITY RFC5208 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.5208.xml'>
+<!ENTITY RFC5234 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.5234.xml'>
 <!ENTITY rfc5280 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.5280.xml'>
 <!ENTITY RFC5652 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.5652.xml'>
 <!ENTITY rfc5755 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.5755.xml'>
@@ -42,9 +43,7 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
 
   <front>
 
-    <title abbrev="pkix-textual">
-      Textual Encodings of PKIX, PKCS, and CMS Structures
-    </title>
+    <title abbrev="pkix-textual">Textual Encodings of PKIX, PKCS, and CMS Structures</title>
 
     <author initials="S." surname="Josefsson" fullname="Simon Josefsson">
       <organization>SJD AB</organization>
@@ -251,52 +250,52 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
      </section>
 
 		<section anchor="abnf" title="ABNF">
-			<t>The ABNF of the textual encoding is:</t>
+			<t>The <xref target="RFC5234">ABNF</xref> of the textual encoding is:</t>
 			<figure anchor="abnf-fig" title="ABNF">
-				<artwork><![CDATA[pkixmsg    ::= preeb
-               *eolWSP
-               base64text
-               posteb
+				<artwork><![CDATA[pkixmsg    = preeb
+             *eolWSP
+             base64text
+             posteb
 
-preeb      ::= "-----BEGIN " label "-----" eol
+preeb      = "-----BEGIN " label "-----" eol
 
-posteb     ::= "-----END " label "-----" eol
+posteb     = "-----END " label "-----" eol
 
-base64char ::= ALPHA / DIGIT / "+" / "/"
+base64char = ALPHA / DIGIT / "+" / "/"
 
-base64pad  ::= "="
+base64pad  = "="
 
-base64line ::= 1*base64char eol
+base64line = 1*base64char eol
 
-base64finl ::= *base64char (base64pad eol base64pad /
+base64finl = *base64char (base64pad eol base64pad /
                *2base64pad) eol
                ; ...AB= <CRLF> = <CRLF> is not good, but is valid
 
-base64text ::= *base64line base64finl
+base64text = *base64line base64finl
         ; we could also use <encbinbody> from RFC 1421, which requires
         ; 16 groups of 4 chars, which means exactly 64 chars per
         ; line, except the final line, but this is more accurate
 
-labelchar  ::= %x21-2C / %x2E-%7E   ; any printable character,
+labelchar  = %x21-2C / %x2E-%7E   ; any printable character,
                                     ; except hyphen
 
-label      ::= labelchar *(labelchar / labelchar "-" / SP) labelchar
+label      = labelchar *(labelchar / labelchar "-" / SP) labelchar
 
-eol        ::= CRLF / CR / LF
+eol        = CRLF / CR / LF
 
-eolWSP     ::= WSP / CR / LF    ; compare with LWSP]]></artwork></figure>
+eolWSP     = WSP / CR / LF    ; compare with LWSP]]></artwork></figure>
 <figure anchor="abnf-strict-fig" title="ABNF (Strict)">
-				<artwork><![CDATA[pkixmsgstrict    ::= preeb
-                     strictbase64text
-                     posteb
+				<artwork><![CDATA[pkixmsgstrict    = preeb
+                   strictbase64text
+                   posteb
 
-strictbase64finl ::= *15(4base64char) (4base64char / 3base64char
+strictbase64finl = *15(4base64char) (4base64char / 3base64char
                      base64pad / 2base64char 2base64pad) eol
 
-base64fullline   ::= 64base64char eol
+base64fullline   = 64base64char eol
 
-strictbase64text ::= *base64fullline strictbase64finl]]></artwork></figure>
-			<t>This specification RECOMMENDS that new implementations emit
+strictbase64text = *base64fullline strictbase64finl]]></artwork></figure>
+			<t>New implementations SHOULD emit
 				<xref target="abnf-strict-fig">the strict format</xref> specified above.</t>
 		</section>
 
@@ -407,9 +406,9 @@ ILwpnZ1izL4MlI9eCSHhVQBHEp2uQdXJB+d5Byg=
 					this encoding when serializing PKIX structures.
 					To promote interoperability and to separate DER encodings
 					from textual encodings,
-					This Internet-Draft RECOMMENDS that the extension
+					the extension
 					<spanx style="verb" xml:space="preserve">.crt</spanx>
-					be used for the textual encoding of a certificate.
+					SHOULD be used for the textual encoding of a certificate.
 				  Implementations should be aware that in spite of this recommendation,
 				  many tools still default to encode certificates in this textual encoding
 				  with the extension <spanx style="verb" xml:space="preserve">.cer</spanx>.</t>
@@ -449,7 +448,7 @@ c3DGMNR+oUmSjKZ0jIhAYmeLxaPHfQwR
 			 Generators conforming to this document MUST generate
        <spanx style="verb" xml:space="preserve">X509 CRL</spanx> labels and MUST NOT generate
 			 <spanx style="verb" xml:space="preserve">CRL</spanx> labels.  Parsers
-       are NOT RECOMMENDED to treat <spanx style="verb" xml:space="preserve">CRL</spanx>
+       SHOULD NOT treat <spanx style="verb" xml:space="preserve">CRL</spanx>
 			 as equivalent to <spanx style="verb" xml:space="preserve">X509 CRL</spanx>.</t>
      </section>
 
@@ -507,7 +506,7 @@ OsYGYUFdAH0RNc1p4VbKEAQUM2Xo8PMHBoYdqEcsbTodlCFAZH4=
       degenerative PKCS #7 structure that contains only a list of
       certificates.  Several modern tools do not support this label.
       Generators MUST NOT generate the <spanx style="verb" xml:space="preserve">CERTIFICATE CHAIN</spanx> label.
-      Parsers are NOT RECOMMENDED to treat <spanx style="verb" xml:space="preserve">CERTIFICATE CHAIN</spanx> as
+      Parsers SHOULD NOT treat <spanx style="verb" xml:space="preserve">CERTIFICATE CHAIN</spanx> as
       equivalent to <spanx style="verb" xml:space="preserve">PKCS7</spanx>.</t>
 
 			<t>PKCS #7 is an old standard that has long been superseded
@@ -685,6 +684,7 @@ Nkn3Eos8EiZByi9DVsyfy9eejh+8AXgp
       &rfc2986;
       &rfc4648;
       &rfc5280;
+			&RFC5234;
 			&RFC5652;
       &rfc5755;
 			&RFC5958;
