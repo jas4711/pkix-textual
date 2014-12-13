@@ -37,7 +37,7 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
 <?rfc comments="yes"?>
 
 <rfc category="std"
-     docName="draft-josefsson-pkix-textual-08"
+     docName="draft-josefsson-pkix-textual-09"
      ipr="trust200902">
 
   <front>
@@ -78,7 +78,7 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
 			</address>
 		</author>
 
-		<date day="12" month="November" year="2014"/>
+		<date day="13" month="December" year="2014"/>
 
     <abstract>
 
@@ -192,8 +192,9 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
        <t>Textual encoding begins with a line starting with
        <spanx style="verb" xml:space="preserve">-----BEGIN </spanx> and ends with a line starting with
 			 <spanx style="verb" xml:space="preserve">-----END </spanx>.
-       Between these lines, or "encapsulation boundaries", are <xref
-       target="RFC4648">base64-encoded</xref> data.  Data before the
+       Between these lines, or "encapsulation boundaries", are
+			 base64-encoded data according to Section 4 of <xref target="RFC4648" />.
+			 Data before the
        <spanx style="verb" xml:space="preserve">-----BEGIN </spanx> and after the
 			 <spanx style="verb" xml:space="preserve">-----END </spanx> encapsulation boundaries
        are permitted and parsers MUST NOT malfunction when processing such data.
@@ -306,7 +307,7 @@ strictbase64text ::= *base64fullline strictbase64finl]]></artwork></figure>
 ><artwork><![CDATA[Sec. Label                  ASN.1 Type              Reference Module
 ----+----------------------+-----------------------+---------+----------
   5  CERTIFICATE            Certificate             [RFC5280] id-pkix1-e
-  6  X.509 CRL              CertificateList         [RFC5280] id-pkix1-e
+  6  X509 CRL               CertificateList         [RFC5280] id-pkix1-e
   7  CERTIFICATE REQUEST    CertificationRequest    [RFC2986] id-pkcs10
   8  PKCS7                  ContentInfo             [RFC2315] id-pkcs7*
   9  CMS                    ContentInfo             [RFC5652] id-cms2004
@@ -819,7 +820,7 @@ OsYGYUFdAH0RNc1p4VbKEAQUM2Xo8PMHBoYdqEcsbTodlCFAZH4=
 		 <artwork align="center"><![CDATA[Sec. Label                  Reasons
 ----+----------------------+-------
   5  CERTIFICATE            1  2 ~3
-  6  X.509 CRL              1
+  6  X509 CRL               1
   7  CERTIFICATE REQUEST    1    ~3
   8  PKCS7                  *
   9  CMS                    *
