@@ -371,7 +371,7 @@ l4wOuDwKQa+upc8GftXE2C//4mKANBC6It01gUaTIpo=
 			 <spanx style="verb" xml:space="preserve">CERTIFICATE</spanx> labels
        and MUST NOT generate <spanx style="verb" xml:space="preserve">X509 CERTIFICATE</spanx>
 			 or <spanx style="verb" xml:space="preserve">X.509 CERTIFICATE</spanx>
-       labels. Parsers are NOT RECOMMENDED to treat
+       labels. Parsers SHOULD NOT treat
 			 <spanx style="verb" xml:space="preserve">X509 CERTIFICATE</spanx> or
 			 <spanx style="verb" xml:space="preserve">X.509 CERTIFICATE</spanx>
 			 as equivalent to <spanx style="verb" xml:space="preserve">CERTIFICATE</spanx>,
