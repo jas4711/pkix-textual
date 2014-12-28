@@ -38,7 +38,7 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
 <?rfc comments="yes"?>
 
 <rfc category="std"
-     docName="draft-josefsson-pkix-textual-09"
+     docName="draft-josefsson-pkix-textual-10"
      ipr="trust200902">
 
   <front>
@@ -77,20 +77,19 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
 			</address>
 		</author>
 
-		<date day="13" month="December" year="2014"/>
+		<date day="29" month="December" year="2014"/>
 
     <abstract>
 
-      <t>
-				This document describes and discusses the textual encodings of
+      <t>This document describes and discusses the textual encodings of
 				the Public-Key Infrastructure X.509 (PKIX),
 				Public-Key Cryptography Standards (PKCS), and
 				Cryptographic Message Syntax (CMS).
 				The textual encodings are well-known, are implemented by several
 				applications and libraries, and are widely deployed.  This
-				document is intended to articulate the de-facto rules that
-				existing implementations operate by, and to give recommendations
-				that will promote interoperability.</t>
+				document articulates the de-facto rules by which
+				existing implementations operate, defines them
+				so that future implementations can interoperate.</t>
 
     </abstract>
 
@@ -156,7 +155,7 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
 				The tradition within the RFC
 				series can be traced back to <xref target="RFC1421">PEM</xref>,
 				based on a proposal by
-				M.<!-- TODO: no double spacing! --> <!-- ok? -->Rose in
+				Marshall Rose in
 				<xref target="RFC0934">Message Encapsulation</xref>.
 				Originally called "PEM encapsulation mechanism",
 				"encapsulated PEM message", or (arguably)
@@ -176,7 +175,9 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
 			Peter Gutmann's
       <xref target="X.509SG">X.509 Style Guide</xref> contains a
       section "base64 Encoding" that describes the formats and contains
-      suggestions similar to what is in this document.</t>
+      suggestions similar to what is in this document. All figures
+			are real, functional examples, with key lengths and inner contents
+			chosen to be as small as practicable.</t>
 
       <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL
       NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED",
@@ -503,8 +504,9 @@ OsYGYUFdAH0RNc1p4VbKEAQUM2Xo8PMHBoYdqEcsbTodlCFAZH4=
       </figure>
 
       <t>The label <spanx style="verb" xml:space="preserve">CERTIFICATE CHAIN</spanx> has been in use to denote a
-      degenerative PKCS #7 structure that contains only a list of
-      certificates.  Several modern tools do not support this label.
+      degenerate PKCS #7 structure that contains only a list of
+      certificates (see Section 9 of <xref target="RFC2315"/>).
+			Several modern tools do not support this label.
       Generators MUST NOT generate the <spanx style="verb" xml:space="preserve">CERTIFICATE CHAIN</spanx> label.
       Parsers SHOULD NOT treat <spanx style="verb" xml:space="preserve">CERTIFICATE CHAIN</spanx> as
       equivalent to <spanx style="verb" xml:space="preserve">PKCS7</spanx>.</t>
