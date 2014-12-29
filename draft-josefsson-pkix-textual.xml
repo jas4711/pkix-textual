@@ -353,7 +353,7 @@ strictbase64text = *base64fullline strictbase64finl]]></artwork></figure>
 			<t>For convenience, these figures summarize the structures,
 			encodings, and references in the following sections:</t>
 			<figure anchor="convenience-guide" title="Convenience Guide"
-><artwork><![CDATA[Sec. Label                  ASN.1 Type              Reference Module
+><artwork indent="0"><![CDATA[Sec. Label                  ASN.1 Type              Reference Module
 ----+----------------------+-----------------------+---------+----------
   5  CERTIFICATE            Certificate             [RFC5280] id-pkix1-e
   6  X509 CRL               CertificateList         [RFC5280] id-pkix1-e
@@ -397,7 +397,7 @@ strictbase64text = *base64fullline strictbase64finl]]></artwork></figure>
        target="RFC5280"/>.</t>
 
       <figure anchor="certexample" title="Certificate Example">
-	<artwork>-----BEGIN CERTIFICATE-----
+	<artwork indent="0">-----BEGIN CERTIFICATE-----
 MIICLDCCAdKgAwIBAgIBADAKBggqhkjOPQQDAjB9MQswCQYDVQQGEwJCRTEPMA0G
 A1UEChMGR251VExTMSUwIwYDVQQLExxHbnVUTFMgY2VydGlmaWNhdGUgYXV0aG9y
 aXR5MQ8wDQYDVQQIEwZMZXV2ZW4xJTAjBgNVBAMTHEdudVRMUyBjZXJ0aWZpY2F0
@@ -435,7 +435,7 @@ l4wOuDwKQa+upc8GftXE2C//4mKANBC6It01gUaTIpo=
 					related to the certificate, such as providing a textual representation
 					of key data elements in the certificate.</t>
 					<figure anchor="certexplexample" title="Certificate Example with Explanatory Text">
-						<artwork><![CDATA[Subject: CN=Atlantis
+						<artwork indent="0"><![CDATA[Subject: CN=Atlantis
 Issuer: CN=Atlantis
 Validity: from 7/9/2012 3:10:38 AM UTC to 7/9/2013 3:10:37 AM UTC
 -----BEGIN CERTIFICATE-----
@@ -480,7 +480,7 @@ ILwpnZ1izL4MlI9eCSHhVQBHEp2uQdXJB+d5Byg=
        target="RFC5280"/>.</t>
 
        <figure anchor="crlexample" title="CRL Example">
-	 <artwork>-----BEGIN X509 CRL-----
+	 <artwork indent="0">-----BEGIN X509 CRL-----
 MIIB9DCCAV8CAQEwCwYJKoZIhvcNAQEFMIIBCDEXMBUGA1UEChMOVmVyaVNpZ24s
 IEluYy4xHzAdBgNVBAsTFlZlcmlTaWduIFRydXN0IE5ldHdvcmsxRjBEBgNVBAsT
 PXd3dy52ZXJpc2lnbi5jb20vcmVwb3NpdG9yeS9SUEEgSW5jb3JwLiBieSBSZWYu
