@@ -7,8 +7,14 @@ http://cvs.openssl.org/fileview?f=openssl/crypto/pem/pem.h
 CryptBinaryToString: http://msdn.microsoft.com/aa379887
 CryptStringToBinary: http://msdn.microsoft.com/aa380285
 
-2014-07-03: updated to use verbatim (spanx verb) styling, and to use xml:space=default in key cases
-it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the - is a true hyphen, NOT a Unicode non-breaking hyphen!!!
+2014-07-03: updated to use verbatim (spanx verb) styling,
+and to use xml:space=default in key cases
+it should also be emphasized that (5 dash)BEGIN  etc.
+cannot be broken, but the - is a true hyphen, NOT
+a Unicode non-breaking hyphen!!!
+
+2014-12-29: updated to use indent attribute in <artwork> element,
+a new feature of xml2rfc v2.4.8w (internal build)
 
 -->
 
