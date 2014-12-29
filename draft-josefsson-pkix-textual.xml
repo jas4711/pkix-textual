@@ -298,9 +298,9 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
              base64text
              posteb *WSP [eol]
 
-preeb      = "-----BEGIN " label "-----"  ; unlike [RFC1421] (A)BNF,
-                                          ; eol is not required (but
-posteb     = "-----END " label "-----"    ; see [RFC1421] Section 4.4)
+preeb      = "-----BEGIN " label "-----" ; unlike [RFC1421] (A)BNF,
+                                         ; eol is not required (but
+posteb     = "-----END " label "-----"   ; see [RFC1421] Section 4.4)
 
 base64char = ALPHA / DIGIT / "+" / "/"
 
@@ -310,27 +310,27 @@ base64line = 1*base64char *WSP eol
 
 base64finl = *base64char (base64pad *WSP eol base64pad /
                           *2base64pad) *WSP eol
-                      ; ...AB= <EOL> = <EOL> is not good, but is valid
+                     ; ...AB= <EOL> = <EOL> is not good, but is valid
 
 base64text = *base64line base64finl
-        ; we could also use <encbinbody> from RFC 1421, which requires
-        ; 16 groups of 4 chars, which means exactly 64 chars per
-        ; line, except the final line, but this is more accurate
+       ; we could also use <encbinbody> from RFC 1421, which requires
+       ; 16 groups of 4 chars, which means exactly 64 chars per
+       ; line, except the final line, but this is more accurate
 
 labelchar  = %x21-2C / %x2E-%7E   ; any printable character,
                                   ; except hyphen-minus
 
-label      = [ labelchar *( ["-" / SP] labelchar ) ]        ; empty ok
+label      = [ labelchar *( ["-" / SP] labelchar ) ]       ; empty ok
 
 eol        = CRLF / CR / LF
 
-eolWSP     = WSP / CR / LF                         ; compare with LWSP]]></artwork></figure>
+eolWSP     = WSP / CR / LF                        ; compare with LWSP]]></artwork></figure>
 <figure anchor="abnf-lax-fig" title="ABNF (Lax)">
 				<artwork><![CDATA[laxtextualmsg    = *W preeb
                    laxbase64text
                    posteb *W
 
-W                = WSP / CR / LF / %x0B / %x0C            ; whitespace
+W                = WSP / CR / LF / %x0B / %x0C           ; whitespace
 
 laxbase64text    = *(W / base64char) [base64pad *W [base64pad *W]]]]></artwork></figure>
 <figure anchor="abnf-strict-fig" title="ABNF (Strict)">
