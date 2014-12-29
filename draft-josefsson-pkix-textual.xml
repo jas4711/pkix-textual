@@ -188,6 +188,7 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
 			 <spanx style="verb" xml:space="preserve">-----</spanx>.
        Between these lines, or "encapsulation boundaries", are
 			 base64-encoded data according to Section 4 of <xref target="RFC4648" />.
+			 (PEM referred to this data as the "encapsulated text portion".)
 			 Data before the encapsulation boundaries
        are permitted and parsers MUST NOT malfunction when processing such data.
        Furthermore, parsers SHOULD ignore whitespace and other
@@ -204,8 +205,8 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
 			 as the corresponding
        <spanx style="verb" xml:space="preserve">-----BEGIN </spanx> line.
 			 Labels are formally case-sensitive, uppercase, and comprised of zero or more characters;
-			 they MUST NOT contain consecutive spaces or hyphen-minuses;
-			 spaces or hyphen-minuses cannot appear at the ends.
+			 they do not contain consecutive spaces or hyphen-minuses, nor do
+			 they contain spaces or hyphen-minuses at either end.
 			 Parsers MAY disregard the label in the post-encapsulation boundary
 			 instead of signaling an error if there is a
        label mismatch:
