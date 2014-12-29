@@ -465,8 +465,7 @@ ILwpnZ1izL4MlI9eCSHhVQBHEp2uQdXJB+d5Byg=
 					<t>This section does not disturb the official <xref target="RFC2585">application/pkix-cert
 					registration</xref> in any way
 					(which states that "each '.cer' file contains exactly one certificate, encoded in DER format"),
-					but merely articulates a de-facto alternative
-					that is in widespread use.</t>
+					but merely articulates a widespread, de-facto alternative.</t>
 				</section>
 			</section>
 
