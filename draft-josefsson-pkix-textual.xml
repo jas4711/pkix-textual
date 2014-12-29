@@ -133,17 +133,6 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
 				Profile for Authorization</xref>.</t>
       </list></t>
 			
-			<t>Although other formats exist that use the encodings
-			(or something like them)
-			described in this document, the included formats share
-			a common property: algorithm agility. "Algorithm agility"
-			means that different algorithms to achieve the same
-			purposes&mdash;such as content encryption or
-			integrity protection&mdash;can be used
-			in different instances of the same format because the instance
-			data identifies the algorithms and associated parameters.
-			Weakness in an algorithm does not destroy the utility of the format.</t>
-
       <t>A disadvantage of a binary data format is that it cannot be interchanged in
       textual transports, such as e-mail or text documents.  One
       advantage with text-based encodings is that they are easy to modify
@@ -228,19 +217,22 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
 			 five hyphen-minus (also known as dash) characters
 			 (<spanx style="verb" xml:space="preserve">-</spanx>)
 			 on both ends of the encapsulation boundaries, no more, no less.</t>
-       <t>
-				 The label type implies that the encoded data
+       <t>The label type implies that the encoded data
 				 follows the specified syntax.  Parsers MUST handle non-conforming
 				 data gracefully. However, not all parsers or generators prior
 				 to this Internet-Draft behave consistently.
 				 A conforming parser MAY interpret the contents as another label
 				 type, but ought to be aware of the security implications discussed in
 				 the <xref target="security" format="title" /> section.
-				 Consistent with algorithm agility, the labels
-				 described in this document are not specific
-				 to any particular cryptographic algorithm.
-			 </t>
-			 
+				 
+				 The labels described in this document identify container formats
+				 that are not specific to any particular cryptographic algorithm,
+				 a property consistent with algorithm agility.
+				 These formats use the ASN.1
+				 <spanx style="verb" xml:space="preserve">AlgorithmIdentifier</spanx>
+				 structure as described in section 4.1.1.2 of <xref
+				 target="RFC5280"/>.</t>
+
 			 <t>Unlike <xref target="RFC1421">legacy PEM encoding</xref>,
 			 OpenPGP ASCII armor, and the OpenSSH key file format,
 			 textual encoding does <spanx style="strong">not</spanx> define or permit attributes
