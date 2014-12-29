@@ -216,7 +216,7 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
        <spanx style="verb" xml:space="preserve">-----BEGIN </spanx> line.
 			 Labels are formally case-sensitive, uppercase, and comprised of zero or more characters;
 			 they MUST NOT contain consecutive spaces or hyphen-minuses;
-			 spaces or hyphen-minuses MUST NOT appear at the ends.
+			 spaces or hyphen-minuses cannot appear at the ends.
 			 Parsers MAY disregard the label in the post-encapsulation boundary
 			 instead of signaling an error if there is a
        label mismatch:
@@ -290,7 +290,7 @@ base64text = *base64line base64finl
         ; line, except the final line, but this is more accurate
 
 labelchar  = %x21-2C / %x2E-%7E   ; any printable character,
-                                    ; except hyphen-minus
+                                  ; except hyphen-minus
 
 label      = [ labelchar *( ["-" / SP] labelchar ) ]        ; empty ok
 
@@ -354,7 +354,7 @@ strictbase64text = *base64fullline strictbase64finl]]></artwork></figure>
 <section title="Encoding">
        <t>Public-key certificates are encoded using the
 			 <spanx style="verb" xml:space="preserve">CERTIFICATE</spanx> label.
-       The encoded data MUST be a BER (DER strongly preferred)
+       The encoded data MUST be a BER (DER strongly preferred; see <xref target="DERapp"/>)
 			 encoded ASN.1 <spanx style="verb" xml:space="preserve">Certificate</spanx>
        structure as described in section 4 of <xref
        target="RFC5280"/>.</t>
@@ -433,7 +433,7 @@ ILwpnZ1izL4MlI9eCSHhVQBHEp2uQdXJB+d5Byg=
 
        <t>Certificate Revocation Lists (CRLs)
 			 are encoded using the <spanx style="verb" xml:space="preserve">X509 CRL</spanx> label.
-			 The encoded data MUST be a BER (DER strongly preferred)
+			 The encoded data MUST be a BER (DER strongly preferred; see <xref target="DERapp"/>)
 			 encoded ASN.1 <spanx style="verb" xml:space="preserve">CertificateList</spanx>
        structure as described in Section 5 of <xref
        target="RFC5280"/>.</t>
@@ -470,7 +470,7 @@ c3DGMNR+oUmSjKZ0jIhAYmeLxaPHfQwR
 
        <t>PKCS #10 Certification Requests are encoded using the
        <spanx style="verb" xml:space="preserve">CERTIFICATE REQUEST</spanx> label.
-			 The encoded data MUST be a BER (DER strongly preferred)
+			 The encoded data MUST be a BER (DER strongly preferred; see <xref target="DERapp"/>)
        encoded ASN.1 <spanx style="verb" xml:space="preserve">CertificationRequest</spanx>
 			 structure as described in
        <xref target="RFC2986"/>.</t>
@@ -559,7 +559,7 @@ dvb05OXi5XLPLEtViMwvLVLwSE0sKlFIVHAqSk3MBkkBAJv0Fx0=
 				renamed to Asymmetric Key Packages
 				(<spanx style="vbare" xml:space="preserve">OneAsymmetricKey</spanx>),
 				are encoded using the <spanx style="verb" xml:space="preserve">PRIVATE KEY</spanx> label.
-				The encoded data MUST be a BER (DER preferred)
+				The encoded data MUST be a BER (DER preferred; see <xref target="DERapp"/>)
 				encoded ASN.1 <spanx style="verb" xml:space="preserve">PrivateKeyInfo</spanx> structure as described in
 				<xref target="RFC5208" format="none">PKCS #8</xref>,
 				or a <spanx style="verb" xml:space="preserve">OneAsymmetricKey</spanx> structure as described in <xref
@@ -581,7 +581,7 @@ H0M6xpM2q+53wmsN/eYLdgtjgBd3DBmHtPilCkiFICXyaA8z9LkJ
 				(<spanx style="vbare" xml:space="preserve">EncryptedPrivateKeyInfo</spanx>),
 				called the same in <xref target="RFC5958" />,
 				are encoded using the <spanx style="verb" xml:space="preserve">ENCRYPTED PRIVATE KEY</spanx> label.
-				The encoded data MUST be a BER (DER preferred)
+				The encoded data MUST be a BER (DER preferred; see <xref target="DERapp"/>)
 				encoded ASN.1 <spanx style="verb" xml:space="preserve">EncryptedPrivateKeyInfo</spanx> structure as described in
 				<xref target="RFC5208" format="none">PKCS #8</xref>
 				and <xref target="RFC5958"/>.
@@ -603,7 +603,7 @@ QC7k0NNzUHTV9yGDwfqMbw==
 
        <t>Attribute certificates are encoded using the
 			 <spanx style="verb" xml:space="preserve">ATTRIBUTE CERTIFICATE</spanx>
-			 label.  The encoded data MUST be a BER (DER strongly preferred) encoded
+			 label.  The encoded data MUST be a BER (DER strongly preferred; see <xref target="DERapp"/>) encoded
        ASN.1 <spanx style="verb" xml:space="preserve">AttributeCertificate</spanx>
 			 structure as described in <xref
        target="RFC5755"/>.</t>
@@ -630,7 +630,7 @@ Smluak1aZIttePeTAHeJJs8izNJ5aR3Wcd3A5gLztQ==
 	      title="Textual Encoding of Subject Public Key Info">
 
        <t>Public keys are encoded using the <spanx style="verb" xml:space="preserve">PUBLIC KEY</spanx> label.
-			 The encoded data MUST be a BER (DER preferred) encoded
+			 The encoded data MUST be a BER (DER preferred; see <xref target="DERapp"/>) encoded
        ASN.1 <spanx style="verb" xml:space="preserve">SubjectPublicKeyInfo</spanx> structure as described in
 			 Section 4.1.2.7 of <xref target="RFC5280"/>.</t>
 
@@ -805,7 +805,7 @@ OsYGYUFdAH0RNc1p4VbKEAQUM2Xo8PMHBoYdqEcsbTodlCFAZH4=
       </figure>
 
     </section>
-		<section title="DER Expectations">
+		<section anchor="DERapp" title="DER Expectations">
 		<t>This appendix is informative. Consult the respective standards
 		 for the normative rules.</t>
 		<t>DER is a restricted profile of BER <xref target="X.690"/>;
@@ -814,7 +814,7 @@ OsYGYUFdAH0RNc1p4VbKEAQUM2Xo8PMHBoYdqEcsbTodlCFAZH4=
 		Canonical encoding matters when performing
 		cryptographic operations; additionally,
 		canonical encoding has certain efficiency advantages for parsers.
-		There are three principal reasons to do encode with DER:
+		There are three principal reasons to encode with DER:
 		<list style="numbers">
 			<t>A digital signature is (supposed to be) computed over
 			 the DER encoding of the semantic content,
