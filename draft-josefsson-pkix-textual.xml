@@ -189,16 +189,19 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
      <section anchor="general"
 	      title="General Considerations">
 
-       <t>Textual encoding begins with a line starting with
-       <spanx style="verb" xml:space="preserve">-----BEGIN </spanx> and ends with a line starting with
-			 <spanx style="verb" xml:space="preserve">-----END </spanx>.
+       <t>Textual encoding begins with a line comprising
+       <spanx style="verb" xml:space="preserve">-----BEGIN </spanx>,
+			 a label, and
+			 <spanx style="verb" xml:space="preserve">-----</spanx>,
+			 and ends with a line comprising
+			 <spanx style="verb" xml:space="preserve">-----END </spanx>,
+			 a label, and
+			 <spanx style="verb" xml:space="preserve">-----</spanx>.
        Between these lines, or "encapsulation boundaries", are
 			 base64-encoded data according to Section 4 of <xref target="RFC4648" />.
-			 Data before the
-       <spanx style="verb" xml:space="preserve">-----BEGIN </spanx> and after the
-			 <spanx style="verb" xml:space="preserve">-----END </spanx> encapsulation boundaries
+			 Data before the encapsulation boundaries
        are permitted and parsers MUST NOT malfunction when processing such data.
-       Furthermore, parsers MUST ignore whitespace and other
+       Furthermore, parsers SHOULD ignore whitespace and other
        non-base64 characters and MUST handle different newline
        conventions.</t>
 
@@ -206,15 +209,24 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
        label in the <spanx style="verb" xml:space="preserve">-----BEGIN </spanx> line (pre-encapsulation boundary).
 			 For example, the line may be
        <spanx style="verb" xml:space="preserve">-----BEGIN CERTIFICATE-----</spanx> to indicate that the content is a
-       PKIX certificate (see further below).  Generators MUST put the
+       PKIX certificate (see further below).
+			 Generators MUST put the
        same label on the <spanx style="verb" xml:space="preserve">-----END </spanx> line (post-encapsulation boundary)
 			 as the corresponding
-       <spanx style="verb" xml:space="preserve">-----BEGIN </spanx> line.  Parsers MAY disregard the label on the
-       <spanx style="verb" xml:space="preserve">-----END </spanx> line instead of signaling an error if there is a
-       label mismatch. There is exactly one space character (<spanx style="vbare" xml:space="preserve">SP</spanx>) separating the
+       <spanx style="verb" xml:space="preserve">-----BEGIN </spanx> line.
+			 Labels are formally case-sensitive, uppercase, and comprised of zero or more characters;
+			 they MUST NOT contain consecutive spaces or hyphen-minuses;
+			 spaces or hyphen-minuses MUST NOT appear at the ends.
+			 Parsers MAY disregard the label in the post-encapsulation boundary
+			 instead of signaling an error if there is a
+       label mismatch:
+			 some extant implementations require the labels to match;
+			 others do not.</t>
+			 <t>There is exactly one space character (<spanx style="vbare" xml:space="preserve">SP</spanx>) separating the
 			 <spanx style="verb" xml:space="preserve">BEGIN</spanx> or <spanx style="verb" xml:space="preserve">END</spanx>
 			 from the label. There are exactly
-			 five hyphen-minus (or dash) characters (<spanx style="verb" xml:space="preserve">-</spanx>)
+			 five hyphen-minus (also known as dash) characters
+			 (<spanx style="verb" xml:space="preserve">-</spanx>)
 			 on both ends of the encapsulation boundaries, no more, no less.</t>
        <t>
 				 The label type implies that the encoded data
@@ -253,14 +265,14 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
 		<section anchor="abnf" title="ABNF">
 			<t>The <xref target="RFC5234">ABNF</xref> of the textual encoding is:</t>
 			<figure anchor="abnf-fig" title="ABNF">
-				<artwork><![CDATA[pkixmsg    = preeb
+				<artwork><![CDATA[textualmsg = preeb eol
              *eolWSP
              base64text
-             posteb
+             posteb [eol]
 
-preeb      = "-----BEGIN " label "-----" eol
-
-posteb     = "-----END " label "-----" eol
+preeb      = "-----BEGIN " label "-----"  ; unlike [RFC1421] (A)BNF,
+                                          ; eol is not required (but
+posteb     = "-----END " label "-----"    ; see [RFC1421] Section 4.4)
 
 base64char = ALPHA / DIGIT / "+" / "/"
 
@@ -278,17 +290,17 @@ base64text = *base64line base64finl
         ; line, except the final line, but this is more accurate
 
 labelchar  = %x21-2C / %x2E-%7E   ; any printable character,
-                                    ; except hyphen
+                                    ; except hyphen-minus
 
-label      = labelchar *(labelchar / labelchar "-" / SP) labelchar
+label      = [ labelchar *( ["-" / SP] labelchar ) ]        ; empty ok
 
 eol        = CRLF / CR / LF
 
 eolWSP     = WSP / CR / LF    ; compare with LWSP]]></artwork></figure>
 <figure anchor="abnf-strict-fig" title="ABNF (Strict)">
-				<artwork><![CDATA[pkixmsgstrict    = preeb
+				<artwork><![CDATA[stricttextualmsg = preeb eol
                    strictbase64text
-                   posteb
+                   posteb eol
 
 strictbase64finl = *15(4base64char) (4base64char / 3base64char
                      base64pad / 2base64char 2base64pad) eol
