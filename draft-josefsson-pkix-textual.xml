@@ -19,6 +19,7 @@ it should also be emphasized that (5 dash)BEGIN  etc. cannot be broken, but the 
 <!ENTITY rfc2119 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.2119.xml'>
 <!ENTITY rfc2986 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.2986.xml'>
 <!ENTITY rfc2315 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.2315.xml'>
+<!ENTITY RFC2585 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.2585.xml'>
 <!ENTITY rfc4648 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.4648.xml'>
 <!ENTITY rfc4716 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.4716.xml'>
 <!ENTITY RFC5208 SYSTEM 'http://xml.resource.org/public/rfc/bibxml/reference.RFC.5208.xml'>
@@ -461,6 +462,11 @@ ILwpnZ1izL4MlI9eCSHhVQBHEp2uQdXJB+d5Byg=
 				  Implementations should be aware that in spite of this recommendation,
 				  many tools still default to encode certificates in this textual encoding
 				  with the extension <spanx style="verb" xml:space="preserve">.cer</spanx>.</t>
+					<t>This section does not disturb the official <xref target="RFC2585">application/pkix-cert
+					registration</xref> in any way
+					(which states that "each '.cer' file contains exactly one certificate, encoded in DER format"),
+					but merely articulates a de-facto alternative
+					that is in widespread use.</t>
 				</section>
 			</section>
 
@@ -758,6 +764,7 @@ Nkn3Eos8EiZByi9DVsyfy9eejh+8AXgp
 			&RFC0934;
       &rfc1421;
       &rfc2015;
+			&RFC2585;
       &rfc4716;
 			&RFC5208;
 			&RFC7292;
