@@ -372,7 +372,7 @@ strictbase64text = *base64fullline strictbase64finl]]></artwork></figure>
  12  ATTRIBUTE CERTIFICATE  AttributeCertificate    [RFC5755] id-acv2
  13  PUBLIC KEY             SubjectPublicKeyInfo    [RFC5280] id-pkix1-e]]></artwork>
 			</figure><figure anchor="convenience-mods" title="ASN.1 Module Object Identifier Value Assignments"
-><artwork><![CDATA[ -----------------------------------------------------------------------
+><artwork indent="0"><![CDATA[ -----------------------------------------------------------------------
  id-pkixmod OBJECT IDENTIFIER ::= {iso(1) identified-organization(3)
             dod(6) internet(1) security(5) mechanisms(5) pkix(7) mod(0)}
  id-pkix1-e OBJECT IDENTIFIER ::= {id-pkixmod pkix1-explicit(18)}
@@ -523,7 +523,7 @@ c3DGMNR+oUmSjKZ0jIhAYmeLxaPHfQwR
        <xref target="RFC2986"/>.</t>
 
        <figure anchor="pkcs10example" title="PKCS #10 Example">
-	 <artwork><![CDATA[-----BEGIN CERTIFICATE REQUEST-----
+	 <artwork indent="0"><![CDATA[-----BEGIN CERTIFICATE REQUEST-----
 MIIBWDCCAQcCAQAwTjELMAkGA1UEBhMCU0UxJzAlBgNVBAoTHlNpbW9uIEpvc2Vm
 c3NvbiBEYXRha29uc3VsdCBBQjEWMBQGA1UEAxMNam9zZWZzc29uLm9yZzBOMBAG
 ByqGSM49AgEGBSuBBAAhAzoABLLPSkuXY0l66MbxVJ3Mot5FCFuqQfn6dTs+9/CM
@@ -553,7 +553,7 @@ dEQc8B8jAcnuOrfU
        target="RFC2315"/>.</t>
 
        <figure anchor="pkcs7example" title="PKCS #7 Example">
-	 <artwork><![CDATA[-----BEGIN PKCS7-----
+	 <artwork indent="0"><![CDATA[-----BEGIN PKCS7-----
 MIHjBgsqhkiG9w0BCRABF6CB0zCB0AIBADFho18CAQCgGwYJKoZIhvcNAQUMMA4E
 CLfrI6dr0gUWAgITiDAjBgsqhkiG9w0BCRADCTAUBggqhkiG9w0DBwQIZpECRWtz
 u5kEGDCjerXY8odQ7EEEromZJvAurk/j81IrozBSBgkqhkiG9w0BBwEwMwYLKoZI
@@ -586,7 +586,7 @@ OsYGYUFdAH0RNc1p4VbKEAQUM2Xo8PMHBoYdqEcsbTodlCFAZH4=
        target="RFC5652"/>.</t>
 
        <figure anchor="cmsexample" title="CMS Example">
-	 <artwork><![CDATA[-----BEGIN CMS-----
+	 <artwork indent="0"><![CDATA[-----BEGIN CMS-----
 MIGDBgsqhkiG9w0BCRABCaB0MHICAQAwDQYLKoZIhvcNAQkQAwgwXgYJKoZIhvcN
 AQcBoFEET3icc87PK0nNK9ENqSxItVIoSa0o0S/ISczMs1ZIzkgsKk4tsQ0N1nUM
 dvb05OXi5XLPLEtViMwvLVLwSE0sKlFIVHAqSk3MBkkBAJv0Fx0=
@@ -615,7 +615,7 @@ dvb05OXi5XLPLEtViMwvLVLwSE0sKlFIVHAqSk3MBkkBAJv0Fx0=
 			</t>
 
 			<figure anchor="pkcs8example" title="PKCS #8 PrivateKeyInfo (OneAsymmetricKey) Example">
-				<artwork><![CDATA[-----BEGIN PRIVATE KEY-----
+				<artwork indent="0"><![CDATA[-----BEGIN PRIVATE KEY-----
 MIGEAgEAMBAGByqGSM49AgEGBSuBBAAKBG0wawIBAQQgVcB/UNPxalR9zDYAjQIf
 jojUDiQuGnSJrFEEzZPT/92hRANCAASc7UJtgnF/abqWM60T3XNJEzBv5ez9TdwK
 H0M6xpM2q+53wmsN/eYLdgtjgBd3DBmHtPilCkiFICXyaA8z9LkJ
@@ -635,7 +635,7 @@ H0M6xpM2q+53wmsN/eYLdgtjgBd3DBmHtPilCkiFICXyaA8z9LkJ
 			</t>
 
 			<figure anchor="pkcs8encexample" title="PKCS #8 EncryptedPrivateKeyInfo Example">
-				<artwork><![CDATA[-----BEGIN ENCRYPTED PRIVATE KEY-----
+				<artwork indent="0"><![CDATA[-----BEGIN ENCRYPTED PRIVATE KEY-----
 MIHNMEAGCSqGSIb3DQEFDTAzMBsGCSqGSIb3DQEFDDAOBAghhICA6T/51QICCAAw
 FAYIKoZIhvcNAwcECBCxDgvI59i9BIGIY3CAqlMNBgaSI5QiiWVNJ3IpfLnEiEsW
 Z0JIoHyRmKK/+cr9QPLnzxImm0TR9s4JrG3CilzTWvb0jIvbG3hu0zyFPraoMkap
@@ -656,7 +656,7 @@ QC7k0NNzUHTV9yGDwfqMbw==
        target="RFC5755"/>.</t>
 
        <figure anchor="attrcertexample" title="Attribute Certificate Example">
-	 <artwork><![CDATA[-----BEGIN ATTRIBUTE CERTIFICATE-----
+	 <artwork indent="0"><![CDATA[-----BEGIN ATTRIBUTE CERTIFICATE-----
 MIICKzCCAZQCAQEwgZeggZQwgYmkgYYwgYMxCzAJBgNVBAYTAlVTMREwDwYDVQQI
 DAhOZXcgWW9yazEUMBIGA1UEBwwLU3RvbnkgQnJvb2sxDzANBgNVBAoMBkNTRTU5
 MjE6MDgGA1UEAwwxU2NvdHQgU3RhbGxlci9lbWFpbEFkZHJlc3M9c3N0YWxsZXJA
@@ -682,7 +682,7 @@ Smluak1aZIttePeTAHeJJs8izNJ5aR3Wcd3A5gLztQ==
 			 Section 4.1.2.7 of <xref target="RFC5280"/>.</t>
 
        <figure anchor="spkiexample" title="Subject Public Key Info Example">
-	 <artwork><![CDATA[-----BEGIN PUBLIC KEY-----
+	 <artwork indent="0"><![CDATA[-----BEGIN PUBLIC KEY-----
 MHYwEAYHKoZIzj0CAQYFK4EEACIDYgAEn1LlwLN/KBYQRVH6HfIMTzfEqJOVztLe
 kLchp2hi78cCaMY81FBlYs8J9l7krc+M4aBeCGYFjba+hiXttJWPL7ydlE+5UG4U
 Nkn3Eos8EiZByi9DVsyfy9eejh+8AXgp
@@ -805,7 +805,7 @@ Nkn3Eos8EiZByi9DVsyfy9eejh+8AXgp
 
       <figure anchor="certexample2"
 	      title="Non-standard 'X509' Certificate Example">
-	<artwork>-----BEGIN X509 CERTIFICATE-----
+	<artwork indent="0">-----BEGIN X509 CERTIFICATE-----
 MIIBHDCBxaADAgECAgIcxzAJBgcqhkjOPQQBMBAxDjAMBgNVBAMUBVBLSVghMB4X
 DTE0MDkxNDA2MTU1MFoXDTI0MDkxNDA2MTU1MFowEDEOMAwGA1UEAxQFUEtJWCEw
 WTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAATwoQSr863QrR0PoRIYQ96H7WykDePH
@@ -817,7 +817,7 @@ NnY/OKgBex6MIEAv2AIhAI2GdvfL+mGvhyPZE+JxRxWChmggb5/9eHdUcmW/jkOH
 
       <figure anchor="certexample3"
 	      title="Non-standard 'X.509' Certificate Example">
-	<artwork>-----BEGIN X.509 CERTIFICATE-----
+	<artwork indent="0">-----BEGIN X.509 CERTIFICATE-----
 MIIBHDCBxaADAgECAgIcxzAJBgcqhkjOPQQBMBAxDjAMBgNVBAMUBVBLSVghMB4X
 DTE0MDkxNDA2MTU1MFoXDTI0MDkxNDA2MTU1MFowEDEOMAwGA1UEAxQFUEtJWCEw
 WTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAATwoQSr863QrR0PoRIYQ96H7WykDePH
@@ -829,7 +829,7 @@ NnY/OKgBex6MIEAv2AIhAI2GdvfL+mGvhyPZE+JxRxWChmggb5/9eHdUcmW/jkOH
 
       <figure anchor="pkcs10example2"
 	      title="Non-standard 'NEW' PKCS #10 Example">
-	<artwork>-----BEGIN NEW CERTIFICATE REQUEST-----
+	<artwork indent="0">-----BEGIN NEW CERTIFICATE REQUEST-----
 MIIBWDCCAQcCAQAwTjELMAkGA1UEBhMCU0UxJzAlBgNVBAoTHlNpbW9uIEpvc2Vm
 c3NvbiBEYXRha29uc3VsdCBBQjEWMBQGA1UEAxMNam9zZWZzc29uLm9yZzBOMBAG
 ByqGSM49AgEGBSuBBAAhAzoABLLPSkuXY0l66MbxVJ3Mot5FCFuqQfn6dTs+9/CM
@@ -843,7 +843,7 @@ dEQc8B8jAcnuOrfU
 
       <figure anchor="pkcs7example2"
 	      title="Non-standard 'CERTIFICATE CHAIN' Example">
-	<artwork>-----BEGIN CERTIFICATE CHAIN-----
+	<artwork indent="0">-----BEGIN CERTIFICATE CHAIN-----
 MIHjBgsqhkiG9w0BCRABF6CB0zCB0AIBADFho18CAQCgGwYJKoZIhvcNAQUMMA4E
 CLfrI6dr0gUWAgITiDAjBgsqhkiG9w0BCRADCTAUBggqhkiG9w0DBwQIZpECRWtz
 u5kEGDCjerXY8odQ7EEEromZJvAurk/j81IrozBSBgkqhkiG9w0BBwEwMwYLKoZI
